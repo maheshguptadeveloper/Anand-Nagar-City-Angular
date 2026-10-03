@@ -1,0 +1,463 @@
+<div class="banner-form-page">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="page-header">
+
+        <div>
+
+            <div class="breadcrumb">
+
+                <button
+                    type="button"
+                    (click)="cancel()"
+                >
+                    Banners
+                </button>
+
+                <i class="bi bi-chevron-right"></i>
+
+                <span>
+                    {{ isEditMode ? 'Edit Banner' : 'Add Banner' }}
+                </span>
+
+            </div>
+
+
+            <h1>
+                {{ isEditMode ? 'Edit Banner' : 'Add New Banner' }}
+            </h1>
+
+
+            <p>
+                {{ isEditMode
+                    ? 'Update banner information and display settings.'
+                    : 'Create a new banner for the Anand Nagar website.'
+                }}
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MAIN FORM
+    ====================================================== -->
+
+    <div class="form-card">
+
+        <div class="form-card-header">
+
+            <div>
+
+                <h2>
+                    Banner Details
+                </h2>
+
+                <p>
+                    Enter the banner information below.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-body">
+
+            <div class="form-layout">
+
+
+                <!-- =================================================
+                     LEFT SIDE
+                ================================================== -->
+
+                <div class="form-fields">
+
+
+                    <!-- TITLE -->
+
+                    <div class="form-group">
+
+                        <label for="title">
+                            Title
+                            <span>*</span>
+                        </label>
+
+                        <div class="input-container">
+
+                            <i class="bi bi-type"></i>
+
+                            <input
+                                type="text"
+                                id="title"
+                                name="title"
+                                [(ngModel)]="title"
+                                placeholder="Enter banner title"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DESCRIPTION -->
+
+                    <div class="form-group">
+
+                        <label for="description">
+                            Description
+                        </label>
+
+                        <textarea
+                            id="description"
+                            name="description"
+                            [(ngModel)]="description"
+                            rows="4"
+                            placeholder="Enter banner description"
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- BUTTON TEXT / LINK -->
+
+                    <div class="two-column">
+
+
+                        <div class="form-group">
+
+                            <label for="buttonText">
+                                Button Text
+                            </label>
+
+                            <div class="input-container">
+
+                                <i class="bi bi-hand-index"></i>
+
+                                <input
+                                    type="text"
+                                    id="buttonText"
+                                    name="buttonText"
+                                    [(ngModel)]="buttonText"
+                                    placeholder="Explore Now"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="buttonLink">
+                                Button Link
+                            </label>
+
+                            <div class="input-container">
+
+                                <i class="bi bi-link-45deg"></i>
+
+                                <input
+                                    type="text"
+                                    id="buttonLink"
+                                    name="buttonLink"
+                                    [(ngModel)]="buttonLink"
+                                    placeholder="/explore.html"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ORDER -->
+
+                    <div class="form-group">
+
+                        <label for="displayOrder">
+                            Display Order
+                        </label>
+
+                        <div class="input-container">
+
+                            <i class="bi bi-list-ol"></i>
+
+                            <input
+                                type="number"
+                                id="displayOrder"
+                                name="displayOrder"
+                                [(ngModel)]="displayOrder"
+                                min="1"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DATES -->
+
+                    <div class="two-column">
+
+
+                        <div class="form-group">
+
+                            <label for="startDate">
+                                Start Date
+                            </label>
+
+                            <div class="input-container">
+
+                                <i class="bi bi-calendar-event"></i>
+
+                                <input
+                                    type="date"
+                                    id="startDate"
+                                    name="startDate"
+                                    [(ngModel)]="startDate"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="endDate">
+                                End Date
+                            </label>
+
+                            <div class="input-container">
+
+                                <i class="bi bi-calendar-check"></i>
+
+                                <input
+                                    type="date"
+                                    id="endDate"
+                                    name="endDate"
+                                    [(ngModel)]="endDate"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STATUS -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Status
+                        </label>
+
+                        <div class="status-options">
+
+                            <label class="radio-option">
+
+                                <input
+                                    type="radio"
+                                    name="status"
+                                    value="Active"
+                                    [(ngModel)]="status"
+                                >
+
+                                <span class="radio-circle"></span>
+
+                                <span>
+                                    Active
+                                </span>
+
+                            </label>
+
+
+                            <label class="radio-option">
+
+                                <input
+                                    type="radio"
+                                    name="status"
+                                    value="Inactive"
+                                    [(ngModel)]="status"
+                                >
+
+                                <span class="radio-circle"></span>
+
+                                <span>
+                                    Inactive
+                                </span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     RIGHT IMAGE
+                ================================================== -->
+
+                <div class="image-section">
+
+                    <label>
+                        Banner Image
+                        <span>*</span>
+                    </label>
+
+
+                    <div
+                        class="image-preview"
+                        [class.has-image]="imagePreview"
+                    >
+
+                        @if (imagePreview) {
+
+                            <img
+                                [src]="imagePreview"
+                                alt="Banner preview"
+                            >
+
+                            <button
+                                type="button"
+                                class="remove-image"
+                                (click)="removeImage()"
+                                title="Remove image"
+                            >
+
+                                <i class="bi bi-x-lg"></i>
+
+                            </button>
+
+                        }
+
+                        @else {
+
+                            <div class="image-placeholder">
+
+                                <i class="bi bi-image"></i>
+
+                                <span>
+                                    No image selected
+                                </span>
+
+                            </div>
+
+                        }
+
+                    </div>
+
+
+                    <label
+                        for="bannerImage"
+                        class="change-image-button"
+                    >
+
+                        <i class="bi bi-cloud-arrow-up"></i>
+
+                        {{ imagePreview
+                            ? 'Change Image'
+                            : 'Upload Image'
+                        }}
+
+                    </label>
+
+
+                    <input
+                        type="file"
+                        id="bannerImage"
+                        accept="image/png,image/jpeg,image/webp"
+                        (change)="onImageSelected($event)"
+                        hidden
+                    >
+
+
+                    @if (selectedImageName) {
+
+                        <div class="selected-file">
+
+                            <i class="bi bi-file-earmark-image"></i>
+
+                            {{ selectedImageName }}
+
+                        </div>
+
+                    }
+
+
+                    <div class="image-help">
+
+                        <div>
+                            JPG, PNG or WEBP
+                        </div>
+
+                        <div>
+                            Recommended: 1600 × 600 px
+                        </div>
+
+                        <div>
+                            Maximum size: 2 MB
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             FOOTER
+        ====================================================== -->
+
+        <div class="form-footer">
+
+            <button
+                type="button"
+                class="btn-secondary"
+                (click)="cancel()"
+            >
+
+                <i class="bi bi-x-lg"></i>
+
+                Cancel
+
+            </button>
+
+
+            <button
+                type="button"
+                class="btn-primary"
+                (click)="saveBanner()"
+            >
+
+                <i
+                    class="bi"
+                    [class.bi-check-lg]="isEditMode"
+                    [class.bi-plus-lg]="!isEditMode"
+                ></i>
+
+                {{ isEditMode
+                    ? 'Update Banner'
+                    : 'Save Banner'
+                }}
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

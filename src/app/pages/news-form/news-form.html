@@ -1,0 +1,562 @@
+<div class="news-form-page">
+
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="page-header">
+
+        <div class="page-header-info">
+
+            <h1>
+                {{ pageTitle }}
+            </h1>
+
+            <p>
+                {{ pageDescription }}
+            </p>
+
+        </div>
+
+
+        <a
+            routerLink="/admin/news"
+            class="back-button"
+        >
+
+            <i class="bi bi-arrow-left"></i>
+
+            Back to News
+
+        </a>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         FORM
+    ====================================================== -->
+
+    <form
+        class="news-form"
+        (ngSubmit)="saveNews()"
+    >
+
+
+        <!-- =================================================
+             BASIC INFORMATION
+        ================================================== -->
+
+        <div class="form-card">
+
+            <div class="form-card-header">
+
+                <div class="form-card-title">
+
+                    <div class="section-icon blue">
+
+                        <i class="bi bi-newspaper"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            News Information
+                        </h2>
+
+                        <p>
+                            Enter the basic information for the news article.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-card-body">
+
+
+                <!-- TITLE -->
+
+                <div class="form-group full-width">
+
+                    <label for="title">
+
+                        News Title
+
+                        <span class="required">
+                            *
+                        </span>
+
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="bi bi-type"></i>
+
+                        <input
+                            id="title"
+                            name="title"
+                            type="text"
+                            [(ngModel)]="title"
+                            placeholder="Enter news title"
+                            maxlength="200"
+                        >
+
+                    </div>
+
+                    <span class="field-help">
+                        Enter a clear and meaningful title for the news.
+                    </span>
+
+                </div>
+
+
+                <!-- SUMMARY -->
+
+                <div class="form-group full-width">
+
+                    <label for="summary">
+
+                        Short Summary
+
+                        <span class="required">
+                            *
+                        </span>
+
+                    </label>
+
+                    <textarea
+                        id="summary"
+                        name="summary"
+                        [(ngModel)]="summary"
+                        placeholder="Enter a short summary"
+                        rows="3"
+                        maxlength="500"
+                    ></textarea>
+
+                    <span class="field-help">
+                        A short description shown in news listings and previews.
+                    </span>
+
+                </div>
+
+
+                <!-- CONTENT -->
+
+                <div class="form-group full-width">
+
+                    <label for="content">
+
+                        News Content
+
+                        <span class="required">
+                            *
+                        </span>
+
+                    </label>
+
+                    <textarea
+                        id="content"
+                        name="content"
+                        [(ngModel)]="content"
+                        placeholder="Enter complete news content"
+                        rows="8"
+                    ></textarea>
+
+                    <span class="field-help">
+                        Enter the complete content of the news article.
+                    </span>
+
+                </div>
+
+
+                <!-- TWO COLUMNS -->
+
+                <div class="form-row">
+
+
+                    <!-- CATEGORY -->
+
+                    <div class="form-group">
+
+                        <label for="category">
+
+                            Category
+
+                            <span class="required">
+                                *
+                            </span>
+
+                        </label>
+
+                        <div class="select-wrapper">
+
+                            <select
+                                id="category"
+                                name="category"
+                                [(ngModel)]="category"
+                            >
+
+                                <option value="">
+                                    Select Category
+                                </option>
+
+                                <option
+                                    *ngFor="let item of categories"
+                                    [value]="item"
+                                >
+                                    {{ item }}
+                                </option>
+
+                            </select>
+
+                            <i class="bi bi-chevron-down"></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- LANGUAGE -->
+
+                    <div class="form-group">
+
+                        <label for="language">
+
+                            Language
+
+                            <span class="required">
+                                *
+                            </span>
+
+                        </label>
+
+                        <div class="select-wrapper">
+
+                            <select
+                                id="language"
+                                name="language"
+                                [(ngModel)]="language"
+                            >
+
+                                <option
+                                    *ngFor="let item of languages"
+                                    [value]="item"
+                                >
+                                    {{ item }}
+                                </option>
+
+                            </select>
+
+                            <i class="bi bi-chevron-down"></i>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- TWO COLUMNS -->
+
+                <div class="form-row">
+
+
+                    <!-- AUTHOR -->
+
+                    <div class="form-group">
+
+                        <label for="author">
+
+                            Author
+
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-person"></i>
+
+                            <input
+                                id="author"
+                                name="author"
+                                type="text"
+                                [(ngModel)]="author"
+                                placeholder="Enter author name"
+                                maxlength="100"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PUBLISH DATE -->
+
+                    <div class="form-group">
+
+                        <label for="publishDate">
+
+                            Publish Date
+
+                            <span class="required">
+                                *
+                            </span>
+
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-calendar3"></i>
+
+                            <input
+                                id="publishDate"
+                                name="publishDate"
+                                type="date"
+                                [(ngModel)]="publishDate"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label for="status">
+
+                            Status
+
+                            <span class="required">
+                                *
+                            </span>
+
+                        </label>
+
+                        <div class="select-wrapper">
+
+                            <select
+                                id="status"
+                                name="status"
+                                [(ngModel)]="status"
+                            >
+
+                                <option
+                                    *ngFor="let item of statuses"
+                                    [value]="item"
+                                >
+                                    {{ item }}
+                                </option>
+
+                            </select>
+
+                            <i class="bi bi-chevron-down"></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Featured News
+                        </label>
+
+                        <label class="toggle-row">
+
+                            <input
+                                type="checkbox"
+                                name="featured"
+                                [(ngModel)]="featured"
+                            >
+
+                            <span class="toggle-switch"></span>
+
+                            <span class="toggle-label">
+                                Show this news as featured
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             NEWS IMAGE
+        ================================================== -->
+
+        <div class="form-card">
+
+            <div class="form-card-header">
+
+                <div class="form-card-title">
+
+                    <div class="section-icon purple">
+
+                        <i class="bi bi-image"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            News Image
+                        </h2>
+
+                        <p>
+                            Upload an image for the news article.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-card-body">
+
+
+                <div class="form-group full-width">
+
+                    <label>
+                        Featured Image
+                    </label>
+
+
+                    <!-- IMAGE PREVIEW -->
+
+                    <div
+                        class="image-preview"
+                        *ngIf="image"
+                    >
+
+                        <img
+                            [src]="image"
+                            alt="News Preview"
+                        >
+
+                        <button
+                            type="button"
+                            class="remove-image"
+                            title="Remove image"
+                            (click)="removeImage()"
+                        >
+
+                            <i class="bi bi-x-lg"></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- UPLOAD -->
+
+                    <label
+                        class="upload-box"
+                        *ngIf="!image"
+                    >
+
+                        <input
+                            type="file"
+                            accept="image/*"
+                            (change)="onImageSelected($event)"
+                        >
+
+                        <div class="upload-icon">
+
+                            <i class="bi bi-cloud-arrow-up"></i>
+
+                        </div>
+
+                        <strong>
+                            Upload News Image
+                        </strong>
+
+                        <span>
+                            PNG, JPG or WEBP
+                        </span>
+
+                    </label>
+
+
+                    <span class="field-help">
+                        Recommended image size: 1200 × 700 pixels.
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             FORM ACTIONS
+        ================================================== -->
+
+        <div class="form-actions">
+
+            <button
+                type="button"
+                class="btn-secondary"
+                (click)="cancel()"
+            >
+
+                <i class="bi bi-x-lg"></i>
+
+                Cancel
+
+            </button>
+
+
+            <button
+                type="submit"
+                class="btn-primary"
+            >
+
+                <i
+                    class="bi"
+                    [ngClass]="
+                        isEditMode
+                            ? 'bi-check-lg'
+                            : 'bi-plus-lg'
+                    "
+                ></i>
+
+                {{ isEditMode ? 'Update News' : 'Add News' }}
+
+            </button>
+
+        </div>
+
+
+    </form>
+
+</div>

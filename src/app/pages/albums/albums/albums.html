@@ -1,0 +1,475 @@
+<div class="page-container">
+
+    <!-- Page Header -->
+    <div class="page-header">
+
+        <div class="page-header-info">
+
+            <h1>Albums</h1>
+
+            <p>
+                Manage photo albums and city gallery collections.
+            </p>
+
+        </div>
+
+        <a
+            routerLink="/admin/albums/add"
+            class="btn-primary"
+        >
+            <i class="bi bi-plus-lg"></i>
+            Add Album
+        </a>
+
+    </div>
+
+
+    <!-- Filters Card -->
+    <div class="content-card filter-card">
+
+        <div class="filter-row">
+
+            <!-- Search -->
+            <div class="filter-group search-group">
+
+                <label>
+                    Search
+                </label>
+
+                <div class="search-wrapper">
+
+                    <i class="bi bi-search"></i>
+
+                    <input
+                        type="text"
+                        [(ngModel)]="searchText"
+                        (input)="onSearch()"
+                        placeholder="Search albums..."
+                    />
+
+                </div>
+
+            </div>
+
+
+            <!-- Language -->
+            <div class="filter-group">
+
+                <label>
+                    Language
+                </label>
+
+                <select
+                    [(ngModel)]="selectedLanguage"
+                    (change)="onFilterChange()"
+                >
+
+                    <option value="">
+                        All Languages
+                    </option>
+
+                    <option
+                        *ngFor="let language of languages"
+                        [value]="language"
+                    >
+                        {{ language }}
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Status -->
+            <div class="filter-group">
+
+                <label>
+                    Status
+                </label>
+
+                <select
+                    [(ngModel)]="selectedStatus"
+                    (change)="onFilterChange()"
+                >
+
+                    <option value="">
+                        All Status
+                    </option>
+
+                    <option
+                        *ngFor="let status of statuses"
+                        [value]="status"
+                    >
+                        {{ status }}
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Clear -->
+            <div class="filter-actions">
+
+                <button
+                    type="button"
+                    class="btn-clear"
+                    (click)="clearFilters()"
+                >
+                    <i class="bi bi-arrow-counterclockwise"></i>
+                    Clear
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Albums Table -->
+    <div class="content-card table-card">
+
+        <div class="table-header">
+
+            <div>
+
+                <h2>Album List</h2>
+
+                <span>
+                    {{ filteredAlbums.length }} album(s)
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="table-responsive">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>ALBUM</th>
+
+                        <th>LANGUAGE</th>
+
+                        <th>PHOTOS</th>
+
+                        <th>PUBLISH DATE</th>
+
+                        <th>AUTHOR</th>
+
+                        <th>STATUS</th>
+
+                        <th>FEATURED</th>
+
+                        <th>ACTION</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr
+                        *ngFor="let album of paginatedAlbums"
+                    >
+
+                        <!-- Album -->
+                        <td>
+
+                            <div class="album-info">
+
+                                <div class="album-image">
+
+                                    <img
+                                        [src]="album.coverImage"
+                                        [alt]="album.title"
+                                    />
+
+                                </div>
+
+                                <div class="album-details">
+
+                                    <div class="album-title">
+                                        {{ album.title }}
+                                    </div>
+
+                                    <div class="album-description">
+                                        {{ album.description }}
+                                    </div>
+
+                                    <div class="album-slug">
+                                        /{{ album.slug }}
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- Language -->
+                        <td>
+
+                            <span class="language-badge">
+
+                                <i
+                                    class="bi"
+                                    [ngClass]="
+                                        album.language === 'Hindi'
+                                            ? 'bi-translate'
+                                            : 'bi-globe2'
+                                    "
+                                ></i>
+
+                                {{ album.language }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- Photos -->
+                        <td>
+
+                            <span class="photo-count">
+
+                                <i class="bi bi-images"></i>
+
+                                {{ album.photoCount }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- Publish Date -->
+                        <td>
+
+                            <span class="publish-date">
+
+                                {{ album.publishDate | date:'dd MMM yyyy' }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- Author -->
+                        <td>
+
+                            <span class="author">
+
+                                {{ album.author }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- Status -->
+                        <td>
+
+                            <span
+                                class="status-badge"
+                                [ngClass]="
+                                    getStatusClass(album.status)
+                                "
+                            >
+
+                                <span class="status-dot"></span>
+
+                                {{ album.status }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- Featured -->
+                        <td>
+
+                            <button
+                                type="button"
+                                class="featured-button"
+                                [class.active]="album.featured"
+                                (click)="toggleFeatured(album)"
+                                [title]="
+                                    album.featured
+                                        ? 'Remove from featured'
+                                        : 'Mark as featured'
+                                "
+                            >
+
+                                <i
+                                    class="bi"
+                                    [ngClass]="
+                                        album.featured
+                                            ? 'bi-star-fill'
+                                            : 'bi-star'
+                                    "
+                                ></i>
+
+                            </button>
+
+                        </td>
+
+
+                        <!-- Actions -->
+                        <td>
+
+                            <div class="action-buttons">
+
+                                <button
+                                    type="button"
+                                    class="action-button edit"
+                                    title="Edit Album"
+                                    (click)="editAlbum(album.id)"
+                                >
+
+                                    <i class="bi bi-pencil"></i>
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="action-button delete"
+                                    title="Delete Album"
+                                    (click)="deleteAlbum(album.id)"
+                                >
+
+                                    <i class="bi bi-trash3"></i>
+
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- Empty State -->
+                    <tr
+                        *ngIf="paginatedAlbums.length === 0"
+                    >
+
+                        <td
+                            colspan="8"
+                            class="empty-state"
+                        >
+
+                            <div class="empty-content">
+
+                                <i class="bi bi-images"></i>
+
+                                <h3>
+                                    No albums found
+                                </h3>
+
+                                <p>
+                                    Try changing your search or filters.
+                                </p>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- Pagination -->
+        <div
+            class="pagination-container"
+            *ngIf="filteredAlbums.length > 0"
+        >
+
+            <div class="pagination-info">
+
+                Showing
+
+                <strong>
+                    {{ ((currentPage - 1) * pageSize) + 1 }}
+                </strong>
+
+                to
+
+                <strong>
+                    {{
+                        Math.min(
+                            currentPage * pageSize,
+                            filteredAlbums.length
+                        )
+                    }}
+                </strong>
+
+                of
+
+                <strong>
+                    {{ filteredAlbums.length }}
+                </strong>
+
+                albums
+
+            </div>
+
+
+            <div class="pagination">
+
+                <button
+                    type="button"
+                    class="pagination-button"
+                    [disabled]="currentPage === 1"
+                    (click)="goToPage(currentPage - 1)"
+                >
+
+                    <i class="bi bi-chevron-left"></i>
+
+                </button>
+
+
+                <button
+                    *ngFor="let page of pageNumbers"
+                    type="button"
+                    class="pagination-button"
+                    [class.active]="currentPage === page"
+                    (click)="goToPage(page)"
+                >
+
+                    {{ page }}
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="pagination-button"
+                    [disabled]="currentPage === totalPages"
+                    (click)="goToPage(currentPage + 1)"
+                >
+
+                    <i class="bi bi-chevron-right"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,422 @@
+<div class="page-container">
+
+    <!-- Page Header -->
+    <div class="page-header">
+
+        <div class="page-header-info">
+
+            <h1>
+                {{ isEditMode ? 'Edit Album' : 'Add Album' }}
+            </h1>
+
+            <p>
+                {{
+                    isEditMode
+                        ? 'Update album information and gallery details.'
+                        : 'Create a new photo album for Anand Nagar.'
+                }}
+            </p>
+
+        </div>
+
+        <a
+            routerLink="/admin/albums"
+            class="btn-secondary"
+        >
+            <i class="bi bi-arrow-left"></i>
+            Back to Albums
+        </a>
+
+    </div>
+
+
+    <div class="form-layout">
+
+        <!-- =========================== -->
+        <!-- ALBUM INFORMATION -->
+        <!-- =========================== -->
+
+        <div class="content-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        Album Information
+                    </h2>
+
+                    <p>
+                        Enter the basic information about this album.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="card-body">
+
+                <!-- Title -->
+                <div class="form-group">
+
+                    <label for="title">
+                        Album Title
+                        <span>*</span>
+                    </label>
+
+                    <input
+                        id="title"
+                        type="text"
+                        [(ngModel)]="album.title"
+                        (blur)="generateSlug()"
+                        placeholder="Enter album title"
+                    />
+
+                </div>
+
+
+                <!-- Slug -->
+                <div class="form-group">
+
+                    <label for="slug">
+                        Album Slug
+                        <span>*</span>
+                    </label>
+
+                    <input
+                        id="slug"
+                        type="text"
+                        [(ngModel)]="album.slug"
+                        placeholder="album-slug"
+                    />
+
+                    <small>
+                        URL-friendly name used for the album page.
+                    </small>
+
+                </div>
+
+
+                <!-- Description -->
+                <div class="form-group">
+
+                    <label for="description">
+                        Short Description
+                        <span>*</span>
+                    </label>
+
+                    <textarea
+                        id="description"
+                        rows="4"
+                        [(ngModel)]="album.description"
+                        placeholder="Enter short album description"
+                    ></textarea>
+
+                </div>
+
+
+                <!-- Content -->
+                <div class="form-group">
+
+                    <label for="content">
+                        Album Content
+                    </label>
+
+                    <textarea
+                        id="content"
+                        rows="7"
+                        [(ngModel)]="album.content"
+                        placeholder="Enter detailed album content"
+                    ></textarea>
+
+                </div>
+
+
+                <!-- Two Column -->
+                <div class="form-row">
+
+                    <!-- Language -->
+                    <div class="form-group">
+
+                        <label for="language">
+                            Language
+                            <span>*</span>
+                        </label>
+
+                        <select
+                            id="language"
+                            [(ngModel)]="album.language"
+                        >
+
+                            <option value="English">
+                                English
+                            </option>
+
+                            <option value="Hindi">
+                                Hindi
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Author -->
+                    <div class="form-group">
+
+                        <label for="author">
+                            Author
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            id="author"
+                            type="text"
+                            [(ngModel)]="album.author"
+                            placeholder="Enter author name"
+                        />
+
+                    </div>
+
+                </div>
+
+
+                <!-- Two Column -->
+                <div class="form-row">
+
+                    <!-- Publish Date -->
+                    <div class="form-group">
+
+                        <label for="publishDate">
+                            Publish Date
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            id="publishDate"
+                            type="date"
+                            [(ngModel)]="album.publishDate"
+                        />
+
+                    </div>
+
+
+                    <!-- Status -->
+                    <div class="form-group">
+
+                        <label for="status">
+                            Status
+                            <span>*</span>
+                        </label>
+
+                        <select
+                            id="status"
+                            [(ngModel)]="album.status"
+                        >
+
+                            <option value="Draft">
+                                Draft
+                            </option>
+
+                            <option value="Published">
+                                Published
+                            </option>
+
+                            <option value="Archived">
+                                Archived
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Featured -->
+                <div class="featured-option">
+
+                    <label class="checkbox-label">
+
+                        <input
+                            type="checkbox"
+                            [(ngModel)]="album.featured"
+                        />
+
+                        <span class="custom-checkbox"></span>
+
+                        <span class="checkbox-text">
+
+                            <strong>
+                                Featured Album
+                            </strong>
+
+                            <small>
+                                Show this album in the featured gallery.
+                            </small>
+
+                        </span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================== -->
+        <!-- COVER IMAGE -->
+        <!-- =========================== -->
+
+        <div class="content-card image-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        Album Cover
+                    </h2>
+
+                    <p>
+                        Upload the main cover image for this album.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="card-body">
+
+                <div
+                    class="image-upload-area"
+                    [class.has-image]="album.coverImage"
+                >
+
+                    <!-- Preview -->
+                    <div
+                        class="image-preview"
+                        *ngIf="album.coverImage"
+                    >
+
+                        <img
+                            [src]="album.coverImage"
+                            alt="Album cover preview"
+                        />
+
+                        <button
+                            type="button"
+                            class="remove-image"
+                            title="Remove Image"
+                            (click)="removeCoverImage()"
+                        >
+
+                            <i class="bi bi-x-lg"></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- Upload -->
+                    <label
+                        class="upload-box"
+                        *ngIf="!album.coverImage"
+                    >
+
+                        <input
+                            type="file"
+                            accept="image/*"
+                            (change)="onCoverImageSelected($event)"
+                        />
+
+                        <div class="upload-icon">
+
+                            <i class="bi bi-cloud-arrow-up"></i>
+
+                        </div>
+
+                        <strong>
+                            Upload Cover Image
+                        </strong>
+
+                        <span>
+                            PNG, JPG or WEBP
+                        </span>
+
+                        <small>
+                            Maximum size: 5 MB
+                        </small>
+
+                    </label>
+
+                </div>
+
+
+                <div class="image-note">
+
+                    <i class="bi bi-info-circle"></i>
+
+                    <span>
+                        Use a high-quality image that represents
+                        the album. Recommended ratio is 4:3.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================== -->
+    <!-- FORM ACTIONS -->
+    <!-- =========================== -->
+
+    <div class="form-actions">
+
+        <button
+            type="button"
+            class="btn-cancel"
+            (click)="cancel()"
+        >
+
+            <i class="bi bi-x-lg"></i>
+
+            Cancel
+
+        </button>
+
+
+        <button
+            type="button"
+            class="btn-primary"
+            (click)="saveAlbum()"
+        >
+
+            <i
+                class="bi"
+                [ngClass]="
+                    isEditMode
+                        ? 'bi-check-lg'
+                        : 'bi-plus-lg'
+                "
+            ></i>
+
+            {{
+                isEditMode
+                    ? 'Update Album'
+                    : 'Add Album'
+            }}
+
+        </button>
+
+    </div>
+
+</div>

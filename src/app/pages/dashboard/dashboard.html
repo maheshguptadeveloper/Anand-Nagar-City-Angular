@@ -1,0 +1,639 @@
+<div class="dashboard-page">
+
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="dashboard-header">
+
+        <div>
+
+            <h1>
+                Dashboard
+            </h1>
+
+            <p>
+                Welcome back. Here's what's happening in Anand Nagar.
+            </p>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="dashboard-period"
+        >
+
+            <span>
+                Last 7 Days
+            </span>
+
+            <i class="bi bi-chevron-down"></i>
+
+        </button>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         STATISTICS
+    ====================================================== -->
+
+    <div class="statistics-grid">
+
+
+        @for (stat of statistics; track stat.title) {
+
+            <div class="stat-card">
+
+
+                <div
+                    class="stat-icon"
+                    [class]="stat.iconClass"
+                >
+
+                    <i
+                        class="bi"
+                        [class]="stat.icon"
+                    ></i>
+
+                </div>
+
+
+                <div class="stat-details">
+
+                    <div class="stat-title">
+                        {{ stat.title }}
+                    </div>
+
+                    <div class="stat-value">
+                        {{ stat.value }}
+                    </div>
+
+                    <div class="stat-change">
+
+                        <span>
+                            {{ stat.change }}
+                        </span>
+
+                        <small>
+                            {{ stat.label }}
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        }
+
+    </div>
+
+
+
+    <!-- =====================================================
+         ACTIVITY + QUICK ACTIONS
+    ====================================================== -->
+
+    <div class="dashboard-middle">
+
+
+        <!-- =================================================
+             WEBSITE ACTIVITY
+        ================================================== -->
+
+        <section class="dashboard-card activity-card">
+
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        Website Activity Overview
+                    </h2>
+
+                    <p>
+                        Activity across the city portal
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="card-filter"
+                >
+
+                    Last 7 Days
+
+                    <i class="bi bi-chevron-down"></i>
+
+                </button>
+
+            </div>
+
+
+            <!-- Chart -->
+
+            <div class="activity-chart">
+
+
+                <div class="chart-y-axis">
+
+                    <span>150</span>
+                    <span>100</span>
+                    <span>50</span>
+                    <span>0</span>
+
+                </div>
+
+
+                <div class="chart-area">
+
+
+                    <div class="chart-grid-line line-one"></div>
+                    <div class="chart-grid-line line-two"></div>
+                    <div class="chart-grid-line line-three"></div>
+                    <div class="chart-grid-line line-four"></div>
+
+
+                    <div class="chart-bars">
+
+                        @for (
+                            value of activityValues;
+                            track $index
+                        ) {
+
+                            <div class="chart-column">
+
+                                <div
+                                    class="chart-bar"
+                                    [style.height]="getActivityHeight(value)"
+                                >
+                                </div>
+
+                            </div>
+
+                        }
+
+                    </div>
+
+
+                    <div class="chart-line">
+
+                        <svg
+                            viewBox="0 0 700 180"
+                            preserveAspectRatio="none"
+                        >
+
+                            <defs>
+
+                                <linearGradient
+                                    id="activityGradient"
+                                    x1="0"
+                                    y1="0"
+                                    x2="0"
+                                    y2="1"
+                                >
+
+                                    <stop
+                                        offset="0%"
+                                        stop-opacity="0.25"
+                                    />
+
+                                    <stop
+                                        offset="100%"
+                                        stop-opacity="0"
+                                    />
+
+                                </linearGradient>
+
+                            </defs>
+
+
+                            <path
+                                class="chart-fill"
+                                d="
+                                M0,118
+                                C45,100 65,96 105,110
+                                C145,124 170,96 210,78
+                                C250,60 285,88 325,60
+                                C365,32 395,28 435,52
+                                C475,76 505,55 545,68
+                                C585,81 620,35 700,20
+                                L700,180
+                                L0,180
+                                Z
+                                "
+                            >
+                            </path>
+
+
+                            <path
+                                class="chart-stroke"
+                                d="
+                                M0,118
+                                C45,100 65,96 105,110
+                                C145,124 170,96 210,78
+                                C250,60 285,88 325,60
+                                C365,32 395,28 435,52
+                                C475,76 505,55 545,68
+                                C585,81 620,35 700,20
+                                "
+                            >
+                            </path>
+
+
+                            <circle
+                                cx="105"
+                                cy="110"
+                                r="4"
+                            ></circle>
+
+                            <circle
+                                cx="210"
+                                cy="78"
+                                r="4"
+                            ></circle>
+
+                            <circle
+                                cx="325"
+                                cy="60"
+                                r="4"
+                            ></circle>
+
+                            <circle
+                                cx="435"
+                                cy="52"
+                                r="4"
+                            ></circle>
+
+                            <circle
+                                cx="545"
+                                cy="68"
+                                r="4"
+                            ></circle>
+
+                            <circle
+                                cx="700"
+                                cy="20"
+                                r="4"
+                            ></circle>
+
+                        </svg>
+
+                    </div>
+
+
+                    <div class="chart-labels">
+
+                        <span>Sep 25</span>
+                        <span>Sep 26</span>
+                        <span>Sep 27</span>
+                        <span>Sep 28</span>
+                        <span>Sep 29</span>
+                        <span>Sep 30</span>
+                        <span>Oct 01</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             QUICK ACTIONS
+        ================================================== -->
+
+        <section class="dashboard-card quick-actions-card">
+
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        Quick Actions
+                    </h2>
+
+                    <p>
+                        Manage your city content
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="quick-actions-grid">
+
+                @for (
+                    action of quickActions;
+                    track action.title
+                ) {
+
+                    <button
+                        type="button"
+                        class="quick-action"
+                    >
+
+                        <span
+                            class="quick-action-icon"
+                            [class]="action.iconClass"
+                        >
+
+                            <i
+                                class="bi"
+                                [class]="action.icon"
+                            ></i>
+
+                        </span>
+
+                        <span>
+                            {{ action.title }}
+                        </span>
+
+                    </button>
+
+                }
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         LOWER SECTION
+    ====================================================== -->
+
+    <div class="dashboard-bottom">
+
+
+        <!-- =================================================
+             RECENT EVENTS
+        ================================================== -->
+
+        <section class="dashboard-card recent-card">
+
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        Recent Events
+                    </h2>
+
+                    <p>
+                        Latest city events
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="view-all-button"
+                >
+                    View All
+                </button>
+
+            </div>
+
+
+            <div class="event-list">
+
+
+                @for (
+                    event of recentEvents;
+                    track event.title
+                ) {
+
+                    <div class="event-item">
+
+
+                        <img
+                            [src]="event.image"
+                            [alt]="event.title"
+                            class="event-image"
+                        >
+
+
+                        <div class="event-details">
+
+                            <div class="event-title">
+                                {{ event.title }}
+                            </div>
+
+                            <div class="event-meta">
+
+                                <span>
+                                    <i class="bi bi-calendar3"></i>
+                                    {{ event.date }}
+                                </span>
+
+                            </div>
+
+                            <div class="event-location">
+
+                                <i class="bi bi-geo-alt"></i>
+
+                                {{ event.location }}
+
+                            </div>
+
+                        </div>
+
+
+                        <span
+                            class="status-badge"
+                            [class]="event.statusClass"
+                        >
+                            {{ event.status }}
+                        </span>
+
+                    </div>
+
+                }
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CONTACT ENQUIRIES
+        ================================================== -->
+
+        <section class="dashboard-card recent-card">
+
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        Recent Contact Enquiries
+                    </h2>
+
+                    <p>
+                        Latest enquiries from visitors
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="view-all-button"
+                >
+                    View All
+                </button>
+
+            </div>
+
+
+            <div class="enquiry-list">
+
+
+                @for (
+                    enquiry of enquiries;
+                    track enquiry.name
+                ) {
+
+                    <div class="enquiry-item">
+
+
+                        <div class="enquiry-avatar">
+                            {{ enquiry.initials }}
+                        </div>
+
+
+                        <div class="enquiry-details">
+
+                            <div class="enquiry-name">
+                                {{ enquiry.name }}
+                            </div>
+
+                            <div class="enquiry-subject">
+                                {{ enquiry.subject }}
+                            </div>
+
+                            <div class="enquiry-time">
+                                {{ enquiry.time }}
+                            </div>
+
+                        </div>
+
+
+                        <span
+                            class="status-badge"
+                            [class]="enquiry.statusClass"
+                        >
+                            {{ enquiry.status }}
+                        </span>
+
+                    </div>
+
+                }
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             RECENT PRODUCTS
+        ================================================== -->
+
+        <section class="dashboard-card recent-card">
+
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        Recent Products
+                    </h2>
+
+                    <p>
+                        Recently added products
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="view-all-button"
+                >
+                    View All
+                </button>
+
+            </div>
+
+
+            <div class="product-list">
+
+
+                @for (
+                    product of products;
+                    track product.name
+                ) {
+
+                    <div class="product-item">
+
+
+                        <img
+                            [src]="product.image"
+                            [alt]="product.name"
+                            class="product-image"
+                        >
+
+
+                        <div class="product-details">
+
+                            <div class="product-name">
+                                {{ product.name }}
+                            </div>
+
+                            <div class="product-category">
+                                {{ product.category }}
+                            </div>
+
+                            <div class="product-price">
+                                {{ product.price }}
+                            </div>
+
+                        </div>
+
+
+                        <span class="product-status">
+                            {{ product.status }}
+                        </span>
+
+                    </div>
+
+                }
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>

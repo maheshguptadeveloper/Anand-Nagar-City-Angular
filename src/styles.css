@@ -1,1 +1,252 @@
-/* You can add global styles to this file, and also import other style files */
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    height: 100%;
+}
+
+
+/* =========================================================
+   APPLICATION BUTTON SYSTEM
+========================================================= */
+
+.app-button {
+    min-height: 46px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 11px 19px;
+
+    box-sizing: border-box;
+
+    border: 1px solid transparent;
+
+    border-radius: 7px;
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 650;
+
+    line-height: 1;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease;
+}
+
+
+.app-button i {
+    font-size: 13px;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   PRIMARY
+========================================================= */
+
+.app-button-primary {
+    background:
+        linear-gradient(
+            135deg,
+            #315bff 0%,
+            #7145ff 100%
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 5px 14px rgba(80, 70, 245, 0.20);
+}
+
+
+.app-button-primary:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 18px rgba(80, 70, 245, 0.28);
+}
+
+
+.app-button-primary:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   OUTLINE
+========================================================= */
+
+.app-button-outline {
+    background: #ffffff;
+
+    color: #536078;
+
+    border-color: #dfe4ec;
+}
+
+
+.app-button-outline:hover {
+    transform: translateY(-1px);
+
+    color: #315bff;
+
+    border-color: #bfcaff;
+
+    background: #f8f9ff;
+}
+
+
+/* =========================================================
+   DARK
+========================================================= */
+
+.app-button-dark {
+    background: #092447;
+
+    color: #ffffff;
+}
+
+
+.app-button-dark:hover {
+    transform: translateY(-1px);
+
+    background: #0d315e;
+}
+
+
+/* =========================================================
+   DANGER
+========================================================= */
+
+.app-button-danger {
+    background: #fff0f1;
+
+    color: #dc4358;
+
+    border-color: #ffd8dd;
+}
+
+
+.app-button-danger:hover {
+    transform: translateY(-1px);
+
+    background: #ffe5e8;
+
+    border-color: #ffc4cb;
+}
+
+
+/* =========================================================
+   DISABLED
+========================================================= */
+
+.app-button:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+
+    transform: none !important;
+
+    box-shadow: none !important;
+}
+
+
+/* =========================================================
+   ICON BUTTON
+========================================================= */
+
+.app-icon-button {
+    width: 34px;
+    height: 34px;
+
+    padding: 0;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #e1e6ef;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: #68748a;
+
+    cursor: pointer;
+
+    transition:
+        color 0.18s ease,
+        background 0.18s ease,
+        border-color 0.18s ease,
+        transform 0.18s ease;
+}
+
+
+.app-icon-button i {
+    font-size: 13px;
+
+    line-height: 1;
+}
+
+
+.app-icon-button:hover {
+    transform: translateY(-1px);
+
+    color: #315bff;
+
+    border-color: #cbd4ff;
+
+    background: #f7f8ff;
+}
+
+
+.app-icon-button-danger {
+    color: #dc4358;
+
+    background: #fff7f7;
+
+    border-color: #ffdfe3;
+}
+
+
+.app-icon-button-danger:hover {
+    color: #ffffff;
+
+    background: #e24a5b;
+
+    border-color: #e24a5b;
+}

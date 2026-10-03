@@ -1,0 +1,560 @@
+<div class="page-container">
+
+    <!-- =========================================
+         PAGE HEADER
+    ========================================== -->
+
+    <div class="page-header">
+
+        <div>
+
+            <h1>
+                News & Updates
+            </h1>
+
+            <p>
+                Manage local news, announcements and city updates.
+            </p>
+
+        </div>
+
+
+        <a
+            routerLink="/admin/news/add"
+            class="btn-primary"
+        >
+
+            <i class="bi bi-plus-lg"></i>
+
+            Add News
+
+        </a>
+
+    </div>
+
+
+    <!-- =========================================
+         FILTER CARD
+    ========================================== -->
+
+    <div class="filter-card">
+
+        <div class="filter-row">
+
+
+            <!-- Search -->
+
+            <div class="filter-item search-item">
+
+                <label>
+                    Search
+                </label>
+
+                <div class="input-icon">
+
+                    <i class="bi bi-search"></i>
+
+                    <input
+                        type="text"
+                        [(ngModel)]="searchText"
+                        (input)="onSearch()"
+                        placeholder="Search news..."
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- Category -->
+
+            <div class="filter-item">
+
+                <label>
+                    Category
+                </label>
+
+                <select
+                    [(ngModel)]="selectedCategory"
+                    (change)="onFilterChange()"
+                >
+
+                    <option value="">
+                        All Categories
+                    </option>
+
+                    <option
+                        *ngFor="let category of categories"
+                        [value]="category"
+                    >
+                        {{ category }}
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Language -->
+
+            <div class="filter-item">
+
+                <label>
+                    Language
+                </label>
+
+                <select
+                    [(ngModel)]="selectedLanguage"
+                    (change)="onFilterChange()"
+                >
+
+                    <option value="">
+                        All Languages
+                    </option>
+
+                    <option
+                        *ngFor="let language of languages"
+                        [value]="language"
+                    >
+                        {{ language }}
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Status -->
+
+            <div class="filter-item">
+
+                <label>
+                    Status
+                </label>
+
+                <select
+                    [(ngModel)]="selectedStatus"
+                    (change)="onFilterChange()"
+                >
+
+                    <option value="">
+                        All Status
+                    </option>
+
+                    <option
+                        *ngFor="let status of statuses"
+                        [value]="status"
+                    >
+                        {{ status }}
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Clear -->
+
+            <div class="filter-action">
+
+                <button
+                    type="button"
+                    class="btn-clear"
+                    (click)="clearFilters()"
+                >
+
+                    <i class="bi bi-arrow-counterclockwise"></i>
+
+                    Clear
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         TABLE CARD
+    ========================================== -->
+
+    <div class="table-card">
+
+
+        <!-- Header -->
+
+        <div class="table-card-header">
+
+            <div>
+
+                <h2>
+                    News List
+                </h2>
+
+                <span>
+                    {{ filteredNews.length }} news item(s)
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Table -->
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            NEWS
+                        </th>
+
+                        <th>
+                            CATEGORY
+                        </th>
+
+                        <th>
+                            LANGUAGE
+                        </th>
+
+                        <th>
+                            PUBLISH DATE
+                        </th>
+
+                        <th>
+                            AUTHOR
+                        </th>
+
+                        <th>
+                            STATUS
+                        </th>
+
+                        <th>
+                            FEATURED
+                        </th>
+
+                        <th>
+                            ACTION
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    <!-- News Rows -->
+
+                    <tr
+                        *ngFor="let news of paginatedNews"
+                    >
+
+
+                        <!-- News -->
+
+                        <td>
+
+                            <div class="news-info">
+
+                                <div class="news-image">
+
+                                    <img
+                                        [src]="news.image"
+                                        [alt]="news.title"
+                                    >
+
+                                </div>
+
+
+                                <div class="news-content">
+
+                                    <div class="news-title">
+                                        {{ news.title }}
+                                    </div>
+
+                                    <div class="news-summary">
+                                        {{ news.summary }}
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- Category -->
+
+                        <td>
+
+                            <span class="category-badge">
+                                {{ news.category }}
+                            </span>
+
+                        </td>
+
+
+                        <!-- Language -->
+
+                        <td>
+
+                            <span class="language-text">
+
+                                <i class="bi bi-translate"></i>
+
+                                {{ news.language }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- Date -->
+
+                        <td>
+
+                            <span class="date-text">
+
+                                <i class="bi bi-calendar3"></i>
+
+                                {{ news.publishDate | date:'dd MMM yyyy' }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- Author -->
+
+                        <td>
+
+                            <span class="author-text">
+
+                                <i class="bi bi-person"></i>
+
+                                {{ news.author }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- Status -->
+
+                        <td>
+
+                            <span
+                                class="status-badge"
+                                [ngClass]="getStatusClass(news.status)"
+                            >
+                                {{ news.status }}
+                            </span>
+
+                        </td>
+
+
+                        <!-- Featured -->
+
+                        <td>
+
+                            <button
+                                type="button"
+                                class="featured-button"
+                                [class.active]="news.featured"
+                                (click)="toggleFeatured(news)"
+                                [attr.title]="
+                                    news.featured
+                                        ? 'Remove Featured'
+                                        : 'Mark as Featured'
+                                "
+                            >
+
+                                <i
+                                    class="bi"
+                                    [ngClass]="
+                                        news.featured
+                                            ? 'bi-star-fill'
+                                            : 'bi-star'
+                                    "
+                                ></i>
+
+                            </button>
+
+                        </td>
+
+
+                        <!-- Actions -->
+
+                        <td>
+
+                            <div class="action-buttons">
+
+
+                                <button
+                                    type="button"
+                                    class="btn-icon edit"
+                                    title="Edit"
+                                    (click)="editNews(news.id)"
+                                >
+
+                                    <i class="bi bi-pencil-square"></i>
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="btn-icon delete"
+                                    title="Delete"
+                                    (click)="deleteNews(news.id)"
+                                >
+
+                                    <i class="bi bi-trash3"></i>
+
+                                </button>
+
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- Empty State -->
+
+                    <tr
+                        *ngIf="paginatedNews.length === 0"
+                    >
+
+                        <td
+                            colspan="8"
+                            class="empty-state"
+                        >
+
+                            <div>
+
+                                <i class="bi bi-newspaper"></i>
+
+                                <h3>
+                                    No news found
+                                </h3>
+
+                                <p>
+                                    Try changing your search or filter.
+                                </p>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- =========================================
+             PAGINATION
+        ========================================== -->
+
+        <div
+            class="pagination-container"
+            *ngIf="filteredNews.length > 0"
+        >
+
+
+            <div class="pagination-info">
+
+                Showing
+
+                <strong>
+                    {{ ((currentPage - 1) * pageSize) + 1 }}
+                </strong>
+
+                to
+
+                <strong>
+                    {{
+                        Math.min(
+                            currentPage * pageSize,
+                            filteredNews.length
+                        )
+                    }}
+                </strong>
+
+                of
+
+                <strong>
+                    {{ filteredNews.length }}
+                </strong>
+
+            </div>
+
+
+            <div class="pagination-buttons">
+
+
+                <!-- Previous -->
+
+                <button
+                    type="button"
+                    [disabled]="currentPage === 1"
+                    (click)="goToPage(currentPage - 1)"
+                    title="Previous"
+                >
+
+                    <i class="bi bi-chevron-left"></i>
+
+                </button>
+
+
+                <!-- Pages -->
+
+                <button
+                    type="button"
+                    *ngFor="
+                        let page of [].constructor(totalPages);
+                        let i = index
+                    "
+                    [class.active]="currentPage === i + 1"
+                    (click)="goToPage(i + 1)"
+                >
+                    {{ i + 1 }}
+                </button>
+
+
+                <!-- Next -->
+
+                <button
+                    type="button"
+                    [disabled]="currentPage === totalPages"
+                    (click)="goToPage(currentPage + 1)"
+                    title="Next"
+                >
+
+                    <i class="bi bi-chevron-right"></i>
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

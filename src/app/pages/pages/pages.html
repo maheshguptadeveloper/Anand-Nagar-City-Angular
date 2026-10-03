@@ -1,0 +1,538 @@
+<div class="pages-page">
+
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="page-header">
+
+        <div class="page-header-info">
+
+            <h1>
+                Pages
+            </h1>
+
+            <p>
+                Manage static pages and important city information.
+            </p>
+
+        </div>
+
+
+        <a
+            routerLink="/admin/pages/add"
+            class="btn-primary"
+        >
+
+            <i class="bi bi-plus-lg"></i>
+
+            Add Page
+
+        </a>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MAIN CARD
+    ====================================================== -->
+
+    <div class="pages-card">
+
+
+        <!-- =================================================
+             CARD HEADER
+        ================================================== -->
+
+        <div class="pages-card-header">
+
+            <div class="pages-title">
+
+                <h2>
+                    Pages List
+                </h2>
+
+                <span class="page-count">
+                    {{ filteredPages.length }}
+                </span>
+
+            </div>
+
+
+            <!-- FILTERS -->
+
+            <div class="page-filters">
+
+
+                <!-- SEARCH -->
+
+                <div class="search-box">
+
+                    <i class="bi bi-search"></i>
+
+                    <input
+                        type="text"
+                        [(ngModel)]="searchText"
+                        (input)="onSearch()"
+                        placeholder="Search pages..."
+                    >
+
+                    <button
+                        *ngIf="searchText"
+                        type="button"
+                        class="clear-search"
+                        title="Clear search"
+                        (click)="searchText=''; onSearch()"
+                    >
+
+                        <i class="bi bi-x"></i>
+
+                    </button>
+
+                </div>
+
+
+                <!-- LANGUAGE -->
+
+                <select
+                    class="filter-select"
+                    [(ngModel)]="selectedLanguage"
+                    (change)="onFilterChange()"
+                >
+
+                    <option value="">
+                        All Languages
+                    </option>
+
+                    <option
+                        *ngFor="let language of languages"
+                        [value]="language"
+                    >
+                        {{ language }}
+                    </option>
+
+                </select>
+
+
+                <!-- STATUS -->
+
+                <select
+                    class="filter-select status-filter"
+                    [(ngModel)]="selectedStatus"
+                    (change)="onFilterChange()"
+                >
+
+                    <option value="">
+                        All Status
+                    </option>
+
+                    <option
+                        *ngFor="let status of statuses"
+                        [value]="status"
+                    >
+                        {{ status }}
+                    </option>
+
+                </select>
+
+
+                <!-- CLEAR -->
+
+                <button
+                    type="button"
+                    class="clear-filter-button"
+                    title="Clear filters"
+                    (click)="clearFilters()"
+                >
+
+                    <i class="bi bi-arrow-counterclockwise"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             TABLE
+        ================================================== -->
+
+        <div class="table-wrapper">
+
+            <table class="pages-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            PAGE
+                        </th>
+
+                        <th>
+                            SLUG
+                        </th>
+
+                        <th>
+                            LANGUAGE
+                        </th>
+
+                        <th>
+                            PUBLISH DATE
+                        </th>
+
+                        <th>
+                            AUTHOR
+                        </th>
+
+                        <th>
+                            STATUS
+                        </th>
+
+                        <th>
+                            FEATURED
+                        </th>
+
+                        <th class="action-column">
+                            ACTION
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    <!-- =================================================
+                         PAGE ROW
+                    ================================================== -->
+
+                    <tr
+                        *ngFor="let page of paginatedPages"
+                    >
+
+
+                        <!-- PAGE -->
+
+                        <td>
+
+                            <div class="page-info">
+
+                                <div class="page-image">
+
+                                    <img
+                                        [src]="page.coverImage"
+                                        [alt]="page.title"
+                                    >
+
+                                </div>
+
+
+                                <div class="page-details">
+
+                                    <div class="page-name">
+
+                                        {{ page.title }}
+
+                                    </div>
+
+
+                                    <div class="page-description">
+
+                                        {{ page.summary }}
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- SLUG -->
+
+                        <td>
+
+                            <span class="slug-text">
+
+                                <i class="bi bi-link-45deg"></i>
+
+                                /{{ page.slug }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- LANGUAGE -->
+
+                        <td>
+
+                            <span class="language-text">
+
+                                <i class="bi bi-translate"></i>
+
+                                {{ page.language }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- DATE -->
+
+                        <td>
+
+                            <span class="date-text">
+
+                                <i class="bi bi-calendar3"></i>
+
+                                {{ page.publishDate | date:'dd MMM yyyy' }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- AUTHOR -->
+
+                        <td>
+
+                            <span class="author-text">
+
+                                <i class="bi bi-person"></i>
+
+                                {{ page.author }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- STATUS -->
+
+                        <td>
+
+                            <span
+                                class="status-badge"
+                                [ngClass]="getStatusClass(page.status)"
+                            >
+
+                                <span class="status-dot"></span>
+
+                                {{ page.status }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- FEATURED -->
+
+                        <td>
+
+                            <button
+                                type="button"
+                                class="featured-button"
+                                [class.active]="page.featured"
+                                [title]="
+                                    page.featured
+                                        ? 'Remove Featured'
+                                        : 'Mark as Featured'
+                                "
+                                (click)="toggleFeatured(page)"
+                            >
+
+                                <i
+                                    class="bi"
+                                    [ngClass]="
+                                        page.featured
+                                            ? 'bi-star-fill'
+                                            : 'bi-star'
+                                    "
+                                ></i>
+
+                            </button>
+
+                        </td>
+
+
+                        <!-- ACTION -->
+
+                        <td class="action-column">
+
+                            <div class="action-buttons">
+
+
+                                <button
+                                    type="button"
+                                    class="action-button edit-button"
+                                    title="Edit"
+                                    (click)="editPage(page.id)"
+                                >
+
+                                    <i class="bi bi-pencil-square"></i>
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="action-button delete-button"
+                                    title="Delete"
+                                    (click)="deletePage(page.id)"
+                                >
+
+                                    <i class="bi bi-trash3"></i>
+
+                                </button>
+
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- =================================================
+                         EMPTY
+                    ================================================== -->
+
+                    <tr
+                        *ngIf="paginatedPages.length === 0"
+                    >
+
+                        <td
+                            colspan="8"
+                            class="empty-state"
+                        >
+
+                            <div class="empty-icon">
+
+                                <i class="bi bi-file-earmark-text"></i>
+
+                            </div>
+
+                            <h3>
+                                No pages found
+                            </h3>
+
+                            <p>
+                                Try changing your search or filters.
+                            </p>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <div class="pages-card-footer">
+
+
+            <div class="list-summary">
+
+                Showing
+
+                <strong>
+                    {{
+                        filteredPages.length === 0
+                            ? 0
+                            : ((currentPage - 1) * pageSize) + 1
+                    }}
+                </strong>
+
+                to
+
+                <strong>
+                    {{
+                        Math.min(
+                            currentPage * pageSize,
+                            filteredPages.length
+                        )
+                    }}
+                </strong>
+
+                of
+
+                <strong>
+                    {{ filteredPages.length }}
+                </strong>
+
+                pages
+
+            </div>
+
+
+            <!-- PAGINATION -->
+
+            <div class="pagination">
+
+
+                <button
+                    type="button"
+                    class="pagination-button"
+                    [disabled]="currentPage === 1"
+                    title="Previous"
+                    (click)="goToPage(currentPage - 1)"
+                >
+
+                    <i class="bi bi-chevron-left"></i>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="pagination-button"
+                    *ngFor="
+                        let page of [].constructor(totalPages);
+                        let i = index
+                    "
+                    [class.active]="currentPage === i + 1"
+                    (click)="goToPage(i + 1)"
+                >
+
+                    {{ i + 1 }}
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="pagination-button"
+                    [disabled]="currentPage === totalPages"
+                    title="Next"
+                    (click)="goToPage(currentPage + 1)"
+                >
+
+                    <i class="bi bi-chevron-right"></i>
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

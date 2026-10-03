@@ -1,0 +1,1105 @@
+/* =========================================================
+   ADMIN LAYOUT - GLOBAL
+========================================================= */
+
+:host {
+    display: block;
+
+    width: 100%;
+    height: 100vh;
+}
+
+
+/* =========================================================
+   ADMIN LAYOUT
+========================================================= */
+
+.admin-layout {
+   --sidebar-width: 220px;
+    --sidebar-collapsed-width: 72px;
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+
+    overflow: hidden;
+
+    background: #f5f7fb;
+
+    color: #172033;
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+    position: relative;
+
+    width: var(--sidebar-width);
+    height: 100vh;
+
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    background:
+        linear-gradient(
+            180deg,
+            #092447 0%,
+            #071d3a 100%
+        );
+
+    color: #ffffff;
+
+    transition: width 0.25s ease;
+
+    z-index: 100;
+}
+
+
+/* =========================================================
+   SIDEBAR BRAND
+========================================================= */
+
+.sidebar-brand {
+    height: 76px;
+
+    padding: 0 17px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+/* Logo */
+
+.sidebar-logo {
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    overflow: hidden;
+}
+
+
+.sidebar-logo img {
+    width: 34px;
+    height: 34px;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+/* Brand Text */
+
+.sidebar-brand-text {
+    min-width: 0;
+
+    transition: opacity 0.2s ease;
+}
+
+
+.sidebar-title {
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.4px;
+
+    white-space: nowrap;
+}
+
+
+.sidebar-subtitle {
+    margin-top: 2px;
+
+    font-size: 9px;
+
+    color:
+        rgba(255, 255, 255, 0.55);
+
+    white-space: nowrap;
+}
+
+
+/* Mobile Close */
+
+.mobile-close-button {
+    display: none;
+
+    margin-left: auto;
+
+    width: 30px;
+    height: 30px;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    cursor: pointer;
+}
+
+
+.mobile-close-button:hover {
+    background:
+        rgba(255, 255, 255, 0.10);
+}
+
+
+/* =========================================================
+   SIDEBAR NAVIGATION
+========================================================= */
+
+.sidebar-navigation {
+    flex: 1;
+
+    padding: 14px 10px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+.sidebar-navigation::-webkit-scrollbar {
+    width: 4px;
+}
+
+
+.sidebar-navigation::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+.sidebar-navigation::-webkit-scrollbar-thumb {
+    background:
+        rgba(255, 255, 255, 0.16);
+
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   SIDEBAR MENU ITEM
+========================================================= */
+
+.sidebar-menu-item {
+    position: relative;
+
+    height: 42px;
+
+    margin-bottom: 4px;
+
+    padding: 0 12px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    border-radius: 8px;
+
+    color:
+        rgba(255, 255, 255, 0.68);
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    white-space: nowrap;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.sidebar-menu-item:hover {
+    color: #ffffff;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+}
+
+
+/* Active */
+
+.sidebar-menu-item.active {
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #315bff 0%,
+            #6845ff 100%
+        );
+
+    box-shadow:
+        0 6px 16px rgba(49, 91, 255, 0.20);
+}
+
+
+.sidebar-menu-item.active::before {
+    content: "";
+
+    position: absolute;
+
+    left: -10px;
+
+    width: 3px;
+    height: 22px;
+
+    border-radius:
+        0 4px 4px 0;
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   BOOTSTRAP ICON - MENU
+========================================================= */
+
+.menu-icon {
+    width: 20px;
+    height: 20px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: currentColor;
+
+    font-size: 14px;
+}
+
+
+.menu-icon i {
+    display: block;
+
+    line-height: 1;
+
+    font-size: 14px;
+}
+
+
+/* Menu Text */
+
+.menu-text {
+    min-width: 0;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   SIDEBAR DIVIDER
+========================================================= */
+
+.sidebar-divider {
+    height: 1px;
+
+    margin: 12px 8px;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+}
+
+
+/* =========================================================
+   SIDEBAR FOOTER
+========================================================= */
+
+.sidebar-footer {
+    padding: 12px 10px 16px;
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+.logout-button {
+    width: 100%;
+    height: 42px;
+
+    padding: 0 12px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    color:
+        rgba(255, 255, 255, 0.60);
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.logout-button:hover {
+    background:
+        rgba(239, 68, 68, 0.12);
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   COLLAPSED SIDEBAR
+========================================================= */
+
+.sidebar-collapsed .sidebar {
+    width: var(--sidebar-collapsed-width);
+}
+
+
+.sidebar-collapsed .sidebar-brand {
+    justify-content: center;
+
+    padding: 0;
+}
+
+
+.sidebar-collapsed .sidebar-brand-text,
+.sidebar-collapsed .menu-text {
+    display: none;
+}
+
+
+.sidebar-collapsed .sidebar-menu-item {
+    justify-content: center;
+
+    padding: 0;
+}
+
+
+.sidebar-collapsed .logout-button {
+    justify-content: center;
+
+    padding: 0;
+}
+
+
+.sidebar-collapsed .sidebar-menu-item.active::before {
+    left: -10px;
+}
+
+
+/* =========================================================
+   MAIN AREA
+========================================================= */
+
+.admin-main {
+    min-width: 0;
+
+    flex: 1;
+
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.admin-header {
+    height: 72px;
+
+    flex-shrink: 0;
+
+    padding: 0 24px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+
+    justify-content: space-between;
+
+    background: #ffffff;
+
+    border-bottom:
+        1px solid #e7eaf0;
+
+    box-shadow:
+        0 2px 8px rgba(23, 32, 51, 0.03);
+
+    z-index: 50;
+}
+
+
+/* =========================================================
+   HEADER LEFT
+========================================================= */
+
+.header-left {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+}
+
+
+/* =========================================================
+   SIDEBAR TOGGLE
+========================================================= */
+
+.sidebar-toggle {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border:
+        1px solid #e3e7ef;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #536078;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.sidebar-toggle i {
+    display: block;
+
+    line-height: 1;
+
+    font-size: 16px;
+}
+
+
+.sidebar-toggle:hover {
+    color: #315bff;
+
+    border-color: #cbd4ff;
+
+    background: #f7f8ff;
+}
+
+
+.mobile-toggle {
+    display: none;
+}
+
+
+.desktop-toggle {
+    display: flex;
+}
+
+
+/* =========================================================
+   HEADER PAGE INFO
+========================================================= */
+
+.header-page-info {
+    min-width: 0;
+}
+
+
+.header-title {
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #172033;
+}
+
+
+.header-breadcrumb {
+    margin-top: 3px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    font-size: 10px;
+
+    color: #8992a4;
+}
+
+
+.header-breadcrumb span {
+    display: inline-flex;
+
+    align-items: center;
+
+    color: #b5bcc8;
+}
+
+
+.header-breadcrumb i {
+    display: block;
+
+    font-size: 8px;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   HEADER RIGHT
+========================================================= */
+
+.header-right {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+/* =========================================================
+   HEADER SEARCH
+========================================================= */
+
+.header-search {
+    width: 230px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 0 9px;
+
+    box-sizing: border-box;
+
+    border:
+        1px solid #e1e6ef;
+
+    border-radius: 8px;
+
+    background: #f9fafc;
+}
+
+
+.header-search > i {
+    flex-shrink: 0;
+
+    color: #8a94a7;
+
+    font-size: 13px;
+
+    line-height: 1;
+}
+
+
+.header-search input {
+    flex: 1;
+
+    min-width: 0;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    color: #172033;
+}
+
+
+.header-search input::placeholder {
+    color: #9aa3b4;
+}
+
+
+.header-search kbd {
+    flex-shrink: 0;
+
+    padding: 2px 5px;
+
+    border:
+        1px solid #e0e4eb;
+
+    border-radius: 4px;
+
+    background: #ffffff;
+
+    color: #9aa3b4;
+
+    font-family: inherit;
+
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   HEADER ICON BUTTON
+========================================================= */
+
+.header-icon-button {
+    position: relative;
+
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border:
+        1px solid #e4e8ef;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #667085;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.header-icon-button i {
+    display: block;
+
+    font-size: 14px;
+
+    line-height: 1;
+}
+
+
+.header-icon-button:hover {
+    color: #315bff;
+
+    border-color: #cbd4ff;
+
+    background: #f7f8ff;
+}
+
+
+/* =========================================================
+   NOTIFICATION
+========================================================= */
+
+.notification-button {
+    position: relative;
+}
+
+
+.notification-dot {
+    position: absolute;
+
+    top: 6px;
+    right: 6px;
+
+    width: 6px;
+    height: 6px;
+
+    border:
+        2px solid #ffffff;
+
+    border-radius: 50%;
+
+    background: #ef4444;
+}
+
+
+/* =========================================================
+   ADMIN PROFILE
+========================================================= */
+
+.admin-profile {
+    height: 42px;
+
+    padding-left: 10px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    border-left:
+        1px solid #e8ebf1;
+
+    cursor: pointer;
+}
+
+
+/* Avatar */
+
+.profile-avatar {
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #315bff,
+            #8b3dff
+        );
+
+    color: #ffffff;
+}
+
+
+.profile-avatar i {
+    display: block;
+
+    font-size: 14px;
+
+    line-height: 1;
+}
+
+
+/* Profile Info */
+
+.profile-info {
+    min-width: 65px;
+}
+
+
+.profile-name {
+    font-size: 11px;
+
+    font-weight: 700;
+
+    color: #172033;
+}
+
+
+.profile-role {
+    margin-top: 2px;
+
+    font-size: 9px;
+
+    color: #8a94a7;
+}
+
+
+/* Profile Arrow */
+
+.profile-arrow {
+    margin-left: 2px;
+
+    color: #8a94a7;
+}
+
+
+.profile-arrow i {
+    display: block;
+
+    font-size: 10px;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.admin-content {
+    flex: 1;
+
+    min-height: 0;
+
+    overflow-y: auto;
+
+    padding: 24px;
+
+    box-sizing: border-box;
+
+    background: #f5f7fb;
+}
+
+
+.admin-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+
+.admin-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+.admin-content::-webkit-scrollbar-thumb {
+    background: #d5dae4;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   MOBILE OVERLAY
+========================================================= */
+
+.mobile-overlay {
+    display: none;
+}
+
+
+/* =========================================================
+   RESPONSIVE - 1100px
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .header-search {
+        width: 180px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - 900px
+========================================================= */
+
+@media (max-width: 900px) {
+
+    /* Sidebar */
+
+    .sidebar {
+        position: fixed;
+
+        left: 0;
+        top: 0;
+
+        width: var(--sidebar-width);
+
+        transform: translateX(-100%);
+
+        transition:
+            transform 0.25s ease;
+
+        box-shadow:
+            10px 0 30px rgba(0, 0, 0, 0.20);
+    }
+
+
+    .mobile-sidebar-open .sidebar {
+        transform: translateX(0);
+    }
+
+
+    /* Overlay */
+
+    .mobile-sidebar-open .mobile-overlay {
+        display: block;
+
+        position: fixed;
+
+        inset: 0;
+
+        z-index: 90;
+
+        background:
+            rgba(5, 15, 35, 0.45);
+
+        backdrop-filter: blur(2px);
+    }
+
+
+    /* Toggle */
+
+    .desktop-toggle {
+        display: none;
+    }
+
+
+    .mobile-toggle {
+        display: flex;
+    }
+
+
+    /* Close */
+
+    .mobile-close-button {
+        display: flex;
+    }
+
+
+    /* Search */
+
+    .header-search {
+        display: none;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - 600px
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .admin-header {
+        height: 64px;
+
+        padding: 0 14px;
+    }
+
+
+    .header-page-info {
+        display: none;
+    }
+
+
+    .header-right {
+        gap: 6px;
+    }
+
+
+    .header-icon-button {
+        width: 34px;
+        height: 34px;
+    }
+
+
+    .profile-info,
+    .profile-arrow {
+        display: none;
+    }
+
+
+    .admin-profile {
+        padding-left: 6px;
+
+        border-left: none;
+    }
+
+
+    .admin-content {
+        padding: 20px 24px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - 400px
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .admin-header {
+        padding: 0 10px;
+    }
+
+
+    .header-left {
+        gap: 8px;
+    }
+
+
+    .header-right {
+        gap: 4px;
+    }
+
+
+    .sidebar-toggle {
+        width: 34px;
+        height: 34px;
+    }
+
+}

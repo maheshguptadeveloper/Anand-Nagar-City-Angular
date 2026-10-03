@@ -1,0 +1,481 @@
+<div class="events-page">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="page-header">
+
+        <div class="page-header-info">
+
+            <h1>
+                Events
+            </h1>
+
+            <p>
+                Manage upcoming events, community activities and celebrations.
+            </p>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="btn-primary"
+            (click)="addEvent()"
+        >
+
+            <i class="bi bi-plus-lg"></i>
+
+            <span>
+                Add Event
+            </span>
+
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         EVENTS CARD
+    ====================================================== -->
+
+    <div class="events-card">
+
+
+        <!-- =================================================
+             CARD HEADER
+        ================================================== -->
+
+        <div class="events-card-header">
+
+            <div class="events-title">
+
+                <h2>
+                    All Events
+                </h2>
+
+                <span class="event-count">
+                    {{ events.length }}
+                </span>
+
+            </div>
+
+
+            <div class="event-filters">
+
+
+                <!-- SEARCH -->
+
+                <div class="search-box">
+
+                    <i class="bi bi-search"></i>
+
+                    <input
+                        type="text"
+                        [(ngModel)]="searchText"
+                        placeholder="Search events..."
+                        aria-label="Search events"
+                    >
+
+
+                    @if (searchText) {
+
+                        <button
+                            type="button"
+                            class="clear-search"
+                            (click)="searchText = ''"
+                        >
+
+                            <i class="bi bi-x"></i>
+
+                        </button>
+
+                    }
+
+                </div>
+
+
+                <!-- CATEGORY -->
+
+                <select
+                    class="filter-select"
+                    [(ngModel)]="categoryFilter"
+                >
+
+                    <option value="All">
+                        All Categories
+                    </option>
+
+                    @for (
+                        category of categories;
+                        track category
+                    ) {
+
+                        <option [value]="category">
+                            {{ category }}
+                        </option>
+
+                    }
+
+                </select>
+
+
+                <!-- STATUS -->
+
+                <select
+                    class="filter-select status-filter"
+                    [(ngModel)]="statusFilter"
+                >
+
+                    <option value="All">
+                        All Status
+                    </option>
+
+                    <option value="Upcoming">
+                        Upcoming
+                    </option>
+
+                    <option value="Completed">
+                        Completed
+                    </option>
+
+                    <option value="Cancelled">
+                        Cancelled
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             TABLE
+        ================================================== -->
+
+        <div class="table-wrapper">
+
+            <table class="events-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Event
+                        </th>
+
+                        <th>
+                            Category
+                        </th>
+
+                        <th>
+                            Date & Time
+                        </th>
+
+                        <th>
+                            Location
+                        </th>
+
+                        <th>
+                            Organizer
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th class="action-column">
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    @for (
+                        event of filteredEvents;
+                        track event.id
+                    ) {
+
+                        <tr>
+
+
+                            <!-- EVENT -->
+
+                            <td>
+
+                                <div class="event-info">
+
+                                    <div class="event-image">
+
+                                        <img
+                                            [src]="event.image"
+                                            [alt]="event.title"
+                                        >
+
+                                    </div>
+
+
+                                    <div class="event-details">
+
+                                        <div class="event-name">
+                                            {{ event.title }}
+                                        </div>
+
+                                        <div class="event-description">
+                                            {{ event.description }}
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- CATEGORY -->
+
+                            <td>
+
+                                <span class="category-badge">
+
+                                    <i class="bi bi-tag"></i>
+
+                                    {{ event.category }}
+
+                                </span>
+
+                            </td>
+
+
+                            <!-- DATE -->
+
+                            <td>
+
+                                <div class="date-info">
+
+                                    <div class="event-date">
+
+                                        <i class="bi bi-calendar3"></i>
+
+                                        {{ event.eventDate }}
+
+                                    </div>
+
+
+                                    <div class="event-time">
+
+                                        <i class="bi bi-clock"></i>
+
+                                        {{ event.startTime }}
+                                        -
+                                        {{ event.endTime }}
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- LOCATION -->
+
+                            <td>
+
+                                <div class="location-info">
+
+                                    <i class="bi bi-geo-alt"></i>
+
+                                    <span>
+                                        {{ event.location }}
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- ORGANIZER -->
+
+                            <td>
+
+                                <span class="organizer">
+                                    {{ event.organizer }}
+                                </span>
+
+                            </td>
+
+
+                            <!-- STATUS -->
+
+                            <td>
+
+                                <span
+                                    class="status-badge"
+                                    [class.status-upcoming]="event.status === 'Upcoming'"
+                                    [class.status-completed]="event.status === 'Completed'"
+                                    [class.status-cancelled]="event.status === 'Cancelled'"
+                                >
+
+                                    <span class="status-dot"></span>
+
+                                    {{ event.status }}
+
+                                </span>
+
+                            </td>
+
+
+                            <!-- ACTIONS -->
+
+                            <td class="action-column">
+
+                                <div class="action-buttons">
+
+
+                                    <button
+                                        type="button"
+                                        class="action-button edit-button"
+                                        title="Edit Event"
+                                        (click)="editEvent(event.id)"
+                                    >
+
+                                        <i class="bi bi-pencil"></i>
+
+                                    </button>
+
+
+                                    <button
+                                        type="button"
+                                        class="action-button delete-button"
+                                        title="Delete Event"
+                                        (click)="deleteEvent(event.id)"
+                                    >
+
+                                        <i class="bi bi-trash3"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                    }
+
+
+                    <!-- EMPTY -->
+
+                    @if (filteredEvents.length === 0) {
+
+                        <tr>
+
+                            <td
+                                colspan="7"
+                                class="empty-state"
+                            >
+
+                                <div class="empty-icon">
+
+                                    <i class="bi bi-calendar-event"></i>
+
+                                </div>
+
+                                <h3>
+                                    No events found
+                                </h3>
+
+                                <p>
+                                    Try changing your search or filters.
+                                </p>
+
+                            </td>
+
+                        </tr>
+
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <div class="events-card-footer">
+
+            <div class="list-summary">
+
+                Showing
+
+                <strong>
+                    {{ filteredEvents.length }}
+                </strong>
+
+                of
+
+                <strong>
+                    {{ events.length }}
+                </strong>
+
+                events
+
+            </div>
+
+
+            <div class="pagination">
+
+                <button
+                    type="button"
+                    class="pagination-button"
+                    disabled
+                >
+
+                    <i class="bi bi-chevron-left"></i>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="pagination-button active"
+                >
+                    1
+                </button>
+
+
+                <button
+                    type="button"
+                    class="pagination-button"
+                >
+                    2
+                </button>
+
+
+                <button
+                    type="button"
+                    class="pagination-button"
+                >
+
+                    <i class="bi bi-chevron-right"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

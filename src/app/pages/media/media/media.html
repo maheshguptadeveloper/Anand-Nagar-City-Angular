@@ -1,0 +1,532 @@
+<div class="page-container">
+
+    <!-- ========================================= -->
+    <!-- PAGE HEADER -->
+    <!-- ========================================= -->
+
+    <div class="page-header">
+
+        <div>
+            <h1 class="page-title">
+                Media Library
+            </h1>
+
+            <p class="page-subtitle">
+                Manage images, videos and documents
+            </p>
+        </div>
+
+        <a
+            routerLink="/admin/media/add"
+            class="btn-primary"
+        >
+            <i class="bi bi-cloud-upload"></i>
+            Upload Media
+        </a>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- FILTER CARD -->
+    <!-- ========================================= -->
+
+    <div class="filter-card">
+
+        <div class="search-box">
+
+            <i class="bi bi-search"></i>
+
+            <input
+                type="text"
+                [(ngModel)]="searchText"
+                (input)="onSearch()"
+                placeholder="Search media..."
+            />
+
+        </div>
+
+
+        <select
+            [(ngModel)]="selectedType"
+            (change)="onFilterChange()"
+        >
+            <option value="">
+                All Types
+            </option>
+
+            <option
+                *ngFor="let type of fileTypes"
+                [value]="type"
+            >
+                {{ type }}
+            </option>
+        </select>
+
+
+        <select
+            [(ngModel)]="selectedCategory"
+            (change)="onFilterChange()"
+        >
+            <option value="">
+                All Categories
+            </option>
+
+            <option
+                *ngFor="let category of categories"
+                [value]="category"
+            >
+                {{ category }}
+            </option>
+        </select>
+
+
+        <select
+            [(ngModel)]="selectedStatus"
+            (change)="onFilterChange()"
+        >
+            <option value="">
+                All Status
+            </option>
+
+            <option
+                *ngFor="let status of statuses"
+                [value]="status"
+            >
+                {{ status }}
+            </option>
+        </select>
+
+
+        <button
+            type="button"
+            class="btn-clear"
+            (click)="clearFilters()"
+        >
+            <i class="bi bi-arrow-clockwise"></i>
+            Clear
+        </button>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- TOOLBAR -->
+    <!-- ========================================= -->
+
+    <div class="media-toolbar">
+
+        <div class="media-count">
+
+            <strong>
+                {{ filteredMedia.length }}
+            </strong>
+
+            media found
+
+        </div>
+
+
+        <div class="view-buttons">
+
+            <button
+                type="button"
+                [class.active]="viewMode === 'grid'"
+                (click)="viewMode = 'grid'"
+                title="Grid View"
+            >
+                <i class="bi bi-grid-3x3-gap"></i>
+            </button>
+
+            <button
+                type="button"
+                [class.active]="viewMode === 'list'"
+                (click)="viewMode = 'list'"
+                title="List View"
+            >
+                <i class="bi bi-list"></i>
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- GRID VIEW -->
+    <!-- ========================================= -->
+
+    <div
+        class="media-grid"
+        *ngIf="viewMode === 'grid'"
+    >
+
+        <div
+            class="media-card"
+            *ngFor="
+                let media of paginatedMedia;
+                trackBy: trackById
+            "
+        >
+
+            <!-- Preview -->
+
+            <div class="media-preview">
+
+                <img
+                    *ngIf="media.fileType === 'Image'"
+                    [src]="media.thumbnail"
+                    [alt]="media.altText"
+                />
+
+
+                <div
+                    class="file-placeholder"
+                    *ngIf="media.fileType !== 'Image'"
+                >
+
+                    <i
+                        *ngIf="media.fileType === 'Video'"
+                        class="bi bi-play-circle"
+                    ></i>
+
+                    <i
+                        *ngIf="media.fileType === 'Document'"
+                        class="bi bi-file-earmark-text"
+                    ></i>
+
+                    <span>
+                        {{ media.fileType }}
+                    </span>
+
+                </div>
+
+
+                <span
+                    class="file-type-badge"
+                    [ngClass]="getFileTypeClass(media.fileType)"
+                >
+                    {{ media.fileType }}
+                </span>
+
+            </div>
+
+
+            <!-- Content -->
+
+            <div class="media-content">
+
+                <h3
+                    class="media-name"
+                    [title]="media.fileName"
+                >
+                    {{ media.fileName }}
+                </h3>
+
+                <div class="media-meta">
+
+                    <span>
+                        {{ media.fileSize }}
+                    </span>
+
+                    <span>
+                        {{ media.category }}
+                    </span>
+
+                </div>
+
+                <div class="media-date">
+                    {{ media.uploadDate }}
+                </div>
+
+            </div>
+
+
+            <!-- Actions -->
+
+            <div class="media-actions">
+
+                <button
+                    type="button"
+                    class="action-btn"
+                    title="Copy URL"
+                    (click)="copyUrl(media)"
+                >
+                    <i class="bi bi-link-45deg"></i>
+                </button>
+
+                <button
+                    type="button"
+                    class="action-btn"
+                    title="Edit"
+                    (click)="editMedia(media.id)"
+                >
+                    <i class="bi bi-pencil"></i>
+                </button>
+
+                <button
+                    type="button"
+                    class="action-btn delete"
+                    title="Delete"
+                    (click)="deleteMedia(media.id)"
+                >
+                    <i class="bi bi-trash"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- LIST VIEW -->
+    <!-- ========================================= -->
+
+    <div
+        class="table-card"
+        *ngIf="viewMode === 'list'"
+    >
+
+        <div class="table-responsive">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Media</th>
+
+                        <th>Type</th>
+
+                        <th>Category</th>
+
+                        <th>Size</th>
+
+                        <th>Uploaded By</th>
+
+                        <th>Date</th>
+
+                        <th>Status</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr
+                        *ngFor="
+                            let media of paginatedMedia;
+                            trackBy: trackById
+                        "
+                    >
+
+                        <td>
+
+                            <div class="table-media">
+
+                                <div class="table-thumbnail">
+
+                                    <img
+                                        *ngIf="
+                                            media.fileType === 'Image'
+                                        "
+                                        [src]="media.thumbnail"
+                                        [alt]="media.altText"
+                                    />
+
+                                    <i
+                                        *ngIf="
+                                            media.fileType === 'Video'
+                                        "
+                                        class="bi bi-play-circle"
+                                    ></i>
+
+                                    <i
+                                        *ngIf="
+                                            media.fileType === 'Document'
+                                        "
+                                        class="bi bi-file-earmark-text"
+                                    ></i>
+
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        {{ media.fileName }}
+                                    </strong>
+
+                                    <small>
+                                        {{ media.altText }}
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+                            <span
+                                class="type-label"
+                                [ngClass]="
+                                    getFileTypeClass(
+                                        media.fileType
+                                    )
+                                "
+                            >
+                                {{ media.fileType }}
+                            </span>
+                        </td>
+
+
+                        <td>
+                            {{ media.category }}
+                        </td>
+
+
+                        <td>
+                            {{ media.fileSize }}
+                        </td>
+
+
+                        <td>
+                            {{ media.uploadedBy }}
+                        </td>
+
+
+                        <td>
+                            {{ media.uploadDate }}
+                        </td>
+
+
+                        <td>
+
+                            <span
+                                class="status-badge"
+                                [ngClass]="
+                                    getStatusClass(
+                                        media.status
+                                    )
+                                "
+                            >
+                                {{ media.status }}
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="table-actions">
+
+                                <button
+                                    type="button"
+                                    title="Copy URL"
+                                    (click)="copyUrl(media)"
+                                >
+                                    <i class="bi bi-link-45deg"></i>
+                                </button>
+
+                                <button
+                                    type="button"
+                                    title="Edit"
+                                    (click)="editMedia(media.id)"
+                                >
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="delete"
+                                    title="Delete"
+                                    (click)="deleteMedia(media.id)"
+                                >
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr
+                        *ngIf="paginatedMedia.length === 0"
+                    >
+
+                        <td
+                            colspan="8"
+                            class="empty-row"
+                        >
+
+                            <i class="bi bi-images"></i>
+
+                            <strong>
+                                No media found
+                            </strong>
+
+                            <span>
+                                Try changing your search or filters.
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- PAGINATION -->
+    <!-- ========================================= -->
+
+    <div
+        class="pagination"
+        *ngIf="totalPages > 1"
+    >
+
+        <button
+            type="button"
+            [disabled]="currentPage === 1"
+            (click)="goToPage(currentPage - 1)"
+        >
+            <i class="bi bi-chevron-left"></i>
+        </button>
+
+
+        <button
+            type="button"
+            *ngFor="let page of pageNumbers"
+            [class.active]="currentPage === page"
+            (click)="goToPage(page)"
+        >
+            {{ page }}
+        </button>
+
+
+        <button
+            type="button"
+            [disabled]="currentPage === totalPages"
+            (click)="goToPage(currentPage + 1)"
+        >
+            <i class="bi bi-chevron-right"></i>
+        </button>
+
+    </div>
+
+</div>

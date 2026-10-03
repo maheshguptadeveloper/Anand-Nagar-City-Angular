@@ -1,0 +1,424 @@
+<div class="banners-page">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="page-header">
+
+        <div class="page-header-info">
+
+            <h1>
+                Banner Management
+            </h1>
+
+            <p>
+                Manage promotional banners displayed across the Anand Nagar website.
+            </p>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="btn-primary"
+            (click)="addBanner()"
+        >
+
+            <i class="bi bi-plus-lg"></i>
+
+            <span>
+                Add Banner
+            </span>
+
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         BANNERS CARD
+    ====================================================== -->
+
+    <div class="banners-card">
+
+        <!-- CARD HEADER -->
+
+        <div class="banners-card-header">
+
+            <div class="banners-title">
+
+                <h2>
+                    All Banners
+                </h2>
+
+                <span class="banner-count">
+                    {{ banners.length }}
+                </span>
+
+            </div>
+
+
+            <div class="banner-filters">
+
+                <!-- SEARCH -->
+
+                <div class="search-box">
+
+                    <i class="bi bi-search"></i>
+
+                    <input
+                        type="text"
+                        [(ngModel)]="searchText"
+                        placeholder="Search banners..."
+                        aria-label="Search banners"
+                    >
+
+                    @if (searchText) {
+
+                        <button
+                            type="button"
+                            class="clear-search"
+                            (click)="searchText = ''"
+                        >
+
+                            <i class="bi bi-x"></i>
+
+                        </button>
+
+                    }
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <select
+                    class="status-filter"
+                    [(ngModel)]="statusFilter"
+                    aria-label="Filter by status"
+                >
+
+                    <option value="All">
+                        All Status
+                    </option>
+
+                    <option value="Active">
+                        Active
+                    </option>
+
+                    <option value="Inactive">
+                        Inactive
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             TABLE
+        ================================================== -->
+
+        <div class="table-wrapper">
+
+            <table class="banners-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Image
+                        </th>
+
+                        <th>
+                            Banner
+                        </th>
+
+                        <th>
+                            Button
+                        </th>
+
+                        <th>
+                            Order
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Start Date
+                        </th>
+
+                        <th>
+                            End Date
+                        </th>
+
+                        <th class="action-column">
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    @for (
+                        banner of filteredBanners;
+                        track banner.id
+                    ) {
+
+                        <tr>
+
+                            <!-- IMAGE -->
+
+                            <td>
+
+                                <div class="banner-image">
+
+                                    <img
+                                        [src]="banner.image"
+                                        [alt]="banner.title"
+                                    >
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- BANNER -->
+
+                            <td>
+
+                                <div class="banner-info">
+
+                                    <div class="banner-name">
+                                        {{ banner.title }}
+                                    </div>
+
+                                    <div class="banner-description">
+                                        {{ banner.description }}
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- BUTTON -->
+
+                            <td>
+
+                                <div class="button-info">
+
+                                    <span class="button-text">
+                                        {{ banner.buttonText }}
+                                    </span>
+
+                                    <span class="button-link">
+                                        {{ banner.buttonLink }}
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- ORDER -->
+
+                            <td>
+
+                                <span class="order-number">
+                                    {{ banner.displayOrder }}
+                                </span>
+
+                            </td>
+
+
+                            <!-- STATUS -->
+
+                            <td>
+
+                                <button
+                                    type="button"
+                                    class="status-badge"
+                                    [class.status-active]="banner.status === 'Active'"
+                                    [class.status-inactive]="banner.status === 'Inactive'"
+                                    (click)="toggleStatus(banner)"
+                                    [title]="'Change status'"
+                                >
+
+                                    <span class="status-dot"></span>
+
+                                    {{ banner.status }}
+
+                                </button>
+
+                            </td>
+
+
+                            <!-- START DATE -->
+
+                            <td>
+
+                                <span class="date-text">
+                                    {{ banner.startDate }}
+                                </span>
+
+                            </td>
+
+
+                            <!-- END DATE -->
+
+                            <td>
+
+                                <span class="date-text">
+                                    {{ banner.endDate }}
+                                </span>
+
+                            </td>
+
+
+                            <!-- ACTIONS -->
+
+                            <td class="action-column">
+
+                                <div class="action-buttons">
+
+                                    <button
+                                        type="button"
+                                        class="action-button edit-button"
+                                        title="Edit Banner"
+                                        (click)="editBanner(banner.id)"
+                                    >
+
+                                        <i class="bi bi-pencil"></i>
+
+                                    </button>
+
+
+                                    <button
+                                        type="button"
+                                        class="action-button delete-button"
+                                        title="Delete Banner"
+                                        (click)="deleteBanner(banner.id)"
+                                    >
+
+                                        <i class="bi bi-trash3"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                    }
+
+
+                    <!-- EMPTY -->
+
+                    @if (filteredBanners.length === 0) {
+
+                        <tr>
+
+                            <td
+                                colspan="8"
+                                class="empty-state"
+                            >
+
+                                <div class="empty-icon">
+
+                                    <i class="bi bi-images"></i>
+
+                                </div>
+
+                                <h3>
+                                    No banners found
+                                </h3>
+
+                                <p>
+                                    Try changing your search or filter.
+                                </p>
+
+                            </td>
+
+                        </tr>
+
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- FOOTER -->
+
+        <div class="banners-card-footer">
+
+            <div class="list-summary">
+
+                Showing
+
+                <strong>
+                    {{ filteredBanners.length }}
+                </strong>
+
+                of
+
+                <strong>
+                    {{ banners.length }}
+                </strong>
+
+                banners
+
+            </div>
+
+
+            <div class="pagination">
+
+                <button
+                    type="button"
+                    class="pagination-button"
+                    disabled
+                >
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+
+                <button
+                    type="button"
+                    class="pagination-button active"
+                >
+                    1
+                </button>
+
+                <button
+                    type="button"
+                    class="pagination-button"
+                >
+                    2
+                </button>
+
+                <button
+                    type="button"
+                    class="pagination-button"
+                >
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

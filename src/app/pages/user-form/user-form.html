@@ -1,0 +1,476 @@
+<div class="user-form-page">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="page-header">
+
+        <div class="page-header-left">
+
+            <div class="breadcrumb">
+
+                <a routerLink="/admin/users">
+                    Users
+                </a>
+
+                <i class="bi bi-chevron-right"></i>
+
+                <span>
+                    Add User
+                </span>
+
+            </div>
+
+            <h1>
+                Add New User
+            </h1>
+
+            <p>
+                Create a new user for the Anand Nagar admin portal.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         USER FORM CARD
+    ====================================================== -->
+
+    <div class="user-form-card">
+
+
+        <!-- =================================================
+             CARD HEADER
+        ================================================== -->
+
+        <div class="form-card-header">
+
+            <div>
+
+                <h2>
+                    User Details
+                </h2>
+
+                <p>
+                    Enter the user information below.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             FORM
+        ================================================== -->
+
+        <form
+            #userForm="ngForm"
+            (ngSubmit)="saveUser()"
+            novalidate
+        >
+
+            <div class="form-body">
+
+
+                <!-- =========================================
+                     LEFT FORM SECTION
+                ========================================== -->
+
+                <div class="form-fields">
+
+
+                    <!-- =====================================
+                         FULL NAME
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="fullName">
+
+                            Full Name
+
+                            <span class="required">
+                                *
+                            </span>
+
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-person"></i>
+
+                            <input
+                                type="text"
+                                id="fullName"
+                                name="fullName"
+                                [(ngModel)]="user.name"
+                                placeholder="Enter full name"
+                                autocomplete="name"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         EMAIL
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+
+                            Email Address
+
+                            <span class="required">
+                                *
+                            </span>
+
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-envelope"></i>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                [(ngModel)]="user.email"
+                                placeholder="Enter email address"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         ROLE
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="role">
+
+                            Role
+
+                            <span class="required">
+                                *
+                            </span>
+
+                        </label>
+
+                        <div class="input-wrapper select-wrapper">
+
+                            <i class="bi bi-shield-lock"></i>
+
+                            <select
+                                id="role"
+                                name="role"
+                                [(ngModel)]="user.role"
+                                required
+                            >
+
+                                <option value="">
+                                    Select role
+                                </option>
+
+                                <option value="Super Admin">
+                                    Super Admin
+                                </option>
+
+                                <option value="Admin">
+                                    Admin
+                                </option>
+
+                                <option value="Content Manager">
+                                    Content Manager
+                                </option>
+
+                                <option value="Editor">
+                                    Editor
+                                </option>
+
+                                <option value="Product Manager">
+                                    Product Manager
+                                </option>
+
+                            </select>
+
+                            <i class="bi bi-chevron-down select-arrow"></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         PASSWORD
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+
+                            Password
+
+                            <span class="required">
+                                *
+                            </span>
+
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-lock"></i>
+
+                            <input
+                                [type]="showPassword ? 'text' : 'password'"
+                                id="password"
+                                name="password"
+                                [(ngModel)]="user.password"
+                                placeholder="Enter password"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="input-action"
+                                (click)="togglePassword()"
+                                [attr.aria-label]="
+                                    showPassword
+                                    ? 'Hide password'
+                                    : 'Show password'
+                                "
+                            >
+
+                                <i
+                                    class="bi"
+                                    [class.bi-eye]="!showPassword"
+                                    [class.bi-eye-slash]="showPassword"
+                                ></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         MOBILE NUMBER
+                    ====================================== -->
+
+                    <div class="form-group">
+
+                        <label for="mobile">
+                            Mobile Number
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-phone"></i>
+
+                            <input
+                                type="tel"
+                                id="mobile"
+                                name="mobile"
+                                [(ngModel)]="user.mobile"
+                                placeholder="Enter mobile number"
+                                maxlength="10"
+                                autocomplete="tel"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         STATUS
+                    ====================================== -->
+
+                    <div class="form-group status-group">
+
+                        <label>
+                            Status
+                        </label>
+
+                        <div class="status-options">
+
+
+                            <!-- Active -->
+
+                            <label
+                                class="status-option"
+                                [class.selected]="user.status === 'Active'"
+                            >
+
+                                <input
+                                    type="radio"
+                                    name="status"
+                                    value="Active"
+                                    [(ngModel)]="user.status"
+                                >
+
+                                <span class="status-radio"></span>
+
+                                <span class="status-label active">
+                                    Active
+                                </span>
+
+                            </label>
+
+
+                            <!-- Inactive -->
+
+                            <label
+                                class="status-option"
+                                [class.selected]="user.status === 'Inactive'"
+                            >
+
+                                <input
+                                    type="radio"
+                                    name="status"
+                                    value="Inactive"
+                                    [(ngModel)]="user.status"
+                                >
+
+                                <span class="status-radio"></span>
+
+                                <span class="status-label inactive">
+                                    Inactive
+                                </span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     PROFILE IMAGE
+                ========================================== -->
+
+                <div class="profile-section">
+
+                    <div class="profile-title">
+                        Profile Image
+                    </div>
+
+
+                    <div class="profile-avatar">
+
+                        @if (profileImagePreview) {
+
+                            <img
+                                [src]="profileImagePreview"
+                                alt="Profile preview"
+                            >
+
+                        } @else {
+
+                            <i class="bi bi-person-fill"></i>
+
+                        }
+
+                    </div>
+
+
+                    <label
+                        for="profileImage"
+                        class="change-image-button"
+                    >
+
+                        <i class="bi bi-cloud-arrow-up"></i>
+
+                        <span>
+                            Change Image
+                        </span>
+
+                    </label>
+
+
+                    <input
+                        type="file"
+                        id="profileImage"
+                        name="profileImage"
+                        accept=".jpg,.jpeg,.png,.webp"
+                        (change)="onImageSelected($event)"
+                        hidden
+                    >
+
+
+                    <div class="image-help">
+
+                        <span>
+                            JPG, PNG or WEBP
+                        </span>
+
+                        <span>
+                            Maximum size 2 MB
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 FORM FOOTER
+            ================================================== -->
+
+            <div class="form-footer">
+
+
+                <button
+                    type="button"
+                    class="btn-cancel"
+                    (click)="cancel()"
+                >
+
+                    <i class="bi bi-x-lg"></i>
+
+                    <span>
+                        Cancel
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="btn-save"
+                    [disabled]="userForm.invalid"
+                >
+
+                    <i class="bi bi-check-lg"></i>
+
+                    <span>
+                        Save User
+                    </span>
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

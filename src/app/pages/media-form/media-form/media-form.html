@@ -1,0 +1,312 @@
+<div class="form-page">
+
+    <!-- ========================================= -->
+    <!-- HEADER -->
+    <!-- ========================================= -->
+
+    <div class="form-header">
+
+        <div>
+
+            <h1 class="page-title">
+                {{ isEditMode ? 'Edit Media' : 'Upload Media' }}
+            </h1>
+
+            <p class="page-subtitle">
+                {{
+                    isEditMode
+                        ? 'Update media information'
+                        : 'Upload and manage media files'
+                }}
+            </p>
+
+        </div>
+
+        <a
+            routerLink="/admin/media"
+            class="btn-back"
+        >
+            <i class="bi bi-arrow-left"></i>
+            Back to Media
+        </a>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- FORM -->
+    <!-- ========================================= -->
+
+    <div class="form-card">
+
+        <div class="form-section">
+
+            <div class="section-title">
+                <i class="bi bi-file-earmark-image"></i>
+                Media Information
+            </div>
+
+
+            <!-- FILE -->
+
+            <div class="form-group full-width">
+
+                <label>
+                    Media File <span>*</span>
+                </label>
+
+                <div class="upload-area">
+
+                    <input
+                        type="file"
+                        id="mediaFile"
+                        (change)="onFileSelected($event)"
+                        accept="image/*,video/*,.pdf,.doc,.docx"
+                    />
+
+                    <label
+                        for="mediaFile"
+                        class="upload-label"
+                    >
+
+                        <i class="bi bi-cloud-arrow-up"></i>
+
+                        <strong>
+                            {{
+                                selectedFile
+                                    ? selectedFile.name
+                                    : 'Choose a file'
+                            }}
+                        </strong>
+
+                        <small>
+                            Images, videos and documents are supported
+                        </small>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- PREVIEW -->
+
+            <div
+                class="preview-section"
+                *ngIf="previewUrl"
+            >
+
+                <label>
+                    Preview
+                </label>
+
+                <div class="preview-box">
+
+                    <img
+                        *ngIf="media.fileType === 'Image'"
+                        [src]="previewUrl"
+                        [alt]="media.altText"
+                    />
+
+                    <div
+                        class="preview-file"
+                        *ngIf="media.fileType !== 'Image'"
+                    >
+
+                        <i
+                            *ngIf="media.fileType === 'Video'"
+                            class="bi bi-play-circle"
+                        ></i>
+
+                        <i
+                            *ngIf="media.fileType === 'Document'"
+                            class="bi bi-file-earmark-text"
+                        ></i>
+
+                        <span>
+                            {{ media.fileType }}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FILE NAME -->
+
+            <div class="form-group">
+
+                <label>
+                    File Name
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="media.fileName"
+                    placeholder="Enter file name"
+                />
+
+            </div>
+
+
+            <!-- FILE TYPE -->
+
+            <div class="form-group">
+
+                <label>
+                    File Type
+                </label>
+
+                <select
+                    [(ngModel)]="media.fileType"
+                >
+
+                    <option
+                        *ngFor="let type of fileTypes"
+                        [value]="type"
+                    >
+                        {{ type }}
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- CATEGORY -->
+
+            <div class="form-group">
+
+                <label>
+                    Category <span>*</span>
+                </label>
+
+                <select
+                    [(ngModel)]="media.category"
+                >
+
+                    <option value="">
+                        Select Category
+                    </option>
+
+                    <option
+                        *ngFor="let category of categories"
+                        [value]="category"
+                    >
+                        {{ category }}
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- STATUS -->
+
+            <div class="form-group">
+
+                <label>
+                    Status
+                </label>
+
+                <select
+                    [(ngModel)]="media.status"
+                >
+
+                    <option
+                        *ngFor="let status of statuses"
+                        [value]="status"
+                    >
+                        {{ status }}
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- ALT TEXT -->
+
+            <div class="form-group full-width">
+
+                <label>
+                    Alternative Text <span>*</span>
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="media.altText"
+                    placeholder="Describe the media for accessibility"
+                />
+
+                <small class="field-help">
+                    Alternative text helps search engines and screen readers understand the image.
+                </small>
+
+            </div>
+
+
+            <!-- URL -->
+
+            <div class="form-group full-width">
+
+                <label>
+                    Media URL
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="media.fileUrl"
+                    placeholder="Media URL"
+                />
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================================= -->
+        <!-- ACTIONS -->
+        <!-- ========================================= -->
+
+        <div class="form-actions">
+
+            <button
+                type="button"
+                class="btn-cancel"
+                (click)="cancel()"
+            >
+                Cancel
+            </button>
+
+            <button
+                type="button"
+                class="btn-save"
+                (click)="saveMedia()"
+            >
+
+                <i
+                    class="bi"
+                    [ngClass]="
+                        isEditMode
+                            ? 'bi-check-lg'
+                            : 'bi-cloud-upload'
+                    "
+                ></i>
+
+                {{
+                    isEditMode
+                        ? 'Update Media'
+                        : 'Upload Media'
+                }}
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

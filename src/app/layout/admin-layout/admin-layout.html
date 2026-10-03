@@ -1,0 +1,517 @@
+<div class="admin-layout" [class.sidebar-collapsed]="sidebarCollapsed"
+    [class.mobile-sidebar-open]="mobileSidebarOpen">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <!-- Brand -->
+        <div class="sidebar-brand">
+
+            <div class="sidebar-logo">
+                <img
+                    src="/Images/logo.png"
+                    alt="Anand Nagar"
+                >
+            </div>
+
+            <div class="sidebar-brand-text">
+
+                <div class="sidebar-title">
+                    ANAND NAGAR
+                </div>
+
+                <div class="sidebar-subtitle">
+                    Admin Portal
+                </div>
+
+            </div>
+
+            <!-- Mobile Close -->
+            <button
+                type="button"
+                class="mobile-close-button"
+                (click)="closeMobileSidebar()"
+                aria-label="Close menu"
+            >
+                <i class="bi bi-x-lg"></i>
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             NAVIGATION
+        ================================================== -->
+
+        <nav class="sidebar-navigation">
+
+            <!-- Dashboard -->
+
+            <a
+                routerLink="/admin/dashboard"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                class="sidebar-menu-item"
+            >
+
+                <span class="menu-icon">
+                    <i class="bi bi-grid-1x2-fill"></i>
+                </span>
+
+                <span class="menu-text">
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <!-- Users -->
+
+            <a
+                routerLink="/admin/users"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                class="sidebar-menu-item"
+            >
+
+                <span class="menu-icon">
+                    <i class="bi bi-people-fill"></i>
+                </span>
+
+                <span class="menu-text">
+                    Users
+                </span>
+
+            </a>
+
+
+            <!-- Roles -->
+
+            <a
+                routerLink="/admin/roles"
+                routerLinkActive="active"
+                class="sidebar-menu-item"
+            >
+
+                <span class="menu-icon">
+                    <i class="bi bi-shield-lock-fill"></i>
+                </span>
+
+                <span class="menu-text">
+                    Roles & Permissions
+                </span>
+
+            </a>
+
+
+            <!-- Banners -->
+
+            <a
+                routerLink="/admin/banners"
+                routerLinkActive="active"
+                class="sidebar-menu-item"
+            >
+
+                <span class="menu-icon">
+                    <i class="bi bi-images"></i>
+                </span>
+
+                <span class="menu-text">
+                    Banners
+                </span>
+
+            </a>
+
+
+            <!-- Events -->
+
+            <a
+                routerLink="/admin/events"
+                routerLinkActive="active"
+                class="sidebar-menu-item"
+            >
+
+                <span class="menu-icon">
+                    <i class="bi bi-calendar-event-fill"></i>
+                </span>
+
+                <span class="menu-text">
+                    Events
+                </span>
+
+            </a>
+
+
+            <!-- News -->
+
+            <a
+                routerLink="/admin/news"
+                routerLinkActive="active"
+                class="sidebar-menu-item"
+            >
+
+                <span class="menu-icon">
+                    <i class="bi bi-newspaper"></i>
+                </span>
+
+                <span class="menu-text">
+                    News / Updates
+                </span>
+
+            </a>
+
+
+            <!-- Pages -->
+
+            <a
+                routerLink="/admin/pages"
+                routerLinkActive="active"
+                class="sidebar-menu-item"
+            >
+
+                <span class="menu-icon">
+                    <i class="bi bi-file-earmark-text-fill"></i>
+                </span>
+
+                <span class="menu-text">
+                    Pages
+                </span>
+
+            </a>
+
+
+            <!-- Albums -->
+
+            <a
+                routerLink="/admin/albums"
+                routerLinkActive="active"
+                class="sidebar-menu-item"
+            >
+
+                <span class="menu-icon">
+                    <i class="bi bi-images"></i>
+                </span>
+
+                <span class="menu-text">
+                    Albums
+                </span>
+
+            </a>
+
+
+            <!-- Media Library -->
+
+            <a
+                routerLink="/admin/media"
+                routerLinkActive="active"
+                class="sidebar-menu-item"
+            >
+
+                <span class="menu-icon">
+                    <i class="bi bi-folder-fill"></i>
+                </span>
+
+                <span class="menu-text">
+                    Media Library
+                </span>
+
+            </a>
+
+
+            <!-- Business Directory -->
+
+            <a
+                routerLink="/admin/directory"
+                routerLinkActive="active"
+                class="sidebar-menu-item"
+            >
+
+                <span class="menu-icon">
+                    <i class="bi bi-building-fill"></i>
+                </span>
+
+                <span class="menu-text">
+                    Business Directory
+                </span>
+
+            </a>
+
+
+            <!-- Categories -->
+
+            <a
+                routerLink="/admin/categories"
+                routerLinkActive="active"
+                class="sidebar-menu-item"
+            >
+
+                <span class="menu-icon">
+                    <i class="bi bi-tags-fill"></i>
+                </span>
+
+                <span class="menu-text">
+                    Categories
+                </span>
+
+            </a>
+
+
+            <!-- Products -->
+
+            <a
+                routerLink="/admin/products"
+                routerLinkActive="active"
+                class="sidebar-menu-item"
+            >
+
+                <span class="menu-icon">
+                    <i class="bi bi-box-seam-fill"></i>
+                </span>
+
+                <span class="menu-text">
+                    Products
+                </span>
+
+            </a>
+
+
+            <!-- Contact Enquiries -->
+
+            <a
+                routerLink="/admin/enquiries"
+                routerLinkActive="active"
+                class="sidebar-menu-item"
+            >
+
+                <span class="menu-icon">
+                    <i class="bi bi-envelope-fill"></i>
+                </span>
+
+                <span class="menu-text">
+                    Contact Enquiries
+                </span>
+
+            </a>
+
+        </nav>
+
+
+        <!-- =================================================
+             SIDEBAR FOOTER
+        ================================================== -->
+
+        <div class="sidebar-footer">
+
+            <button
+                type="button"
+                class="logout-button"
+                (click)="logout()"
+            >
+
+                <span class="menu-icon">
+                    <i class="bi bi-box-arrow-right"></i>
+                </span>
+
+                <span class="menu-text">
+                    Logout
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MOBILE OVERLAY
+    ====================================================== -->
+
+    <div
+        class="mobile-overlay"
+        (click)="closeMobileSidebar()"
+    ></div>
+
+
+    <!-- =====================================================
+         MAIN AREA
+    ====================================================== -->
+
+    <div class="admin-main">
+
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <header class="admin-header">
+
+
+            <!-- LEFT -->
+
+            <div class="header-left">
+
+
+                <!-- Desktop Sidebar Toggle -->
+
+                <button
+                    type="button"
+                    class="sidebar-toggle desktop-toggle"
+                    (click)="toggleSidebar()"
+                    aria-label="Toggle sidebar"
+                >
+
+                    <i
+                        class="bi"
+                        [class.bi-list]="!sidebarCollapsed"
+                        [class.bi-layout-sidebar-inset]="sidebarCollapsed"
+                    ></i>
+
+                </button>
+
+
+                <!-- Mobile Toggle -->
+
+                <button
+                    type="button"
+                    class="sidebar-toggle mobile-toggle"
+                    (click)="openMobileSidebar()"
+                    aria-label="Open menu"
+                >
+
+                    <i class="bi bi-list"></i>
+
+                </button>
+
+
+                <!-- Page Information -->
+
+                <div class="header-page-info">
+
+                    <div class="header-title">
+                        Admin Panel
+                    </div>
+
+                    <div class="header-breadcrumb">
+
+                        <span>
+                            Anand Nagar
+                        </span>
+
+                        <i class="bi bi-chevron-right"></i>
+
+                        <span>
+                            Management Portal
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 RIGHT
+            ================================================== -->
+
+            <div class="header-right">
+
+
+                <!-- Search -->
+
+                <div class="header-search">
+
+                    <i class="bi bi-search"></i>
+
+                    <input
+                        type="text"
+                        placeholder="Search anything..."
+                    >
+
+                    <kbd>
+                        Ctrl K
+                    </kbd>
+
+                </div>
+
+
+                <!-- Fullscreen -->
+
+                <button
+                    type="button"
+                    class="header-icon-button"
+                    title="Fullscreen"
+                >
+
+                    <i class="bi bi-arrows-fullscreen"></i>
+
+                </button>
+
+
+                <!-- Notification -->
+
+                <button
+                    type="button"
+                    class="header-icon-button notification-button"
+                    title="Notifications"
+                >
+
+                    <i class="bi bi-bell"></i>
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <!-- Admin Profile -->
+
+                <div class="admin-profile">
+
+                    <div class="profile-avatar">
+
+                        <i class="bi bi-person-fill"></i>
+
+                    </div>
+
+                    <div class="profile-info">
+
+                        <div class="profile-name">
+                            Admin
+                        </div>
+
+                        <div class="profile-role">
+                            Super Admin
+                        </div>
+
+                    </div>
+
+                    <div class="profile-arrow">
+
+                        <i class="bi bi-chevron-down"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             PAGE CONTENT
+        ================================================== -->
+
+        <main class="admin-content">
+
+            <router-outlet></router-outlet>
+
+        </main>
+
+    </div>
+
+</div>

@@ -1,0 +1,417 @@
+<div class="users-page">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="page-header">
+
+        <div class="page-header-info">
+
+            <h1>
+                User Management
+            </h1>
+
+            <p>
+                Manage admin users and their access to the Anand Nagar portal.
+            </p>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="btn-primary"
+            (click)="addUser()"
+        >
+
+            <i class="bi bi-plus-lg"></i>
+
+            <span>
+                Add User
+            </span>
+
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         USERS CARD
+    ====================================================== -->
+
+    <div class="users-card">
+
+
+        <!-- =================================================
+             CARD HEADER
+        ================================================== -->
+
+        <div class="users-card-header">
+
+
+            <div class="users-title">
+
+                <h2>
+                    All Users
+                </h2>
+
+                <span class="user-count">
+                    {{ users.length }}
+                </span>
+
+            </div>
+
+
+            <div class="users-filters">
+
+
+                <!-- Search -->
+
+                <div class="search-box">
+
+                    <i class="bi bi-search"></i>
+
+                    <input
+                        type="text"
+                        [(ngModel)]="searchText"
+                        placeholder="Search users..."
+                        aria-label="Search users"
+                    >
+
+                    @if (searchText) {
+
+                        <button
+                            type="button"
+                            class="clear-search"
+                            (click)="searchText = ''"
+                            aria-label="Clear search"
+                        >
+
+                            <i class="bi bi-x"></i>
+
+                        </button>
+
+                    }
+
+                </div>
+
+
+                <!-- Status -->
+
+                <div class="status-filter">
+
+                    <select
+                        [(ngModel)]="selectedStatus"
+                        aria-label="Filter users by status"
+                    >
+
+                        <option value="All">
+                            All Status
+                        </option>
+
+                        <option value="Active">
+                            Active
+                        </option>
+
+                        <option value="Inactive">
+                            Inactive
+                        </option>
+
+                    </select>
+
+                    <i class="bi bi-chevron-down"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             TABLE
+        ================================================== -->
+
+        <div class="table-wrapper">
+
+            <table class="users-table">
+
+                <thead>
+
+                    <tr>
+
+                        <!-- NO # COLUMN -->
+
+                        <th>
+                            User
+                        </th>
+
+                        <th>
+                            Email
+                        </th>
+
+                        <th>
+                            Role
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th class="action-column">
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    @for (
+                        user of filteredUsers;
+                        track user.id
+                    ) {
+
+                        <tr>
+
+
+                            <!-- USER -->
+
+                            <td>
+
+                                <div class="user-info">
+
+
+                                    <div class="user-avatar">
+
+                                        {{ getInitials(user.name) }}
+
+                                    </div>
+
+
+                                    <div class="user-details">
+
+                                        <div class="user-name">
+                                            {{ user.name }}
+                                        </div>
+
+                                        <div class="user-phone">
+
+                                            <i class="bi bi-telephone"></i>
+
+                                            {{ user.mobile }}
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- EMAIL -->
+
+                            <td>
+
+                                <div class="user-email">
+
+                                    <i class="bi bi-envelope"></i>
+
+                                    <span>
+                                        {{ user.email }}
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- ROLE -->
+
+                            <td>
+
+                                <span class="user-role">
+                                    {{ user.role }}
+                                </span>
+
+                            </td>
+
+
+                            <!-- STATUS -->
+
+                            <td>
+
+                                <span
+                                    class="status-badge"
+                                    [class.status-active]="user.status === 'Active'"
+                                    [class.status-inactive]="user.status === 'Inactive'"
+                                >
+
+                                    <span class="status-dot"></span>
+
+                                    {{ user.status }}
+
+                                </span>
+
+                            </td>
+
+
+                            <!-- ACTIONS -->
+
+                            <td class="action-column">
+
+                                <div class="action-buttons">
+
+
+                                    <!-- Edit -->
+
+                                    <button
+                                        type="button"
+                                        class="action-button edit-button"
+                                        title="Edit User"
+                                        (click)="editUser(user.id)"
+                                    >
+
+                                        <i class="bi bi-pencil"></i>
+
+                                    </button>
+
+
+                                    <!-- Delete -->
+
+                                    <button
+                                        type="button"
+                                        class="action-button delete-button"
+                                        title="Delete User"
+                                        (click)="deleteUser(user.id)"
+                                    >
+
+                                        <i class="bi bi-trash3"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                    }
+
+
+                    <!-- EMPTY -->
+
+                    @if (filteredUsers.length === 0) {
+
+                        <tr>
+
+                            <td
+                                colspan="5"
+                                class="empty-state"
+                            >
+
+                                <div class="empty-icon">
+
+                                    <i class="bi bi-people"></i>
+
+                                </div>
+
+                                <h3>
+                                    No users found
+                                </h3>
+
+                                <p>
+                                    Try changing your search or status filter.
+                                </p>
+
+                            </td>
+
+                        </tr>
+
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- =================================================
+             CARD FOOTER
+        ================================================== -->
+
+        <div class="users-card-footer">
+
+
+            <div class="users-summary">
+
+                Showing
+
+                <strong>
+                    {{ filteredUsers.length }}
+                </strong>
+
+                of
+
+                <strong>
+                    {{ users.length }}
+                </strong>
+
+                users
+
+            </div>
+
+
+            <div class="pagination">
+
+
+                <button
+                    type="button"
+                    class="pagination-button"
+                    disabled
+                    aria-label="Previous page"
+                >
+
+                    <i class="bi bi-chevron-left"></i>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="pagination-button active"
+                >
+                    1
+                </button>
+
+
+                <button
+                    type="button"
+                    class="pagination-button"
+                >
+                    2
+                </button>
+
+
+                <button
+                    type="button"
+                    class="pagination-button"
+                    aria-label="Next page"
+                >
+
+                    <i class="bi bi-chevron-right"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

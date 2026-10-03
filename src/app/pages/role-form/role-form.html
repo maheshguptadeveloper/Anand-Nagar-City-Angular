@@ -1,0 +1,347 @@
+<div class="role-form-page">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="page-header">
+
+        <div>
+
+            <div class="breadcrumb">
+
+                <button
+                    type="button"
+                    (click)="cancel()"
+                >
+                    Roles & Permissions
+                </button>
+
+                <i class="bi bi-chevron-right"></i>
+
+                <span>
+                    {{ isEditMode ? 'Edit Role' : 'Add Role' }}
+                </span>
+
+            </div>
+
+
+            <h1>
+                {{ isEditMode ? 'Edit Role' : 'Add New Role' }}
+            </h1>
+
+            <p>
+                {{ isEditMode
+                    ? 'Update role details and manage access permissions.'
+                    : 'Create a new role and define its access permissions.'
+                }}
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         ROLE DETAILS
+    ====================================================== -->
+
+    <div class="form-card">
+
+        <div class="form-card-header">
+
+            <div>
+
+                <h2>
+                    Role Details
+                </h2>
+
+                <p>
+                    Enter the basic information for this role.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-body">
+
+            <div class="form-grid">
+
+
+                <!-- ROLE NAME -->
+
+                <div class="form-group">
+
+                    <label for="roleName">
+                        Role Name
+                        <span>*</span>
+                    </label>
+
+                    <div class="input-container">
+
+                        <i class="bi bi-shield"></i>
+
+                        <input
+                            type="text"
+                            id="roleName"
+                            name="roleName"
+                            [(ngModel)]="roleName"
+                            placeholder="Enter role name"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <div class="form-group">
+
+                    <label>
+                        Status
+                    </label>
+
+                    <div class="status-options">
+
+                        <label class="radio-option">
+
+                            <input
+                                type="radio"
+                                name="status"
+                                value="Active"
+                                [(ngModel)]="status"
+                            >
+
+                            <span class="radio-circle"></span>
+
+                            <span>
+                                Active
+                            </span>
+
+                        </label>
+
+
+                        <label class="radio-option">
+
+                            <input
+                                type="radio"
+                                name="status"
+                                value="Inactive"
+                                [(ngModel)]="status"
+                            >
+
+                            <span class="radio-circle"></span>
+
+                            <span>
+                                Inactive
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="form-group full-width">
+
+                    <label for="description">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        [(ngModel)]="roleDescription"
+                        rows="3"
+                        placeholder="Enter role description"
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         PERMISSIONS
+    ====================================================== -->
+
+    <div class="form-card permissions-card">
+
+        <div class="form-card-header">
+
+            <div>
+
+                <h2>
+                    Manage Permissions
+                </h2>
+
+                <p>
+                    Select the permissions this role should have.
+                </p>
+
+            </div>
+
+
+            <div class="selected-count">
+
+                <i class="bi bi-shield-check"></i>
+
+                {{ selectedPermissionCount }}
+
+                selected
+
+            </div>
+
+        </div>
+
+
+        <div class="permissions-body">
+
+            <div class="permission-grid">
+
+                @for (
+                    group of permissionGroups;
+                    track group.name
+                ) {
+
+                    <div class="permission-group">
+
+
+                        <!-- GROUP HEADER -->
+
+                        <div class="permission-group-header">
+
+                            <label class="group-checkbox">
+
+                                <input
+                                    type="checkbox"
+                                    [checked]="isGroupSelected(group)"
+                                    (change)="toggleGroup(group)"
+                                >
+
+                                <span class="custom-checkbox">
+
+                                    @if (isGroupSelected(group)) {
+
+                                        <i class="bi bi-check"></i>
+
+                                    }
+
+                                </span>
+
+                            </label>
+
+
+                            <div class="group-title">
+
+                                <i
+                                    class="bi bi-folder2-open"
+                                ></i>
+
+                                <span>
+                                    {{ group.name }}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PERMISSIONS -->
+
+                        <div class="permission-list">
+
+                            @for (
+                                permission of group.permissions;
+                                track permission.id
+                            ) {
+
+                                <label
+                                    class="permission-option"
+                                >
+
+                                    <input
+                                        type="checkbox"
+                                        [(ngModel)]="permission.checked"
+                                        [name]="'permission_' + permission.id"
+                                    >
+
+                                    <span class="custom-checkbox">
+
+                                        @if (permission.checked) {
+
+                                            <i class="bi bi-check"></i>
+
+                                        }
+
+                                    </span>
+
+                                    <span>
+                                        {{ permission.name }}
+                                    </span>
+
+                                </label>
+
+                            }
+
+                        </div>
+
+                    </div>
+
+                }
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             FORM FOOTER
+        ================================================== -->
+
+        <div class="form-footer">
+
+            <button
+                type="button"
+                class="btn-secondary"
+                (click)="cancel()"
+            >
+
+                <i class="bi bi-x-lg"></i>
+
+                Cancel
+
+            </button>
+
+
+            <button
+                type="button"
+                class="btn-primary"
+                (click)="saveRole()"
+            >
+
+                <i
+                    class="bi"
+                    [class.bi-check-lg]="isEditMode"
+                    [class.bi-plus-lg]="!isEditMode"
+                ></i>
+
+                {{ isEditMode ? 'Update Role' : 'Save Role' }}
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

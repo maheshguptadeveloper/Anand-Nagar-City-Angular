@@ -1,0 +1,530 @@
+<div class="event-form-page">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="page-header">
+
+        <div>
+
+            <div class="breadcrumb">
+
+                <button
+                    type="button"
+                    (click)="cancel()"
+                >
+                    Events
+                </button>
+
+                <i class="bi bi-chevron-right"></i>
+
+                <span>
+                    {{ isEditMode ? 'Edit Event' : 'Add Event' }}
+                </span>
+
+            </div>
+
+
+            <h1>
+                {{ isEditMode ? 'Edit Event' : 'Add New Event' }}
+            </h1>
+
+
+            <p>
+                {{ isEditMode
+                    ? 'Update event details and information.'
+                    : 'Create a new event for the Anand Nagar website.'
+                }}
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         FORM CARD
+    ====================================================== -->
+
+    <div class="form-card">
+
+
+        <!-- HEADER -->
+
+        <div class="form-card-header">
+
+            <div>
+
+                <h2>
+                    Event Details
+                </h2>
+
+                <p>
+                    Enter the event information below.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- BODY -->
+
+        <div class="form-body">
+
+            <div class="form-layout">
+
+
+                <!-- =================================================
+                     LEFT
+                ================================================== -->
+
+                <div class="form-fields">
+
+
+                    <!-- TITLE -->
+
+                    <div class="form-group">
+
+                        <label for="title">
+                            Event Title
+                            <span>*</span>
+                        </label>
+
+                        <div class="input-container">
+
+                            <i class="bi bi-calendar-event"></i>
+
+                            <input
+                                type="text"
+                                id="title"
+                                name="title"
+                                [(ngModel)]="title"
+                                placeholder="Enter event title"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DESCRIPTION -->
+
+                    <div class="form-group">
+
+                        <label for="description">
+                            Description
+                        </label>
+
+                        <textarea
+                            id="description"
+                            name="description"
+                            [(ngModel)]="description"
+                            rows="4"
+                            placeholder="Enter event description"
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- CATEGORY / ORGANIZER -->
+
+                    <div class="two-column">
+
+
+                        <div class="form-group">
+
+                            <label for="category">
+                                Category
+                                <span>*</span>
+                            </label>
+
+                            <div class="input-container">
+
+                                <i class="bi bi-tag"></i>
+
+                                <select
+                                    id="category"
+                                    name="category"
+                                    [(ngModel)]="category"
+                                >
+
+                                    <option
+                                        value=""
+                                        disabled
+                                    >
+                                        Select category
+                                    </option>
+
+                                    @for (
+                                        item of categories;
+                                        track item
+                                    ) {
+
+                                        <option [value]="item">
+                                            {{ item }}
+                                        </option>
+
+                                    }
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="organizer">
+                                Organizer
+                            </label>
+
+                            <div class="input-container">
+
+                                <i class="bi bi-person"></i>
+
+                                <input
+                                    type="text"
+                                    id="organizer"
+                                    name="organizer"
+                                    [(ngModel)]="organizer"
+                                    placeholder="Enter organizer"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DATE / START -->
+
+                    <div class="two-column">
+
+
+                        <div class="form-group">
+
+                            <label for="eventDate">
+                                Event Date
+                                <span>*</span>
+                            </label>
+
+                            <div class="input-container">
+
+                                <i class="bi bi-calendar3"></i>
+
+                                <input
+                                    type="date"
+                                    id="eventDate"
+                                    name="eventDate"
+                                    [(ngModel)]="eventDate"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="startTime">
+                                Start Time
+                            </label>
+
+                            <div class="input-container">
+
+                                <i class="bi bi-clock"></i>
+
+                                <input
+                                    type="time"
+                                    id="startTime"
+                                    name="startTime"
+                                    [(ngModel)]="startTime"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- END / LOCATION -->
+
+                    <div class="two-column">
+
+
+                        <div class="form-group">
+
+                            <label for="endTime">
+                                End Time
+                            </label>
+
+                            <div class="input-container">
+
+                                <i class="bi bi-clock-history"></i>
+
+                                <input
+                                    type="time"
+                                    id="endTime"
+                                    name="endTime"
+                                    [(ngModel)]="endTime"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="location">
+                                Location
+                                <span>*</span>
+                            </label>
+
+                            <div class="input-container">
+
+                                <i class="bi bi-geo-alt"></i>
+
+                                <input
+                                    type="text"
+                                    id="location"
+                                    name="location"
+                                    [(ngModel)]="location"
+                                    placeholder="Enter event location"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STATUS -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Status
+                        </label>
+
+                        <div class="status-options">
+
+                            <label class="radio-option">
+
+                                <input
+                                    type="radio"
+                                    name="status"
+                                    value="Upcoming"
+                                    [(ngModel)]="status"
+                                >
+
+                                <span class="radio-circle"></span>
+
+                                <span>
+                                    Upcoming
+                                </span>
+
+                            </label>
+
+
+                            <label class="radio-option">
+
+                                <input
+                                    type="radio"
+                                    name="status"
+                                    value="Completed"
+                                    [(ngModel)]="status"
+                                >
+
+                                <span class="radio-circle"></span>
+
+                                <span>
+                                    Completed
+                                </span>
+
+                            </label>
+
+
+                            <label class="radio-option">
+
+                                <input
+                                    type="radio"
+                                    name="status"
+                                    value="Cancelled"
+                                    [(ngModel)]="status"
+                                >
+
+                                <span class="radio-circle"></span>
+
+                                <span>
+                                    Cancelled
+                                </span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     IMAGE
+                ================================================== -->
+
+                <div class="image-section">
+
+                    <label>
+                        Event Image
+                    </label>
+
+
+                    <div
+                        class="image-preview"
+                        [class.has-image]="imagePreview"
+                    >
+
+                        @if (imagePreview) {
+
+                            <img
+                                [src]="imagePreview"
+                                alt="Event preview"
+                            >
+
+                            <button
+                                type="button"
+                                class="remove-image"
+                                (click)="removeImage()"
+                            >
+
+                                <i class="bi bi-x-lg"></i>
+
+                            </button>
+
+                        }
+
+                        @else {
+
+                            <div class="image-placeholder">
+
+                                <i class="bi bi-image"></i>
+
+                                <span>
+                                    No image selected
+                                </span>
+
+                            </div>
+
+                        }
+
+                    </div>
+
+
+                    <label
+                        for="eventImage"
+                        class="change-image-button"
+                    >
+
+                        <i class="bi bi-cloud-arrow-up"></i>
+
+                        {{ imagePreview
+                            ? 'Change Image'
+                            : 'Upload Image'
+                        }}
+
+                    </label>
+
+
+                    <input
+                        type="file"
+                        id="eventImage"
+                        accept="image/png,image/jpeg,image/webp"
+                        (change)="onImageSelected($event)"
+                        hidden
+                    >
+
+
+                    @if (selectedImageName) {
+
+                        <div class="selected-file">
+
+                            <i class="bi bi-file-earmark-image"></i>
+
+                            {{ selectedImageName }}
+
+                        </div>
+
+                    }
+
+
+                    <div class="image-help">
+
+                        <div>
+                            JPG, PNG or WEBP
+                        </div>
+
+                        <div>
+                            Recommended: 1200 × 700 px
+                        </div>
+
+                        <div>
+                            Maximum size: 2 MB
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FOOTER -->
+
+        <div class="form-footer">
+
+            <button
+                type="button"
+                class="btn-secondary"
+                (click)="cancel()"
+            >
+
+                <i class="bi bi-x-lg"></i>
+
+                Cancel
+
+            </button>
+
+
+            <button
+                type="button"
+                class="btn-primary"
+                (click)="saveEvent()"
+            >
+
+                <i
+                    class="bi"
+                    [class.bi-check-lg]="isEditMode"
+                    [class.bi-plus-lg]="!isEditMode"
+                ></i>
+
+                {{ isEditMode
+                    ? 'Update Event'
+                    : 'Save Event'
+                }}
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
