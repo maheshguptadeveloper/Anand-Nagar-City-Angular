@@ -1,0 +1,2205 @@
+<!DOCTYPE html>
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<meta charset="utf-8">
+<title>The Complete .NET Full-Stack Developer Interview Mastery Guide (3+ YOE)</title>
+<!--[if gte mso 9]>
+<xml>
+ <w:WordDocument>
+  <w:View>Print</w:View>
+  <w:Zoom>100</w:Zoom>
+  <w:DoNotOptimizeForBrowser/>
+ </w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+@page {
+    size: 8.27in 11.69in; /* A4 */
+    margin: 1.0in 1.0in 1.0in 1.0in;
+    mso-header-margin: .5in;
+    mso-footer-margin: .5in;
+    mso-paper-source: 0;
+}
+@page Section1 {
+    size: 8.27in 11.69in;
+    margin: 1.0in 1.0in 1.0in 1.0in;
+}
+div.Section1 {
+    page: Section1;
+}
+body {
+    font-family: 'Segoe UI', Calibri, Arial, sans-serif;
+    font-size: 11pt;
+    line-height: 1.6;
+    color: #1E293B;
+    background-color: #FFFFFF;
+}
+h1, h2, h3, h4 {
+    font-family: 'Segoe UI Semibold', 'Segoe UI', Calibri, sans-serif;
+    color: #0F172A;
+}
+.cover-page {
+    text-align: center;
+    padding-top: 120px;
+    padding-bottom: 120px;
+    page-break-after: always;
+}
+.cover-badge {
+    display: inline-block;
+    background-color: #0284C7;
+    color: white;
+    padding: 6px 16px;
+    font-weight: 600;
+    font-size: 11pt;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.cover-title {
+    font-size: 30pt;
+    color: #1E3A8A;
+    font-weight: 800;
+    line-height: 1.25;
+    margin: 24px 0 16px 0;
+}
+.cover-subtitle {
+    font-size: 15pt;
+    color: #475569;
+    margin-bottom: 40px;
+    line-height: 1.5;
+}
+.cover-author-box {
+    margin-top: 80px;
+    padding: 20px;
+    background-color: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    display: inline-block;
+    text-align: left;
+    min-width: 320px;
+}
+.toc-container {
+    background-color: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 30px;
+    margin: 30px 0;
+    page-break-after: always;
+}
+.toc-title {
+    font-size: 18pt;
+    color: #1E3A8A;
+    border-bottom: 2px solid #0284C7;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+}
+.toc-item {
+    font-size: 11pt;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+.toc-item b {
+    color: #0F172A;
+}
+.part-banner {
+    background-color: #1E3A8A;
+    color: white;
+    padding: 24px 28px;
+    border-radius: 8px;
+    margin-top: 35px;
+    margin-bottom: 25px;
+    page-break-before: always;
+}
+.section-title {
+    color: #1E3A8A;
+    border-bottom: 2px solid #0284C7;
+    padding-bottom: 6px;
+    margin-top: 30px;
+    margin-bottom: 16px;
+    font-size: 16pt;
+}
+.question-card {
+    margin-bottom: 30px;
+}
+.question-title {
+    color: #0F172A;
+    font-size: 12.5pt;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+.q-badge {
+    background-color: #1E3A8A;
+    color: #ffffff;
+    font-size: 9pt;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 6px;
+}
+.callout-interview {
+    background-color: #EFF6FF;
+    border-left: 4px solid #2563EB;
+    padding: 12px 16px;
+    margin: 12px 0 14px 0;
+    border-radius: 0 6px 6px 0;
+}
+.callout-interview-title {
+    font-weight: bold;
+    color: #1D4ED8;
+    margin-bottom: 4px;
+    font-size: 10.5pt;
+}
+.callout-warning {
+    background-color: #FFFBEB;
+    border-left: 4px solid #D97706;
+    padding: 12px 16px;
+    margin: 12px 0 14px 0;
+    border-radius: 0 6px 6px 0;
+}
+.callout-warning-title {
+    font-weight: bold;
+    color: #B45309;
+    margin-bottom: 4px;
+    font-size: 10.5pt;
+}
+.callout-reallife {
+    background-color: #F0FDF4;
+    border-left: 4px solid #16A34A;
+    padding: 12px 16px;
+    margin: 12px 0 14px 0;
+    border-radius: 0 6px 6px 0;
+}
+.callout-reallife-title {
+    font-weight: bold;
+    color: #15803D;
+    margin-bottom: 4px;
+    font-size: 10.5pt;
+}
+.code-box {
+    background-color: #F8FAFC;
+    border: 1px solid #CBD5E1;
+    border-left: 4px solid #0284C7;
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 9.5pt;
+    color: #0F172A;
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin: 12px 0 16px 0;
+    line-height: 1.45;
+}
+table.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 20px 0;
+    font-size: 10pt;
+}
+table.custom-table th {
+    background-color: #1E3A8A;
+    color: white;
+    font-weight: 600;
+    padding: 10px 12px;
+    text-align: left;
+    border: 1px solid #1E3A8A;
+}
+table.custom-table td {
+    padding: 9px 12px;
+    border: 1px solid #E2E8F0;
+    vertical-align: top;
+}
+table.custom-table tr:nth-child(even) {
+    background-color: #F8FAFC;
+}
+</style>
+</head>
+<body>
+<div class="Section1">
+
+  <!-- COVER PAGE -->
+  <div class="cover-page">
+    <div class="cover-badge">Special Edition • 3+ Years Experience</div>
+    <div class="cover-title">THE COMPLETE .NET FULL-STACK DEVELOPER<br/>INTERVIEW MASTERY GUIDE</div>
+    <div class="cover-subtitle">From C# Core & ASP.NET Core to SQL Server, Angular 17+, AI Integration, Clean Architecture & HR Mastery</div>
+    
+    <div class="cover-author-box">
+      <div><b>Target Profile:</b> Senior .NET Full-Stack Developer (3 YOE)</div>
+      <div style="margin-top: 6px;"><b>Prepared For:</b> Mahesh Gupta</div>
+      <div style="margin-top: 6px;"><b>Core Stack:</b> C# 12 / .NET 8/9, ASP.NET Core, EF Core, SQL Server, Angular, Azure/OpenAI</div>
+      <div style="margin-top: 6px;"><b>Edition:</b> Enterprise Job-Switch Blueprint (100% Comprehensive)</div>
+    </div>
+  </div>
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc-container">
+    <div class="toc-title">Table of Contents</div>
+    <div class="toc-item"><b>Part 1: C#, .NET Core, Web API & Enterprise Architecture</b>
+      <ul>
+        <li>1.1 Core C# Fundamentals & OOPs in Enterprise Systems (Value vs Ref, Heap/Stack, Boxing/Unboxing, 4 Pillars, Override vs New, Abstract vs Interface)</li>
+        <li>1.2 Memory Management & Garbage Collection (Gen 0/1/2, LOH, Dispose Pattern, Memory Leaks)</li>
+        <li>1.3 Multithreading, Asynchronous Programming & Concurrency (Thread vs Task, async/await state machine, deadlocks, ValueTask, SemaphoreSlim)</li>
+        <li>1.4 Collections, Generics & LINQ Deep Dive (IEnumerable vs IQueryable, Deferred execution, Expression trees)</li>
+        <li>1.5 Delegates, Events & Modern C# Features (Func/Action/Predicate, Records, Pattern matching, Primary constructors)</li>
+        <li>1.6 ASP.NET MVC Core Principles (Request lifecycle, ViewData/ViewBag/TempData/Session, ViewComponents)</li>
+        <li>1.7 ASP.NET Core Architecture, Middleware & Dependency Injection (Middleware pipeline, DI lifetimes, Captive dependency, Options pattern)</li>
+        <li>1.8 RESTful API Architecture, HTTP Verbs & Security (Idempotency, Status codes, JWT anatomy, Refresh tokens, CORS)</li>
+        <li>1.9 Advanced .NET Patterns & Microservices (SOLID principles with code, Repository/Unit of Work, Singleton Lazy, CQRS/MediatR, Polly, Redis)</li>
+      </ul>
+    </div>
+    <div class="toc-item"><b>Part 2: SQL Server Database Mastery</b>
+      <ul>
+        <li>2.1 Indexing Internals (Clustered vs Non-Clustered, B-Tree leaf storage, Covering index with INCLUDE, Seek vs Scan, Fragmentation)</li>
+        <li>2.2 Execution Plans & Query Optimization (Reading plans, Key lookups, Hash/Merge/Nested loops, Parameter sniffing)</li>
+        <li>2.3 Joins, Temporary Tables vs Table Variables & CTEs (#Temp vs @Table, Recursive CTEs)</li>
+        <li>2.4 Window Functions & Analytical Queries (ROW_NUMBER vs RANK vs DENSE_RANK, Nth highest salary, LEAD/LAG)</li>
+        <li>2.5 Transactions, ACID, Isolation Levels & Deadlocks (ACID in banking, Isolation levels, Deadlocks troubleshooting & prevention)</li>
+      </ul>
+    </div>
+    <div class="toc-item"><b>Part 3: Angular & Frontend Integration</b>
+      <ul>
+        <li>3.1 Angular Architecture & Standalone Components (Standalone vs NgModule, Signals)</li>
+        <li>3.2 Component Lifecycle Hooks & Memory Leaks (Execution order, ngOnDestroy, takeUntil)</li>
+        <li>3.3 RxJS Reactive Streams (Observable vs Promise, BehaviorSubject, switchMap/mergeMap/concatMap)</li>
+        <li>3.4 Reactive Forms & Validation (FormGroup, FormBuilder, Custom validators)</li>
+        <li>3.5 HTTP Interceptors & Route Guards (Functional interceptors, JWT attachment, global error handling)</li>
+      </ul>
+    </div>
+    <div class="toc-item"><b>Part 4: Artificial Intelligence & LLMs for .NET Developers</b>
+      <ul>
+        <li>4.1 LLM Fundamentals (Tokens, Context Windows, Temperature, Prompts)</li>
+        <li>4.2 Connecting .NET to AI Services (Microsoft Semantic Kernel, Streaming responses)</li>
+        <li>4.3 Retrieval-Augmented Generation (RAG) Architecture (Embeddings, Vector DBs, Cosine similarity)</li>
+        <li>4.4 Function Calling / Tool Calling in C#</li>
+      </ul>
+    </div>
+    <div class="toc-item"><b>Part 5: HR & Behavioral Interview Mastery (3 YOE Special)</b>
+      <ul>
+        <li>5.1 The 90-Second Winning Self-Introduction (Custom script for Mahesh Gupta)</li>
+        <li>5.2 "Why Do You Want to Change Your Company?" (Diplomatic answers)</li>
+        <li>5.3 "What Are Your Strengths and Weaknesses?" (Real developer examples)</li>
+        <li>5.4 Real-Life STAR Method Scenarios (Production deadlock resolution, QA conflict resolution)</li>
+        <li>5.5 Career Vision, Notice Period & Expected CTC Negotiation</li>
+        <li>5.6 High-Impact Questions You Must Ask the Interviewer</li>
+      </ul>
+    </div>
+    <div class="toc-item"><b>Appendix: Quick Reference Cheat Sheets</b></div>
+  </div>
+
+  <!-- BODY CONTENT -->
+  
+    <div class="part-banner">
+      <div style="font-size: 13pt; text-transform: uppercase; letter-spacing: 2px; opacity: 0.85;">Part 1 • Section 1</div>
+      <h1 style="color: white; margin: 8px 0 4px 0; font-size: 24pt;">C# Fundamentals, OOPs, Memory & Concurrency</h1>
+      <div style="font-size: 11pt; opacity: 0.9;">In-depth coverage for 3+ Years Experienced .NET Developers: Internal workings, edge-cases, memory models, and code examples</div>
+    </div>
+
+    <h2 class="section-title">1.1 Core C# Fundamentals & OOPs in Enterprise Systems</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.1.1</span> Value Types vs. Reference Types, Stack vs. Heap, and Boxing/Unboxing Internals</div>
+      <p><b>Core Concept:</b> In .NET, data types are divided into two fundamental memory categories: <b>Value Types</b> (derived implicitly from <code>System.ValueType</code>, stored on the <b>Stack</b> or inline in the enclosing type) and <b>Reference Types</b> (derived from <code>System.Object</code>, whose memory allocation happens on the managed <b>Heap</b> with a pointer on the Stack).</p>
+      
+      <div class="callout-interview">
+        <div class="callout-interview-title">🎯 What Interviewers Check at 3 Years Experience:</div>
+        Interviewers will test if you know <i>where struct fields inside a class live</i> (they live on the Heap!), and whether you understand the hidden performance cost of boxing in hot paths like logging or LINQ operations.
+      </div>
+
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Characteristic</th>
+            <th>Value Types (struct, enum, int, bool, double)</th>
+            <th>Reference Types (class, interface, delegate, string, object)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Storage Location</b></td>
+            <td>Stack (when local variable) or inline inside heap object (if declared inside a class)</td>
+            <td>Managed Heap (object header + method table pointer + fields). Pointer on Stack</td>
+          </tr>
+          <tr>
+            <td><b>Assignment Behavior</b></td>
+            <td>Copies the actual value (by-value)</td>
+            <td>Copies the memory reference pointer (both point to same Heap object)</td>
+          </tr>
+          <tr>
+            <td><b>Default Value</b></td>
+            <td>Zero / default bit pattern (e.g., 0, false, null for Nullable&lt;T&gt;)</td>
+            <td><code>null</code> (points to no memory address)</td>
+          </tr>
+          <tr>
+            <td><b>Garbage Collection</b></td>
+            <td>Deallocated automatically when stack frame pops (Zero GC overhead)</td>
+            <td>Tracked and reclaimed by the Garbage Collector (Gen 0, 1, 2)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><b>Boxing and Unboxing Mechanics:</b></p>
+      <ul>
+        <li><b>Boxing:</b> The explicit or implicit conversion of a value type to <code>object</code> or an interface type. .NET allocates a new object on the managed Heap, copies the value into it, and returns the reference.</li>
+        <li><b>Unboxing:</b> Extracting the value type back from the boxed object reference. Requires an explicit cast. Involves verifying type safety and copying data from Heap back to Stack.</li>
+      </ul>
+
+      <div class="code-box">// Boxing & Unboxing Demonstration
+int userAge = 28;                 // Stored on the Stack
+object boxedAge = userAge;        // BOXING: Heap memory allocated, value copied!
+int unboxedAge = (int)boxedAge;   // UNBOXING: Type checked, value copied to Stack
+
+// Real-World Performance Trap (Avoid in API hot paths):
+ArrayList list = new ArrayList(); 
+list.Add(userAge);                // BOXING: ArrayList takes object, allocates heap memory every call!
+
+// High-Performance Modern C# Alternative:
+List&lt;int&gt; typedList = new List&lt;int&gt;();
+typedList.Add(userAge);           // ZERO BOXING: Generics maintain type safety directly on stack</div>
+
+      <div class="callout-warning">
+        <div class="callout-warning-title">⚠️ Senior Tip: String is a Reference Type with Value-Like Behavior</div>
+        Strings are <b>immutable reference types</b>. Every modification creates a new string on the Heap. In loops with high iterations, never use string concatenation (<code>+</code>); always use <code>StringBuilder</code> or interpolated string handlers in C# 10+.
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.1.2</span> The 4 Pillars of OOPs: Applied to Real-World Enterprise Architecture</div>
+      <p>Do not give textbook definitions. Senior interviewers want to see how OOPs principles translate to scalable, maintainable enterprise software.</p>
+
+      <p><b>1. Encapsulation (Information Hiding & Invariant Protection):</b> Bundling state and behaviors within a class while restricting direct access to mutable internals. In modern .NET, we use private setters, records with <code>init</code> properties, and domain value objects to guarantee valid business states.</p>
+
+      <div class="code-box">// Enterprise Encapsulation: Banking Account Domain Model
+public class BankAccount
+{
+    public Guid AccountId { get; private set; }
+    public decimal Balance { get; private set; } // Cannot be tampered outside!
+
+    public BankAccount(decimal initialDeposit)
+    {
+        if (initialDeposit &lt; 500) 
+            throw new InvalidOperationException("Minimum initial deposit is 500 INR");
+        AccountId = Guid.NewGuid();
+        Balance = initialDeposit;
+    }
+
+    public void Deposit(decimal amount)
+    {
+        if (amount &lt;= 0) throw new ArgumentOutOfRangeException(nameof(amount), "Amount must be positive");
+        Balance += amount;
+    }
+
+    public void Withdraw(decimal amount)
+    {
+        if (amount &gt; Balance) throw new InvalidOperationException("Insufficient funds");
+        Balance -= amount;
+    }
+}</div>
+
+      <p><b>2. Abstraction (Hiding Complexity via Contracts):</b> Exposing only essential interface contracts while concealing implementation details behind interfaces or abstract classes.</p>
+      
+      <p><b>3. Inheritance (Code Reuse & Hierarchy):</b> Establishing an <i>is-a</i> relationship. <i>Interview Rule:</i> Prefer <b>Composition over Inheritance</b> to avoid tight coupling.</p>
+
+      <p><b>4. Polymorphism (Multiple Forms):</b></p>
+      <ul>
+        <li><b>Static / Compile-Time Polymorphism:</b> Method Overloading (same method name, different signatures resolved at compile time).</li>
+        <li><b>Dynamic / Run-Time Polymorphism:</b> Method Overriding using <code>virtual</code> in base class and <code>override</code> in derived class, resolved dynamically at runtime via the Virtual Method Table (vtable).</li>
+      </ul>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.1.3</span> The Classic Interview Trap: Method Overriding (<code>override</code>) vs. Method Hiding (<code>new</code>)</div>
+      <p>This is one of the top 3 trick questions asked to 3-year experienced candidates in .NET technical rounds.</p>
+
+      <div class="code-box">public class BasePayment
+{
+    public virtual void Process() => Console.WriteLine("Base Payment Processed");
+    public void PrintReceipt()    => Console.WriteLine("Base Receipt");
+}
+
+public class UpiPayment : BasePayment
+{
+    // RUNTIME POLYMORPHISM: Replaces base behavior in the vtable
+    public override void Process() => Console.WriteLine("UPI Payment Processed");
+
+    // METHOD HIDING: Creates a new method that shadows base method for direct references only
+    public new void PrintReceipt() => Console.WriteLine("UPI Custom QR Receipt");
+}
+
+// Tracing Execution in Interview:
+BasePayment payment = new UpiPayment();
+payment.Process();       // Output: "UPI Payment Processed" (Override uses actual runtime object!)
+payment.PrintReceipt();  // Output: "Base Receipt" (Hiding uses compile-time reference type BasePayment!)</div>
+
+      <div class="callout-interview">
+        <div class="callout-interview-title">🎯 Interview Explanation to Impress the Panel:</div>
+        "When using <code>override</code>, the runtime compiler inspects the actual object instance on the heap and executes the derived method via the virtual method table (vtable). When using <code>new</code> (method hiding), the method dispatch depends strictly on the compile-time variable reference type, breaking polymorphism. In enterprise projects, <code>new</code> is discouraged because it leads to unpredictable bugs."
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.1.4</span> Abstract Class vs. Interface in Modern .NET (C# 8+ to .NET 8/9/10)</div>
+      
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Abstract Class</th>
+            <th>Interface</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Multiple Inheritance</b></td>
+            <td>No (C# supports single class inheritance)</td>
+            <td>Yes (A class can implement multiple interfaces)</td>
+          </tr>
+          <tr>
+            <td><b>State & Fields</b></td>
+            <td>Can have instance fields, constructors, full state</td>
+            <td>Cannot hold instance state (no instance fields)</td>
+          </tr>
+          <tr>
+            <td><b>Default Implementations</b></td>
+            <td>Has had standard methods since .NET 1.0</td>
+            <td>Supported since C# 8.0 (Default Interface Methods - DIM)</td>
+          </tr>
+          <tr>
+            <td><b>Access Modifiers</b></td>
+            <td><code>public, protected, internal, private</code></td>
+            <td>Methods are <code>public</code> by default (private helpers in C# 8+)</td>
+          </tr>
+          <tr>
+            <td><b>Design Philosophy</b></td>
+            <td>Represents an <b>"IS-A"</b> identity relationship</td>
+            <td>Represents a <b>"CAN-DO"</b> capability contract</td>
+          </tr>
+          <tr>
+            <td><b>When to Choose?</b></td>
+            <td>When closely related classes share state, life-cycle, or non-abstract helper logic</td>
+            <td>For loose coupling, Dependency Injection, unit test mocking, and cross-cutting capabilities</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.1.5</span> Sealed Classes, Static Classes, and Partial Classes in Real Projects</div>
+      <ul>
+        <li><b>Sealed Class (<code>sealed</code>):</b> Prevents other classes from inheriting it. <i>Performance Benefit:</i> .NET JIT compiler optimizes method calls via <b>devirtualization</b> because it knows no derived class can override its methods. Use for sensitive security classes or utility records.</li>
+        <li><b>Static Class (<code>static</code>):</b> Cannot be instantiated; contains only static members; sealed by default. Useful for extension methods and stateless utility functions (e.g., <code>MathUtilities</code>).</li>
+        <li><b>Partial Class (<code>partial</code>):</b> Allows splitting a single class definition across multiple <code>.cs</code> files. Widely used in auto-generated code (e.g., EF Core scaffolding, Razor components, WinForms/WPF) so developer logic doesn't get overwritten during code regeneration.</li>
+      </ul>
+    </div>
+
+    <h2 class="section-title">1.2 Memory Management, Garbage Collection & Resource Cleanup</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.2.1</span> How does the .NET Garbage Collector (GC) work? Generations 0, 1, 2 and the LOH</div>
+      <p><b>Core Concept:</b> .NET features an automatic generational, tracing Garbage Collector that manages heap memory, eliminating manual <code>malloc/free</code> calls. The GC operates on the hypothesis that <i>recently created objects have the shortest lifespans</i> (Ephemerality Hypothesis).</p>
+
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Generation</th>
+            <th>Type of Objects & Lifetime</th>
+            <th>Collection Frequency & Performance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Generation 0 (Gen 0)</b></td>
+            <td>Short-lived objects (e.g., local variables inside a method, temporary strings, request DTOs)</td>
+            <td>Very frequent, lightning fast (sub-millisecond), lowest CPU impact.</td>
+          </tr>
+          <tr>
+            <td><b>Generation 1 (Gen 1)</b></td>
+            <td>Buffer generation acting as an intermediate step between short-lived and long-lived objects</td>
+            <td>Collected when Gen 0 fills up and survived objects are promoted. Fast.</td>
+          </tr>
+          <tr>
+            <td><b>Generation 2 (Gen 2)</b></td>
+            <td>Long-lived objects (e.g., Singleton services, static caches, database connection pools, DbContext factories)</td>
+            <td>Least frequent, full GC collection. High CPU overhead ("Stop-the-world" pause in non-concurrent GC).</td>
+          </tr>
+          <tr>
+            <td><b>Large Object Heap (LOH)</b></td>
+            <td>Objects &gt;= <b>85,000 bytes</b> (large byte arrays, huge strings, data tables)</td>
+            <td>Collected alongside Gen 2. Historically not compacted by default to save CPU, causing memory fragmentation. In .NET Core/.NET 8+, can be compacted via <code>GCSettings.LargeObjectHeapCompactionMode</code>.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><b>The 3 Phases of Garbage Collection:</b></p>
+      <ol>
+        <li><b>Marking Phase:</b> Traverses the object graph starting from "GC Roots" (static variables, local variables on active threads, CPU registers). All reachable objects are marked as alive.</li>
+        <li><b>Relocating Phase:</b> Updates references to objects that will be compacted.</li>
+        <li><b>Compacting Phase:</b> Reclaims memory of dead objects and compacts live objects together to eliminate fragmentation, adjusting their memory pointers.</li>
+      </ol>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.2.2</span> Finalize vs. Dispose vs. IDisposable and the Full Dispose Pattern</div>
+      <p>Interviewers frequently ask candidates to write out the standard Dispose pattern on a whiteboard or screen.</p>
+      
+      <ul>
+        <li><b>Managed Resources:</b> Memory managed directly by .NET GC (strings, lists, standard objects). GC reclaims these automatically.</li>
+        <li><b>Unmanaged Resources:</b> OS handles outside the runtime (Database connections, open file handles, network sockets, Windows API handles). GC does NOT know how to release them unless explicitly instructed.</li>
+        <li><b>Finalizer (<code>~ClassName()</code>):</b> Called by GC's finalizer thread before reclaiming object. Non-deterministic (you cannot control when it runs), slow, and delays object deallocation by at least one extra GC generation.</li>
+        <li><b>IDisposable:</b> Interface providing deterministic cleanup via the <code>Dispose()</code> method. Called explicitly or via the <code>using</code> keyword.</li>
+      </ul>
+
+      <div class="code-box">// Enterprise Implementation of the Full Dispose Pattern
+public class FileReportManager : IDisposable
+{
+    private FileStream? _fileStream;       // Unmanaged OS resource handle
+    private bool _disposed = false;        // Guard flag to prevent double disposal
+
+    public FileReportManager(string path)
+    {
+        _fileStream = new FileStream(path, FileMode.OpenOrCreate);
+    }
+
+    // Public method called by consumers or 'using' block
+    public void Dispose()
+    {
+        Dispose(disposing: true);
+        // CRITICAL: Tells the GC not to call the Finalizer, saving a Gen 2 cycle!
+        GC.SuppressFinalize(this); 
+    }
+
+    // Protected virtual method for derived classes
+    protected virtual void Dispose(bool disposing)
+    {
+        if (_disposed) return;
+
+        if (disposing)
+        {
+            // Clean up managed resources here
+            _fileStream?.Close();
+            _fileStream?.Dispose();
+            _fileStream = null;
+        }
+
+        // Clean up direct unmanaged resources here (if any raw pointers exist)
+
+        _disposed = true;
+    }
+
+    // Finalizer (Fallback only in case Dispose() was never called by developer)
+    ~FileReportManager()
+    {
+        Dispose(disposing: false);
+    }
+}</div>
+
+      <div class="callout-reallife">
+        <div class="callout-reallife-title">💡 Modern C# 8+ using Declaration</div>
+        Instead of nesting braces, use the cleaner syntax: <code>using var stream = new FileStream(...);</code>. It disposes automatically when execution exits the enclosing method scope!
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.2.3</span> Top 3 Causes of Memory Leaks in .NET and How to Diagnose Them</div>
+      <ol>
+        <li><b>Event Handlers Not Unsubscribed:</b> The publisher holds a reference to the subscriber in its invocation list. If the publisher is a singleton or long-lived service, the subscriber will never be garbage collected. <i>Solution:</i> Unsubscribe using <code>-=</code> or implement <code>IDisposable</code>.</li>
+        <li><b>Static Collections:</b> Items added to static lists or dictionaries remain in memory for the entire lifetime of the AppDomain.</li>
+        <li><b>Improper Caching:</b> Unbounded in-memory caches without sliding/absolute expiration or memory size limits.</li>
+      </ol>
+    </div>
+
+    <h2 class="section-title">1.3 Multithreading, Asynchronous Programming & Concurrency</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.3.1</span> Thread vs. ThreadPool vs. Task</div>
+      
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Concept</th>
+            <th>Description & Resource Usage</th>
+            <th>When to Use?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Thread (<code>new Thread()</code>)</b></td>
+            <td>OS-level thread. Allocates ~1 MB stack space. High creation and context-switching overhead.</td>
+            <td>Rarely in modern apps (only for dedicated, continuous long-running background loops).</td>
+          </tr>
+          <tr>
+            <td><b>ThreadPool</b></td>
+            <td>Managed pool of worker threads maintained by .NET runtime. Reuses existing threads, avoiding 1 MB allocation per job.</td>
+            <td>Short-lived computational tasks. Handled automatically under the hood by <code>Task</code>.</td>
+          </tr>
+          <tr>
+            <td><b>Task (<code>Task.Run</code> / async)</b></td>
+            <td>Higher-level abstraction representing an asynchronous operation with return values, exception handling, and cancellation.</td>
+            <td><b>Standard in modern C#</b>. Coordinates I/O-bound and CPU-bound asynchronous workflows.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.3.2</span> How <code>async</code> / <code>await</code> Works Under the Hood: The Compiler State Machine</div>
+      <p><b>Core Insight:</b> <code>async</code> / <code>await</code> does <b>NOT</b> necessarily create a new thread! For I/O operations (reading a database, calling a REST API, writing to disk), it uses <b>I/O Completion Ports (IOCP)</b>.</p>
+      
+      <p>When the execution hits <code>await</code>:</p>
+      <ol>
+        <li>The C# compiler converts your method into a generated <code>IAsyncStateMachine</code> struct.</li>
+        <li>If the awaited task is already completed, execution continues synchronously without thread hopping.</li>
+        <li>If the task is pending, the current thread is <b>released back to the ThreadPool</b> to handle other incoming HTTP requests!</li>
+        <li>When the operating system signals that the I/O operation has completed (via hardware interrupt & IOCP), a thread pool worker resumes execution right after the <code>await</code> statement.</li>
+      </ol>
+
+      <div class="callout-interview">
+        <div class="callout-interview-title">🎯 Why This Matters in ASP.NET Core: Thread Starvation Prevention</div>
+        Synchronous blocking (e.g., <code>Thread.Sleep</code> or <code>.Result</code>) traps threads, causing <b>Thread Starvation</b> under high traffic. Using <code>async/await</code> allows a single server with 50 threads to handle 10,000 concurrent requests because threads are never sitting idle waiting for database queries!
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.3.3</span> The Deadlock Danger: Why You Must Never Use <code>.Result</code>, <code>.Wait()</code>, or <code>async void</code></div>
+      
+      <div class="code-box">// DANGEROUS ANTI-PATTERN: Sync-over-Async Deadlock
+public ActionResult GetData()
+{
+    // Calling .Result blocks the calling thread while waiting for the task
+    var result = FetchDataFromApiAsync().Result; // DEADLOCK POTENTIAL in sync contexts!
+    return View(result);
+}
+
+// WHY IT DEADLOCKS:
+// 1. The caller blocks Thread A waiting for FetchDataFromApiAsync to finish.
+// 2. FetchDataFromApiAsync finishes its I/O and tries to resume on SynchronizationContext (Thread A).
+// 3. Thread A is blocked waiting for the task, while the task is waiting for Thread A to be free.
+// RESULT: Complete Freeze (Deadlock)!
+
+// THE CORRECT WAY: Pure Async all the way
+public async Task&lt;ActionResult&gt; GetDataAsync()
+{
+    var result = await FetchDataFromApiAsync(); // Thread yields, resumes gracefully
+    return View(result);
+}</div>
+
+      <p><b>Why Avoid <code>async void</code>:</b></p>
+      <ul>
+        <li><code>async void</code> methods cannot be awaited.</li>
+        <li>Any exception thrown inside an <code>async void</code> method bypasses the normal <code>try/catch</code> block and crashes the entire application process!</li>
+        <li><i>Only acceptable exception:</i> UI Event Handlers (e.g., <code>button_Click(object sender, EventArgs e)</code>). Everywhere else, use <code>async Task</code>.</li>
+      </ul>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.3.4</span> <code>ValueTask&lt;T&gt;</code> vs. <code>Task&lt;T&gt;</code>: High-Throughput Optimization</div>
+      <ul>
+        <li><code>Task&lt;T&gt;</code> is a reference type. Every returned <code>Task</code> allocates an object on the managed heap.</li>
+        <li><code>ValueTask&lt;T&gt;</code> is a struct (value type). If the method frequently completes synchronously (such as fetching from an in-memory cache), <code>ValueTask&lt;T&gt;</code> allocates <b>zero heap memory</b>!</li>
+        <li><i>Golden Rule:</i> Use <code>ValueTask&lt;T&gt;</code> only when profiling indicates that your async method completes synchronously 90%+ of the time (e.g., Cache-hit before database call).</li>
+      </ul>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.3.5</span> Thread Synchronization: <code>lock</code>, <code>SemaphoreSlim</code>, and <code>Interlocked</code></div>
+      
+      <div class="code-box">// 1. Interlocked: Atomic operations without locking (Fastest for counters)
+private int _counter = 0;
+public void Increment() =&gt; Interlocked.Increment(ref _counter);
+
+// 2. lock (Monitor): CPU-bound synchronous mutual exclusion
+private readonly object _syncRoot = new object();
+public void AddSafe(string item)
+{
+    lock (_syncRoot) { /* critical section */ }
+}
+
+// 3. SemaphoreSlim: Asynchronous locking (lock cannot be used with 'await'!)
+private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
+public async Task AccessSharedResourceAsync()
+{
+    await _semaphore.WaitAsync(); // Non-blocking wait!
+    try
+    {
+        await Task.Delay(100); // Can safely await inside SemaphoreSlim
+    }
+    finally
+    {
+        _semaphore.Release();
+    }
+}</div>
+    </div>
+
+    <h2 class="section-title">1.4 Collections, Generics & LINQ Deep Dive</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.4.1</span> Collections Hierarchy: <code>IEnumerable</code> vs <code>ICollection</code> vs <code>IList</code> vs <code>IQueryable</code></div>
+      
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Interface</th>
+            <th>Capabilities & Methods</th>
+            <th>Evaluation & Execution</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b><code>IEnumerable&lt;T&gt;</code></b></td>
+            <td>Forward-only iteration via <code>GetEnumerator()</code>, <code>MoveNext()</code>. Read-only.</td>
+            <td>In-Memory. Evaluated in C# client memory using compiled delegates (<code>Func&lt;T, bool&gt;</code>).</td>
+          </tr>
+          <tr>
+            <td><b><code>ICollection&lt;T&gt;</code></b></td>
+            <td>Inherits <code>IEnumerable</code>. Adds <code>Count</code>, <code>Add()</code>, <code>Remove()</code>, <code>Contains()</code>.</td>
+            <td>In-Memory. Allows mutation and size checking without iterating.</td>
+          </tr>
+          <tr>
+            <td><b><code>IList&lt;T&gt;</code></b></td>
+            <td>Inherits <code>ICollection</code>. Adds index-based access (<code>list[i]</code>), <code>InsertAt()</code>.</td>
+            <td>In-Memory. Best when direct random access by index is required.</td>
+          </tr>
+          <tr>
+            <td><b><code>IQueryable&lt;T&gt;</code></b></td>
+            <td>Inherits <code>IEnumerable</code>. Holds an <b>Expression Tree</b> (<code>Expression&lt;Func&lt;T, bool&gt;&gt;</code>).</td>
+            <td><b>Database-Level Execution</b>. EF Core translates LINQ expression into raw optimized SQL sent to SQL Server! Filters execute on database server.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout-warning">
+        <div class="callout-warning-title">⚠️ Huge Interview Gotcha: IEnumerable vs IQueryable with EF Core</div>
+        If you write <code>IEnumerable&lt;User&gt; users = _dbContext.Users; users.Where(u =&gt; u.IsActive);</code>, EF Core loads <b>ALL 1,000,000 users from the database into RAM</b>, and then filters in C#!<br/>
+        If you write <code>IQueryable&lt;User&gt; users = _dbContext.Users; users.Where(u =&gt; u.IsActive);</code>, EF Core generates <code>SELECT * FROM Users WHERE IsActive = 1</code> directly in SQL Server!
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.4.2</span> Deferred Execution vs. Immediate Execution & Multiple Enumeration Bug</div>
+      <p><b>Deferred (Lazy) Execution:</b> LINQ query is not executed when defined. Execution happens only when the collection is iterated (via <code>foreach</code>, <code>ToList()</code>, <code>Count()</code>, <code>Any()</code>).</p>
+
+      <div class="code-box">// Trap: Multiple Enumeration Bug
+var activeOrders = _dbContext.Orders.Where(o =&gt; o.Status == "Active"); 
+
+// Execution 1: Hits Database here!
+if (activeOrders.Any()) 
+{
+    // Execution 2: HITS DATABASE A SECOND TIME!
+    foreach(var order in activeOrders) 
+    {
+        Console.WriteLine(order.Id);
+    }
+}
+
+// SOLUTION: Materialize once using ToList() / ToArray()
+var cachedOrders = await _dbContext.Orders.Where(o =&gt; o.Status == "Active").ToListAsync();
+if (cachedOrders.Any())
+{
+    foreach(var order in cachedOrders) { /* zero extra DB calls */ }
+}</div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.4.3</span> Key LINQ Operators for Real-World Problem Solving</div>
+      <ul>
+        <li><code>Select</code> vs <code>SelectMany</code>: <code>Select</code> transforms 1-to-1. <code>SelectMany</code> flattens nested collections (1-to-many list of lists into a single flat list).</li>
+        <li><code>GroupBy</code>: Groups elements by a key selector and returns <code>IEnumerable&lt;IGrouping&lt;TKey, TElement&gt;&gt;</code>.</li>
+        <li><code>Zip</code>: Merges two sequences element-by-element using a specified function.</li>
+        <li><code>Aggregate</code>: Applies an accumulator function over a sequence (e.g., calculating running totals, complex fold operations).</li>
+      </ul>
+    </div>
+
+    <h2 class="section-title">1.5 Delegates, Events & Modern C# Features</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.5.1</span> Delegates, Func, Action, and Predicate Explained Simply</div>
+      <p>A <b>Delegate</b> is a type-safe function pointer. It holds a reference to a method with a specific signature and return type.</p>
+
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Delegate Type</th>
+            <th>Signature & Return Type</th>
+            <th>Real-World Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b><code>Action&lt;T1, T2...&gt;</code></b></td>
+            <td>Takes 0 to 16 parameters, returns <b>void</b></td>
+            <td><code>Action&lt;string&gt; log = msg =&gt; Console.WriteLine(msg);</code></td>
+          </tr>
+          <tr>
+            <td><b><code>Func&lt;T1, ..., TResult&gt;</code></b></td>
+            <td>Takes 0 to 16 parameters, <b>returns a value</b> of type <code>TResult</code></td>
+            <td><code>Func&lt;int, int, int&gt; sum = (a, b) =&gt; a + b;</code></td>
+          </tr>
+          <tr>
+            <td><b><code>Predicate&lt;T&gt;</code></b></td>
+            <td>Takes 1 parameter of type <code>T</code>, returns <b>bool</b></td>
+            <td><code>Predicate&lt;int&gt; isEven = n =&gt; n % 2 == 0;</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.5.2</span> Modern C# Features (C# 9 to C# 12/13) That Stand Out in Interviews</div>
+      <ul>
+        <li><b>Records (<code>record class</code> / <code>record struct</code>):</b> Immutable reference types with built-in value-based equality, non-destructive mutation via <code>with</code> expression, and concise syntax. Ideal for DTOs and API responses.</li>
+        <li><b>Pattern Matching:</b> Switch expressions, relational patterns (<code>&gt; 50 and &lt; 100</code>), property patterns, and list patterns.</li>
+        <li><b>Primary Constructors:</b> Declare constructor parameters directly on class declaration (<code>public class OrderService(ILogger&lt;OrderService&gt; logger, IOrderRepository repo)</code>).</li>
+        <li><b>Nullable Reference Types (<code>string?</code>):</b> Compiler warnings for potential <code>NullReferenceException</code>.</li>
+      </ul>
+
+      <div class="code-box">// Modern C# 12 Sample: Primary Constructor + Pattern Matching + Records
+public record UserDto(int Id, string FullName, decimal Salary);
+
+public class PayrollCalculator(ILogger&lt;PayrollCalculator&gt; logger)
+{
+    public decimal CalculateTax(UserDto user) =&gt; user.Salary switch
+    {
+        &lt; 500000m                  =&gt; 0m,
+        &gt;= 500000m and &lt; 1000000m  =&gt; user.Salary * 0.10m,
+        &gt;= 1000000m                =&gt; user.Salary * 0.20m,
+        _                          =&gt; throw new ArgumentOutOfRangeException()
+    };
+}</div>
+    </div>
+    
+  
+    <div class="part-banner">
+      <div style="font-size: 13pt; text-transform: uppercase; letter-spacing: 2px; opacity: 0.85;">Part 1 • Section 2</div>
+      <h1 style="color: white; margin: 8px 0 4px 0; font-size: 24pt;">ASP.NET Core, Web API, REST & Enterprise Design Patterns</h1>
+      <div style="font-size: 11pt; opacity: 0.9;">Middleware Pipelines, Dependency Injection, REST Security, Microservices Architecture, and SOLID Patterns</div>
+    </div>
+
+    <h2 class="section-title">1.6 ASP.NET MVC Core Principles & State Management</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.6.1</span> The Complete ASP.NET MVC / Core Request Lifecycle</div>
+      <p>Interviewers want a step-by-step mental walkthrough of how an HTTP request travels from the client browser to the response:</p>
+      
+      <ol>
+        <li><b>Kestrel Web Server / IIS:</b> Listens for the TCP connection, terminates TLS/SSL, parses HTTP headers, and constructs the <code>HttpContext</code>.</li>
+        <li><b>Middleware Pipeline:</b> The request flows through registered middleware components (Authentication, Authorization, Routing, CORS, Custom Middleware) in sequential order.</li>
+        <li><b>Routing Middleware:</b> Matches the incoming URL path and HTTP verb to an endpoint (Controller action or Minimal API delegate).</li>
+        <li><b>Endpoint Execution (Action Filter Pipeline):</b>
+          <ul>
+            <li><b>Authorization Filters:</b> Verifies if the request identity has valid credentials/claims.</li>
+            <li><b>Resource Filters:</b> Runs before and after model binding (used for caching).</li>
+            <li><b>Model Binding & Validation:</b> Deserializes request body/query/route parameters into C# objects and executes DataAnnotations validation.</li>
+            <li><b>Action Filters:</b> Executes code immediately before and after the action method runs.</li>
+            <li><b>Action Method Execution:</b> Executes domain business logic.</li>
+            <li><b>Result Filters:</b> Executes code before and after the <code>IActionResult</code> produces output.</li>
+          </ul>
+        </li>
+        <li><b>Result Execution:</b> Razor view engine renders HTML or serializer converts C# DTOs to JSON.</li>
+        <li><b>Pipeline Unwinding:</b> Response heads back up the middleware chain to the client.</li>
+      </ol>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.6.2</span> State Management Comparison: ViewData vs. ViewBag vs. TempData vs. Session</div>
+      
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Mechanism</th>
+            <th>Type System</th>
+            <th>Scope & Lifetime</th>
+            <th>Underlying Storage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>ViewData</b></td>
+            <td>Key-Value dictionary (<code>ViewDataDictionary</code>). Requires casting.</td>
+            <td>Single request only (Controller to View).</td>
+            <td>In-Memory Dictionary</td>
+          </tr>
+          <tr>
+            <td><b>ViewBag</b></td>
+            <td>Dynamic wrapper around <code>ViewData</code> (uses C# <code>dynamic</code>). No casting needed, but no compile-time check.</td>
+            <td>Single request only (Controller to View).</td>
+            <td>Wraps ViewData dynamically</td>
+          </tr>
+          <tr>
+            <td><b>TempData</b></td>
+            <td>Dictionary with short lifespan. <b>Persists across redirects (RedirectToAction)</b>.</td>
+            <td>Cleared once read. Can persist via <code>Keep()</code> or <code>Peek()</code>.</td>
+            <td>Cookie-based or Session-backed (<code>ITempDataProvider</code>)</td>
+          </tr>
+          <tr>
+            <td><b>Session</b></td>
+            <td>User-specific state across multiple HTTP requests.</td>
+            <td>Persists until session timeout (default 20 min). Avoid in stateless REST APIs.</td>
+            <td>Server RAM or Distributed Redis</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.6.3</span> Partial Views vs. ViewComponents in ASP.NET Core</div>
+      <ul>
+        <li><b>Partial Views:</b> Lightweight reusable Razor views. Inherit the parent view's model and context. Cannot independently run complex business logic without polluting the parent controller.</li>
+        <li><b>ViewComponents:</b> Fully autonomous UI components with their own class logic, Dependency Injection support, and independent rendering. <i>Interview Rule:</i> Prefer ViewComponents for complex reusable UI blocks (e.g., dynamic shopping carts, navigation menus, login widgets).</li>
+      </ul>
+    </div>
+
+    <h2 class="section-title">1.7 ASP.NET Core Architecture, Middleware & Dependency Injection</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.7.1</span> What is Middleware? How to Build a Custom Global Exception Middleware</div>
+      <p><b>Middleware:</b> Software components assembled into an application pipeline to handle requests and responses. Each component can execute logic before and after the next component, or <b>short-circuit</b> the pipeline.</p>
+      
+      <p><b>Extension Methods:</b></p>
+      <ul>
+        <li><code>app.Use(...)</code>: Chains execution to the next middleware via <code>await next.Invoke()</code>.</li>
+        <li><code>app.Run(...)</code>: Terminal middleware; does not call next, short-circuits the pipeline.</li>
+        <li><code>app.Map(...)</code>: Branches the pipeline based on URL path matching.</li>
+      </ul>
+
+      <div class="code-box">// Enterprise Custom Global Exception Handling Middleware
+public class GlobalExceptionHandlingMiddleware
+{
+    private readonly RequestDelegate _next;
+    private readonly ILogger&lt;GlobalExceptionHandlingMiddleware&gt; _logger;
+
+    public GlobalExceptionHandlingMiddleware(RequestDelegate next, ILogger&lt;GlobalExceptionHandlingMiddleware&gt; logger)
+    {
+        _next = next;
+        _logger = logger;
+    }
+
+    public async Task InvokeAsync(HttpContext context)
+    {
+        try
+        {
+            await _next(context); // Pass request down pipeline
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unhandled exception occurred: {Message}", ex.Message);
+            await HandleExceptionAsync(context, ex);
+        }
+    }
+
+    private static async Task HandleExceptionAsync(HttpContext context, Exception ex)
+    {
+        context.Response.ContentType = "application/json";
+        
+        var statusCode = ex switch
+        {
+            KeyNotFoundException =&gt; StatusCodes.Status404NotFound,
+            UnauthorizedAccessException =&gt; StatusCodes.Status401Unauthorized,
+            InvalidOperationException =&gt; StatusCodes.Status400BadRequest,
+            _ =&gt; StatusCodes.Status500InternalServerError
+        };
+
+        context.Response.StatusCode = statusCode;
+
+        var response = new 
+        {
+            status = statusCode,
+            title = "An error occurred while processing your request.",
+            detail = ex.Message,
+            timestamp = DateTime.UtcNow
+        };
+
+        await context.Response.WriteAsJsonAsync(response);
+    }
+}
+
+// Registration in Program.cs:
+app.UseMiddleware&lt;GlobalExceptionHandlingMiddleware&gt;();</div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.7.2</span> Dependency Injection (DI) Lifetimes & The Captive Dependency Danger</div>
+      
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Service Lifetime</th>
+            <th>Registration Method</th>
+            <th>Instance Creation & Scope</th>
+            <th>Ideal Use Case</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Transient</b></td>
+            <td><code>AddTransient&lt;I, C&gt;()</code></td>
+            <td>New instance created <b>every single time</b> it is requested/injected.</td>
+            <td>Lightweight, stateless services (e.g., calculations, converters).</td>
+          </tr>
+          <tr>
+            <td><b>Scoped</b></td>
+            <td><code>AddScoped&lt;I, C&gt;()</code></td>
+            <td>Created <b>once per HTTP Request</b>. Shared across all components during that request.</td>
+            <td><b>DbContext (EF Core)</b>, User Context, Unit of Work.</td>
+          </tr>
+          <tr>
+            <td><b>Singleton</b></td>
+            <td><code>AddSingleton&lt;I, C&gt;()</code></td>
+            <td>Created <b>once on application startup</b> (or first use) and shared globally.</td>
+            <td>In-memory caches, background queue runners, application configuration.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout-warning">
+        <div class="callout-warning-title">⚠️ The Captive Dependency Anti-Pattern (Critical Interview Topic)</div>
+        <b>What is it?</b> Injecting a <b>Scoped</b> service (like <code>ApplicationDbContext</code>) into a <b>Singleton</b> service.<br/>
+        <b>Why is it dangerous?</b> The Singleton holds a reference to the Scoped service forever. This causes the DbContext to never be disposed, leading to unbounded memory leaks, stale caching, and catastrophic multithreading crashes because DbContext is <b>NOT thread-safe</b>!<br/>
+        <b>How to resolve:</b> In background services or Singletons, inject <code>IServiceScopeFactory</code> and create an explicit scope:
+      </div>
+
+      <div class="code-box">// Safe Scoped Resolution inside a Singleton Background Worker
+public class QueueWorker : BackgroundService
+{
+    private readonly IServiceScopeFactory _scopeFactory;
+
+    public QueueWorker(IServiceScopeFactory scopeFactory)
+    {
+        _scopeFactory = scopeFactory;
+    }
+
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    {
+        while (!stoppingToken.IsCancellationRequested)
+        {
+            using (var scope = _scopeFactory.CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetRequiredService&lt;ApplicationDbContext&gt;();
+                // Safely execute scoped EF Core operations!
+            }
+            await Task.Delay(5000, stoppingToken);
+        }
+    }
+}</div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.7.3</span> Configuration & Options Pattern: <code>IOptions</code> vs <code>IOptionsSnapshot</code> vs <code>IOptionsMonitor</code></div>
+      <ul>
+        <li><code>IOptions&lt;T&gt;</code>: Registered as Singleton. Reads configuration once at app startup. Does not detect runtime changes to <code>appsettings.json</code>.</li>
+        <li><code>IOptionsSnapshot&lt;T&gt;</code>: Registered as <b>Scoped</b>. Re-reads configuration on every HTTP request. Detects changes dynamically without server restart. Cannot be injected into Singletons!</li>
+        <li><code>IOptionsMonitor&lt;T&gt;</code>: Registered as <b>Singleton</b>. Supports real-time change notifications via <code>CurrentValue</code> and <code>OnChange()</code> callbacks across the whole app. Safe for Singletons.</li>
+      </ul>
+    </div>
+
+    <h2 class="section-title">1.8 RESTful API Architecture, HTTP Verbs & Security</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.8.1</span> HTTP Verbs, Idempotency, and Safety Cheat Sheet</div>
+      
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>HTTP Verb</th>
+            <th>CRUD Operation</th>
+            <th>Safe?</th>
+            <th>Idempotent?</th>
+            <th>Typical Status Codes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>GET</b></td>
+            <td>Read / Retrieve</td>
+            <td><b>Yes</b> (Does not modify server state)</td>
+            <td><b>Yes</b> (Calling 1 time or 100 times produces identical state)</td>
+            <td>200 OK, 404 Not Found</td>
+          </tr>
+          <tr>
+            <td><b>POST</b></td>
+            <td>Create / Process</td>
+            <td><b>No</b> (Modifies server state)</td>
+            <td><b>No</b> (Calling 10 times creates 10 separate duplicate records!)</td>
+            <td>201 Created (with <code>Location</code> header), 400 Bad Request</td>
+          </tr>
+          <tr>
+            <td><b>PUT</b></td>
+            <td>Full Replace / Update</td>
+            <td><b>No</b></td>
+            <td><b>Yes</b> (Replacing complete entity with payload N times results in identical state)</td>
+            <td>200 OK, 204 No Content, 404 Not Found</td>
+          </tr>
+          <tr>
+            <td><b>PATCH</b></td>
+            <td>Partial Update</td>
+            <td><b>No</b></td>
+            <td><b>No</b> (Depends on payload, e.g. JSON Patch <code>add</code> or increment operations)</td>
+            <td>200 OK, 204 No Content</td>
+          </tr>
+          <tr>
+            <td><b>DELETE</b></td>
+            <td>Delete resource</td>
+            <td><b>No</b></td>
+            <td><b>Yes</b> (Deleting entity once removes it; subsequent deletes still leave it gone)</td>
+            <td>200 OK, 204 No Content, 404 Not Found</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout-interview">
+        <div class="callout-interview-title">🎯 Definition to Remember:</div>
+        <b>Safe Methods:</b> Do not alter server resource representations (GET, HEAD, OPTIONS).<br/>
+        <b>Idempotent Methods:</b> Making multiple identical requests has the same intended effect on the server as making a single request (GET, PUT, DELETE, HEAD, OPTIONS).
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.8.2</span> Essential HTTP Status Codes Every .NET Developer Must Know</div>
+      <ul>
+        <li><b>2xx Success:</b> <code>200 OK</code> (Standard success), <code>201 Created</code> (Resource created, include Location header), <code>204 No Content</code> (Success, no response body returned).</li>
+        <li><b>3xx Redirection:</b> <code>301 Moved Permanently</code>, <code>304 Not Modified</code> (Browser cache validation).</li>
+        <li><b>4xx Client Errors:</b> <code>400 Bad Request</code> (Validation failed), <code>401 Unauthorized</code> (No or invalid auth token), <code>403 Forbidden</code> (Authenticated, but insufficient roles/permissions), <code>404 Not Found</code>, <code>409 Conflict</code> (e.g., Duplicate email or concurrency conflict), <code>422 Unprocessable Entity</code>.</li>
+        <li><b>5xx Server Errors:</b> <code>500 Internal Server Error</code> (Unhandled crash), <code>502 Bad Gateway</code> (Upstream proxy failure), <code>503 Service Unavailable</code> (Overloaded or maintenance).</li>
+      </ul>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.8.3</span> JWT (JSON Web Token) Deep Dive & Refresh Token Rotation</div>
+      <p><b>JWT Structure:</b> Three Base64Url-encoded strings separated by periods (<code>xxxxx.yyyyy.zzzzz</code>):</p>
+      <ol>
+        <li><b>Header:</b> Algorithm (e.g., HS256, RS256) & Token Type (JWT).</li>
+        <li><b>Payload (Claims):</b> Data claims like <code>sub</code> (userId), <code>email</code>, <code>role</code>, <code>exp</code> (expiration timestamp), <code>nbf</code>. <i>Crucial:</i> Payload is decoded easily—never store sensitive passwords or credit card numbers in claims!</li>
+        <li><b>Signature:</b> Hash generated by combining Header + Payload with a private secret key (<code>HMACSHA256(header + payload, secret)</code>). Protects against tampering.</li>
+      </ol>
+
+      <div class="callout-interview">
+        <div class="callout-interview-title">🎯 Interview Question: How do you handle JWT Revocation & Logout?</div>
+        "Since JWT is stateless, the server cannot naturally invalidate an access token before its expiration timestamp. In production, we implement two solutions:
+        <br/>1. <b>Short-lived Access Tokens (15 minutes)</b> paired with a <b>Refresh Token stored in the database</b>.
+        <br/>2. <b>Refresh Token Rotation:</b> When the client requests a new access token using a refresh token, the old refresh token is immediately revoked and a new one is issued. If a revoked refresh token is ever presented again, we flag a security breach and invalidate all active tokens for that user account."
+      </div>
+    </div>
+
+    <h2 class="section-title">1.9 Advanced .NET Patterns, Architecture & Microservices</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.9.1</span> SOLID Principles Applied with Real C# Examples</div>
+
+      <p><b>1. Single Responsibility Principle (SRP):</b> A class should have one, and only one, reason to change.</p>
+      <div class="code-box">// VIOLATION: OrderService handles business logic, database persistence, AND emails!
+// REFACTORED:
+public class OrderService
+{
+    private readonly IOrderRepository _repository;
+    private readonly INotificationService _notifier;
+    public OrderService(IOrderRepository repository, INotificationService notifier)
+    {
+        _repository = repository;
+        _notifier = notifier;
+    }
+    public async Task PlaceOrderAsync(Order order)
+    {
+        await _repository.SaveAsync(order);
+        await _notifier.SendConfirmationAsync(order.CustomerEmail);
+    }
+}</div>
+
+      <p><b>2. Open/Closed Principle (OCP):</b> Software entities should be open for extension, but closed for modification.</p>
+      <div class="code-box">// Use strategy interfaces so adding new discount types does NOT require modifying existing code!
+public interface IDiscountStrategy { decimal ApplyDiscount(decimal total); }
+public class RegularDiscount : IDiscountStrategy { public decimal ApplyDiscount(decimal t) =&gt; t; }
+public class DiwaliFestivalDiscount : IDiscountStrategy { public decimal ApplyDiscount(decimal t) =&gt; t * 0.80m; }</div>
+
+      <p><b>3. Liskov Substitution Principle (LSP):</b> Subtypes must be substitutable for their base types without altering application correctness.</p>
+      <div class="code-box">// Classic Violation: Square inheriting Rectangle and breaking width/height setters.
+// Solution: Create separate interfaces or shared base Shape without contradictory invariants.</div>
+
+      <p><b>4. Interface Segregation Principle (ISP):</b> Clients should not be forced to depend upon interfaces that they do not use.</p>
+      <div class="code-box">// Avoid "fat" interfaces like IGenericOperations { Print(); Fax(); Scan(); Email(); }
+// Break into lean, focused contracts: IPrintable, IScannable, IFaxable.</div>
+
+      <p><b>5. Dependency Inversion Principle (DIP):</b> High-level modules should not depend on low-level modules; both should depend on abstractions.</p>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.9.2</span> Essential Design Patterns for 3 YOE Interviews</div>
+      
+      <p><b>1. Thread-Safe Singleton with <code>Lazy&lt;T&gt;</code>:</b></p>
+      <div class="code-box">public sealed class CacheManager
+{
+    // Lazy&lt;T&gt; guarantees thread-safety and lazy initialization out of the box!
+    private static readonly Lazy&lt;CacheManager&gt; _instance = 
+        new Lazy&lt;CacheManager&gt;(() =&gt; new CacheManager());
+
+    public static CacheManager Instance =&gt; _instance.Value;
+
+    private CacheManager() { /* Private constructor prevents external instantiation */ }
+}</div>
+
+      <p><b>2. Repository and Unit of Work Pattern:</b></p>
+      <ul>
+        <li><b>Repository:</b> Mediates between the domain and data mapping layers, exposing collection-like methods (<code>GetById</code>, <code>Add</code>, <code>Remove</code>).</li>
+        <li><b>Unit of Work:</b> Coordinates the work of multiple repositories by maintaining a single database transaction context (calling <code>SaveChangesAsync</code> once across multiple repositories).</li>
+      </ul>
+
+      <p><b>3. CQRS (Command Query Responsibility Segregation) with MediatR:</b></p>
+      <ul>
+        <li><b>Commands:</b> Mutate state (e.g., <code>CreateUserCommand</code>, <code>CancelOrderCommand</code>). Handled by command handlers. No data return except ID/Status.</li>
+        <li><b>Queries:</b> Read-only operations (e.g., <code>GetUserByIdQuery</code>). Handled by query handlers. Optimized directly via Dapper or non-tracking EF Core queries (<code>AsNoTracking()</code>).</li>
+      </ul>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 1.9.3</span> Microservices Fundamentals, Resilience with Polly & Caching</div>
+      
+      <p><b>Resilience with Polly:</b> In distributed microservices, network blips are inevitable. We use Polly policies:</p>
+      <ul>
+        <li><b>Retry Policy:</b> Retries transient 5xx or network drops with exponential backoff (e.g., 2s, 4s, 8s with jitter).</li>
+        <li><b>Circuit Breaker:</b> Stops sending traffic to a downstream service that is crashing (e.g., if 50% of requests fail over 30s, "trip" the circuit open for 60s, failing fast and giving the downstream service time to recover).</li>
+      </ul>
+
+      <p><b>Caching: Cache-Aside Pattern with Redis:</b></p>
+      <div class="code-box">// Cache-Aside Pattern Flow:
+// 1. Check Redis Distributed Cache. If key exists -> Return immediately.
+// 2. If Miss -> Fetch from SQL Server.
+// 3. Save result into Redis with sliding expiration -> Return to caller.</div>
+    </div>
+    
+  
+    <div class="part-banner">
+      <div style="font-size: 13pt; text-transform: uppercase; letter-spacing: 2px; opacity: 0.85;">Part 2</div>
+      <h1 style="color: white; margin: 8px 0 4px 0; font-size: 24pt;">SQL Server Database Mastery</h1>
+      <div style="font-size: 11pt; opacity: 0.9;">Indexing Internals, Execution Plans, Joins, Window Functions, Transactions, ACID, Deadlocks, and Performance Tuning</div>
+    </div>
+
+    <h2 class="section-title">2.1 Indexing Internals & Physical Storage Architecture</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 2.1.1</span> Clustered Index vs. Non-Clustered Index: The Physical Storage Difference</div>
+      <p>Interviewers want you to explain how data pages are physically organized on disk via the B-Tree structure.</p>
+
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Clustered Index</th>
+            <th>Non-Clustered Index</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Physical Data Order</b></td>
+            <td>Physically sorts and stores table data rows in order of the index key.</td>
+            <td>Maintains a separate B-Tree structure independent of the physical table order.</td>
+          </tr>
+          <tr>
+            <td><b>Leaf Level Content</b></td>
+            <td><b>Contains actual data pages and complete row columns</b>.</td>
+            <td>Contains only the index key columns + a <b>Row Locator</b> (pointer).</td>
+          </tr>
+          <tr>
+            <td><b>Row Locator Pointer</b></td>
+            <td>None (it <i>is</i> the actual data).</td>
+            <td>Points to Clustered Key (if clustered table) or RID (Row ID if heap).</td>
+          </tr>
+          <tr>
+            <td><b>Count Limit</b></td>
+            <td><b>Strictly 1 per table</b> (table can only be physically sorted one way).</td>
+            <td>Up to <b>999 per table</b> in SQL Server.</td>
+          </tr>
+          <tr>
+            <td><b>Analogy</b></td>
+            <td>A Phone Book / Dictionary where words are naturally arranged alphabetically.</td>
+            <td>The Index at the back of a textbook with page numbers pointing to chapters.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout-interview">
+        <div class="callout-interview-title">🎯 Whiteboard Question: Why is Primary Key Clustered by Default?</div>
+        "When you define a Primary Key in SQL Server, it defaults to a Clustered Index, but you can explicitly create a Non-Clustered Primary Key (<code>PRIMARY KEY NONCLUSTERED</code>). Choose a Clustered Index key that is <b>narrow, unique, static, and monotonically increasing</b> (like an auto-incrementing <code>BIGINT IDENTITY</code>) to prevent costly B-Tree page splits during row inserts!"
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 2.1.2</span> Covering Index & Eliminating Costly Key Lookups (The <code>INCLUDE</code> Clause)</div>
+      <p><b>What is a Key Lookup?</b> When a query searches via a Non-Clustered index, finds the matching keys, but requires additional columns not present in the index leaf node. SQL Server is forced to perform a separate random I/O hop to the Clustered Index for <i>every single row</i> to fetch missing columns!</p>
+
+      <div class="code-box">-- Problematic Query with Key Lookup:
+SELECT CustomerId, OrderDate, TotalAmount 
+FROM Orders 
+WHERE CustomerId = 105;
+
+-- Standard Non-Clustered Index (Causes Key Lookup for TotalAmount and OrderDate):
+CREATE NONCLUSTERED INDEX IX_Orders_CustomerId ON Orders(CustomerId);
+
+-- SOLUTION: Covering Index using INCLUDE
+CREATE NONCLUSTERED INDEX IX_Orders_CustomerId_Covering 
+ON Orders(CustomerId) 
+INCLUDE (OrderDate, TotalAmount);</div>
+
+      <div class="callout-interview">
+        <div class="callout-interview-title">🎯 Why use INCLUDE instead of adding columns to the index key?</div>
+        Columns placed in the <code>INCLUDE</code> clause are stored <b>only at the leaf level</b>, not in the upper B-Tree branch/root levels. This keeps the index size compact, reduces tree depth, saves memory buffer pool space, and completely satisfies ("covers") the query without a Key Lookup!
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 2.1.3</span> Index Seek vs. Index Scan vs. Table Scan</div>
+      <ul>
+        <li><b>Index Seek (Best):</b> SQL Server navigates the B-Tree directly using search keys to land precisely on the matching range of rows. O(log N) lookup time.</li>
+        <li><b>Index Scan:</b> SQL Server reads every single page of the index from start to finish. Occurs when index exists, but query does not utilize the leading column, or has non-sargable predicates (e.g., <code>WHERE YEAR(OrderDate) = 2024</code>).</li>
+        <li><b>Table Scan (Worst on large tables):</b> Table has no clustered index (Heap). SQL Server reads every page of the entire table from beginning to end.</li>
+      </ul>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 2.1.4</span> Index Fragmentation & Maintenance: REORGANIZE vs. REBUILD</div>
+      <ul>
+        <li><b>Internal Fragmentation:</b> Pages have empty space due to updates/deletions.</li>
+        <li><b>External Fragmentation:</b> Logical B-Tree page ordering does not match physical disk sector ordering due to page splits.</li>
+        <li><b>Rule of Thumb:</b>
+          <ul>
+            <li>Fragmentation between <b>5% and 30%</b>: Run <code>ALTER INDEX ... REORGANIZE</code> (Online, low CPU, defragments leaf nodes without locking).</li>
+            <li>Fragmentation &gt; <b>30%</b>: Run <code>ALTER INDEX ... REBUILD WITH (ONLINE = ON)</code> (Drops and recreates index, updates statistics, high resource usage).</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <h2 class="section-title">2.2 Execution Plans & Query Optimization Secrets</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 2.2.1</span> How to Spot Performance Bottlenecks in Execution Plans</div>
+      <ol>
+        <li><b>Thick Connecting Arrows:</b> Indicates massive volume of rows flowing between operators. Check if filtering happened too late.</li>
+        <li><b>Warnings (Yellow Exclamation Mark):</b> Missing Index warnings, implicit data type conversions (e.g. comparing <code>VARCHAR</code> column to <code>NVARCHAR</code> variable causing non-sargable scan), or memory grant spills to TempDB.</li>
+        <li><b>Sort Operators (High Cost %):</b> Expensive in-memory sorting. Usually solved by indexing columns in the exact <code>ORDER BY</code> sequence.</li>
+        <li><b>Join Operators:</b>
+          <ul>
+            <li><b>Nested Loops:</b> Ideal when one input is very small and the other is indexed (Seek).</li>
+            <li><b>Hash Match:</b> Heavy, memory-intensive join for large, unsorted, non-indexed sets.</li>
+            <li><b>Merge Join:</b> Highly efficient join when both input streams are pre-sorted on join keys.</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 2.2.2</span> What is Parameter Sniffing and How to Fix It?</div>
+      <p><b>Parameter Sniffing:</b> When a Stored Procedure compiles for the first time, SQL Server inspects ("sniffs") the passed parameter values and creates an execution plan optimized for those specific values. If the first run passes a rare parameter returning 2 rows, an Index Seek plan is cached. When subsequent callers pass common parameters returning 500,000 rows, SQL Server reuses the Seek plan, causing disastrous performance!</p>
+
+      <div class="code-box">-- Solution 1: Optimize for an unknown distribution (Safe default)
+SELECT * FROM Customers WHERE Country = @Country
+OPTION (OPTIMIZE FOR (@Country UNKNOWN));
+
+-- Solution 2: Force Recompile for volatile workloads
+CREATE PROCEDURE GetCustomerOrders @Country VARCHAR(50)
+WITH RECOMPILE
+AS
+BEGIN
+    SELECT * FROM Customers WHERE Country = @Country;
+END;
+
+-- Solution 3: Local Variable Decoupling (Breaks parameter sniffing)
+DECLARE @LocalCountry VARCHAR(50) = @Country;
+SELECT * FROM Customers WHERE Country = @LocalCountry;</div>
+    </div>
+
+    <h2 class="section-title">2.3 Joins, Temporary Tables vs. Table Variables & CTEs</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 2.3.1</span> Temp Tables (<code>#Temp</code>) vs. Table Variables (<code>@Table</code>) vs. CTE</div>
+      
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Characteristic</th>
+            <th>Local Temp Table (<code>#Temp</code>)</th>
+            <th>Table Variable (<code>@Table</code>)</th>
+            <th>CTE (Common Table Expression)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Storage Location</b></td>
+            <td>TempDB database on disk / RAM buffer</td>
+            <td>TempDB database (NOT pure memory!)</td>
+            <td>In-memory query definition (Macro-like)</td>
+          </tr>
+          <tr>
+            <td><b>Statistics</b></td>
+            <td><b>Full column statistics created</b></td>
+            <td><b>No statistics</b> (Optimizer assumes 1 row in older versions!)</td>
+            <td>Derived from underlying tables</td>
+          </tr>
+          <tr>
+            <td><b>Indexes Allowed</b></td>
+            <td>Can add Clustered & Non-Clustered indexes</td>
+            <td>Only Primary Key / Unique constraints</td>
+            <td>None</td>
+          </tr>
+          <tr>
+            <td><b>Transaction Rollback</b></td>
+            <td>Participates in transaction rollback</td>
+            <td><b>Does NOT roll back</b> if outer transaction fails!</td>
+            <td>Scoped to single query statement</td>
+          </tr>
+          <tr>
+            <td><b>Best Use Case</b></td>
+            <td>Large intermediate datasets (&gt; 1,000 rows) with joins/filters</td>
+            <td>Small lookup datasets (&lt; 100 rows)</td>
+            <td>Code readability, hierarchical / recursive queries</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 2.3.2</span> Recursive CTE: Finding Organizational Hierarchies</div>
+      <div class="code-box">-- Real Interview Scenario: Manager-Employee Hierarchy
+WITH EmployeeHierarchyCTE AS
+(
+    -- Anchor Member: Top-level CEO / Director (ManagerId IS NULL)
+    SELECT EmployeeId, FirstName, ManagerId, 1 AS Level
+    FROM Employees
+    WHERE ManagerId IS NULL
+
+    UNION ALL
+
+    -- Recursive Member: Joins back to the CTE
+    SELECT e.EmployeeId, e.FirstName, e.ManagerId, eh.Level + 1
+    FROM Employees e
+    INNER JOIN EmployeeHierarchyCTE eh ON e.ManagerId = eh.EmployeeId
+)
+SELECT * FROM EmployeeHierarchyCTE ORDER BY Level, ManagerId;</div>
+    </div>
+
+    <h2 class="section-title">2.4 Window Functions & Analytical Queries</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 2.4.1</span> The Difference Between <code>ROW_NUMBER()</code>, <code>RANK()</code>, and <code>DENSE_RANK()</code></div>
+      
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Function</th>
+            <th>Ties Handling</th>
+            <th>Numbering Sequence Example (Ties on 100, 100, 90)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b><code>ROW_NUMBER()</code></b></td>
+            <td>Assigns unique sequential integers regardless of ties.</td>
+            <td>1, 2, 3</td>
+          </tr>
+          <tr>
+            <td><b><code>RANK()</code></b></td>
+            <td>Assigns same rank to ties, but <b>skips numbers</b> after ties.</td>
+            <td>1, 1, <b>3</b> (skips 2!)</td>
+          </tr>
+          <tr>
+            <td><b><code>DENSE_RANK()</code></b></td>
+            <td>Assigns same rank to ties, <b>without skipping</b> numbers.</td>
+            <td>1, 1, <b>2</b></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="code-box">-- Top Interview Query: Find Nth Highest Salary per Department
+WITH RankedSalaries AS
+(
+    SELECT 
+        EmpId, 
+        DepartmentId, 
+        Salary,
+        DENSE_RANK() OVER (PARTITION BY DepartmentId ORDER BY Salary DESC) as SalaryRank
+    FROM Employees
+)
+SELECT EmpId, DepartmentId, Salary 
+FROM RankedSalaries 
+WHERE SalaryRank = 2; -- Fetches the 2nd Highest Salary in each department</div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 2.4.2</span> <code>LEAD()</code> and <code>LAG()</code> for Trend & Delta Calculations</div>
+      <div class="code-box">-- Calculate Month-over-Month Revenue Growth
+SELECT 
+    SalesMonth,
+    Revenue,
+    LAG(Revenue, 1, 0) OVER (ORDER BY SalesMonth) AS PreviousMonthRevenue,
+    (Revenue - LAG(Revenue, 1, 0) OVER (ORDER BY SalesMonth)) AS GrowthDifference
+FROM MonthlySales;</div>
+    </div>
+
+    <h2 class="section-title">2.5 Transactions, ACID, Isolation Levels & Deadlocks</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 2.5.1</span> ACID Properties in Real Enterprise Banking</div>
+      <ul>
+        <li><b>Atomicity ("All or Nothing"):</b> If deducting money from Account A succeeds, but crediting Account B fails, the transaction rolls back completely.</li>
+        <li><b>Consistency:</b> The database transitions from one valid state to another, strictly enforcing constraints, foreign keys, and triggers.</li>
+        <li><b>Isolation:</b> Concurrent transactions execute without interfering with one another based on the configured isolation level.</li>
+        <li><b>Durability:</b> Once committed, transaction records are written to the Write-Ahead Transaction Log (LDF) on disk, persisting even if power fails immediately.</li>
+      </ul>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 2.5.2</span> Transaction Isolation Levels & Concurrency Phenomena</div>
+      
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Isolation Level</th>
+            <th>Dirty Read</th>
+            <th>Non-Repeatable Read</th>
+            <th>Phantom Read</th>
+            <th>Locking Mechanism</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Read Uncommitted (NOLOCK)</b></td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Takes no shared locks. Reads uncommitted in-flight changes.</td>
+          </tr>
+          <tr>
+            <td><b>Read Committed (Default)</b></td>
+            <td>No</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Shared locks released immediately after statement executes.</td>
+          </tr>
+          <tr>
+            <td><b>Repeatable Read</b></td>
+            <td>No</td>
+            <td>No</td>
+            <td>Yes</td>
+            <td>Shared locks held until end of entire transaction.</td>
+          </tr>
+          <tr>
+            <td><b>Serializable</b></td>
+            <td>No</td>
+            <td>No</td>
+            <td>No</td>
+            <td>Range locks (Key-Range) held until transaction finishes.</td>
+          </tr>
+          <tr>
+            <td><b>Snapshot Isolation</b></td>
+            <td>No</td>
+            <td>No</td>
+            <td>No</td>
+            <td>Row versioning in TempDB. <b>Zero reader-writer blocking!</b></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout-interview">
+        <div class="callout-interview-title">🎯 Concurrency Definitions:</div>
+        <ul>
+          <li><b>Dirty Read:</b> Reading data modified by an uncommitted transaction that later rolls back.</li>
+          <li><b>Non-Repeatable Read:</b> Re-reading the same row within a transaction and finding values modified by another committed transaction.</li>
+          <li><b>Phantom Read:</b> Re-executing a range query (e.g. <code>WHERE Age &gt; 30</code>) and discovering new rows inserted by another committed transaction.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 2.5.3</span> Deadlocks: Anatomy, Troubleshooting & Application Prevention</div>
+      <p><b>What is a Deadlock?</b> A situation where two or more transactions hold locks on resources the other needs, and neither can proceed. SQL Server's Lock Monitor thread checks for deadlocks every 5 seconds, selects a <b>Deadlock Victim</b> (usually the transaction that is cheapest to roll back), throws <b>Error 1205</b>, and rolls back its transaction.</p>
+
+      <div class="callout-interview">
+        <div class="callout-interview-title">🎯 How to Prevent Deadlocks in Production:</div>
+        <ol>
+          <li><b>Consistent Object Access Order:</b> Always access tables in the exact same sequence across all Stored Procedures (e.g., Table A first, then Table B).</li>
+          <li><b>Keep Transactions Short:</b> Do not make REST API calls, email sending, or heavy CPU calculations inside an active SQL transaction.</li>
+          <li><b>Use Snapshot Isolation (RCSI):</b> Enable Read Committed Snapshot Isolation (<code>ALTER DATABASE ... SET READ_COMMITTED_SNAPSHOT ON</code>) so readers do not block writers and writers do not block readers!</li>
+          <li><b>Application Retry Logic:</b> Catch SQL Server Error 1205 in C# with Polly retry policy and re-execute after a short backoff.</li>
+        </ol>
+      </div>
+    </div>
+    
+  
+    <div class="part-banner">
+      <div style="font-size: 13pt; text-transform: uppercase; letter-spacing: 2px; opacity: 0.85;">Part 3</div>
+      <h1 style="color: white; margin: 8px 0 4px 0; font-size: 24pt;">Angular & Frontend Integration Mastery</h1>
+      <div style="font-size: 11pt; opacity: 0.9;">Modern Standalone Architecture, Lifecycle Hooks, RxJS Reactive Streams, Forms, Guards, and HTTP Interceptors</div>
+    </div>
+
+    <h2 class="section-title">3.1 Angular Architecture & Standalone Components</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 3.1.1</span> Standalone Components vs. NgModules (Angular 15/16/17+)</div>
+      <p><b>Core Concept:</b> In modern Angular (Angular 14+ through 17+), <b>Standalone Components</b> have replaced the boilerplate of <code>NgModule</code>. A standalone component manages its own dependencies directly within the <code>@Component</code> decorator.</p>
+
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>NgModule-Based (Classic)</th>
+            <th>Standalone Components (Modern Standard)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Declaration</b></td>
+            <td>Must be declared in an <code>@NgModule({ declarations: [...] })</code></td>
+            <td>Configured with <code>standalone: true</code> directly in <code>@Component</code></td>
+          </tr>
+          <tr>
+            <td><b>Dependencies</b></td>
+            <td>Imported globally into the enclosing module</td>
+            <td>Imported specifically in component's <code>imports: [CommonModule, FormsModule]</code></td>
+          </tr>
+          <tr>
+            <td><b>Bootstrapping</b></td>
+            <td><code>platformBrowserDynamic().bootstrapModule(AppModule)</code></td>
+            <td><code>bootstrapApplication(AppComponent, appConfig)</code></td>
+          </tr>
+          <tr>
+            <td><b>Tree-Shaking & Bundle Size</b></td>
+            <td>Modules often bundle unused dependencies</td>
+            <td>Superior tree-shaking; only loaded dependencies are bundled</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="code-box">// Modern Standalone Component Example
+import { Component, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-user-profile',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
+  template: `
+    &lt;div class="card"&gt;
+      &lt;h3&gt;{{ username() }}&lt;/h3&gt;
+      &lt;button (click)="updateName()"&gt;Update&lt;/button&gt;
+    &lt;/div&gt;
+  `
+})
+export class UserProfileComponent {
+  username = signal('Mahesh Gupta'); // Angular 16+ Signals
+
+  updateName() {
+    this.username.set('Senior .NET & Angular Developer');
+  }
+}</div>
+    </div>
+
+    <h2 class="section-title">3.2 Component Lifecycle Hooks & Memory Leaks</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 3.2.1</span> The Complete Lifecycle Hook Execution Order</div>
+      
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Order</th>
+            <th>Hook Name</th>
+            <th>Trigger & Typical Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><code>ngOnChanges</code></td>
+            <td>Fires when any data-bound <b>@Input()</b> property changes. Receives <code>SimpleChanges</code> object.</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><code>ngOnInit</code></td>
+            <td>Fires once after first <code>ngOnChanges</code>. <b>Primary hook for calling backend REST APIs and initializing component data</b>.</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><code>ngDoCheck</code></td>
+            <td>Fires during every change detection run. Used for custom dirty-checking (use sparingly).</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><code>ngAfterContentInit</code></td>
+            <td>Fires once after external content projected via <code>&lt;ng-content&gt;</code> is initialized.</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><code>ngAfterContentChecked</code></td>
+            <td>Fires after projected content is checked by change detector.</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><code>ngAfterViewInit</code></td>
+            <td>Fires once after component view and child views are fully initialized. <b>Safe place to access @ViewChild DOM elements</b>.</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td><code>ngAfterViewChecked</code></td>
+            <td>Fires after view and children are checked.</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td><code>ngOnDestroy</code></td>
+            <td>Fires immediately before Angular destroys the component. <b>Crucial for unsubscribing RxJS subscriptions to prevent memory leaks!</b></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="code-box">// Memory Leak Prevention in Angular
+export class OrderComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject&lt;void&gt;();
+
+  ngOnInit() {
+    this.orderService.getLiveOrders()
+      .pipe(takeUntil(this.destroy$)) // Automatically unlinks when destroy$ emits!
+      .subscribe(orders => this.orders = orders);
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}</div>
+    </div>
+
+    <h2 class="section-title">3.3 RxJS Reactive Streams & State Management</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 3.3.1</span> Observable vs. Promise vs. Subject vs. BehaviorSubject</div>
+      
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Concept</th>
+            <th>Execution Nature</th>
+            <th>Values Emitted</th>
+            <th>Cancellable?</th>
+            <th>Key Use Case</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Promise</b></td>
+            <td>Eager (executes immediately upon creation)</td>
+            <td>Emits a <b>single</b> value or error</td>
+            <td>No native cancel</td>
+            <td>Simple async operations</td>
+          </tr>
+          <tr>
+            <td><b>Observable</b></td>
+            <td><b>Lazy</b> (does not execute until subscribed to!)</td>
+            <td>Emits <b>stream of 0 to infinite</b> values over time</td>
+            <td><b>Yes</b> (via <code>unsubscribe()</code>)</td>
+            <td>Angular HTTP requests, events, web sockets</td>
+          </tr>
+          <tr>
+            <td><b>Subject</b></td>
+            <td>Multicast event emitter (both Observable and Observer)</td>
+            <td>Emits to current active subscribers</td>
+            <td>Yes</td>
+            <td>Broadcasting events between decoupled components</td>
+          </tr>
+          <tr>
+            <td><b>BehaviorSubject</b></td>
+            <td>Special Subject requiring an initial seed value</td>
+            <td>Always emits the <b>current / latest cached value</b> immediately to new subscribers!</td>
+            <td>Yes</td>
+            <td><b>Global Client State (e.g. Current User, Auth Token, Cart State)</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 3.3.2</span> Crucial RxJS Operators for Technical Interviews</div>
+      <ul>
+        <li><code>switchMap</code>: <b>Cancels previous in-flight requests</b> when a new emission occurs. Essential for live search autocomplete to prevent race conditions!</li>
+        <li><code>mergeMap</code>: Runs multiple inner observables concurrently without cancellation.</li>
+        <li><code>concatMap</code>: Queues requests, executing them strictly sequentially in FIFO order.</li>
+        <li><code>exhaustMap</code>: Ignores new emissions while the current inner observable is still executing (ideal for Login / Submit buttons to prevent double-clicks).</li>
+        <li><code>catchError</code>: Gracefully catches HTTP errors, logs them, and returns fallback data (e.g. <code>of([])</code>).</li>
+      </ul>
+    </div>
+
+    <h2 class="section-title">3.4 Reactive Forms & Validation</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 3.4.1</span> Template-Driven vs. Reactive Forms Comparison</div>
+      
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Criterion</th>
+            <th>Template-Driven Forms</th>
+            <th>Reactive Forms (Model-Driven)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Setup</b></td>
+            <td>Implicit, declared in HTML template using <code>[(ngModel)]</code></td>
+            <td>Explicit, defined in TypeScript class via <code>FormGroup</code> and <code>FormControl</code></td>
+          </tr>
+          <tr>
+            <td><b>Data Model</b></td>
+            <td>Mutable, two-way bound</td>
+            <td>Immutable, structured reactive streams</td>
+          </tr>
+          <tr>
+            <td><b>Unit Testing</b></td>
+            <td>Difficult (requires rendering HTML DOM fixture)</td>
+            <td><b>Extremely easy</b> (test pure TypeScript class logic without DOM)</td>
+          </tr>
+          <tr>
+            <td><b>Scalability</b></td>
+            <td>Suitable for very simple forms (login, contact us)</td>
+            <td><b>Enterprise standard</b> (dynamic fields, complex cross-field validation, FormArray)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="code-box">// Enterprise Reactive Form with Custom Validator
+export class RegisterComponent implements OnInit {
+  registerForm!: FormGroup;
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit() {
+    this.registerForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      confirmPassword: ['', [Validators.required]]
+    }, { validators: this.passwordMatchValidator });
+  }
+
+  passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
+    const password = control.get('password')?.value;
+    const confirm = control.get('confirmPassword')?.value;
+    return password === confirm ? null : { passwordMismatch: true };
+  }
+}</div>
+    </div>
+
+    <h2 class="section-title">3.5 HTTP Interceptors & Route Guards</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 3.5.1</span> Creating an Auth & Global Error HttpInterceptor</div>
+      <p><b>HttpInterceptor:</b> Intercepts outgoing HTTP requests and incoming responses globally across the entire application.</p>
+
+      <div class="code-box">// Modern Functional HttpInterceptor (Angular 15+)
+import { HttpInterceptorFn, HttpErrorResponse } from '@angular/common/http';
+import { inject } from '@angular/core';
+import { AuthService } from './auth.service';
+import { catchError, throwError } from 'rxjs';
+
+export const authInterceptor: HttpInterceptorFn = (req, next) => {
+  const authService = inject(AuthService);
+  const token = authService.getToken();
+
+  // Clone request to add JWT Bearer header (HTTP requests are immutable)
+  let authReq = req;
+  if (token) {
+    authReq = req.clone({
+      setHeaders: { Authorization: `Bearer ${token}` }
+    });
+  }
+
+  return next(authReq).pipe(
+    catchError((error: HttpErrorResponse) => {
+      if (error.status === 401) {
+        authService.logout(); // Redirect to login on token expiry
+      }
+      return throwError(() => error);
+    })
+  );
+};</div>
+    </div>
+    
+  
+    <div class="part-banner">
+      <div style="font-size: 13pt; text-transform: uppercase; letter-spacing: 2px; opacity: 0.85;">Part 4</div>
+      <h1 style="color: white; margin: 8px 0 4px 0; font-size: 24pt;">Artificial Intelligence & LLMs for .NET Developers</h1>
+      <div style="font-size: 11pt; opacity: 0.9;">Integrating Azure OpenAI, Semantic Kernel, RAG Architecture, Vector Databases, and Function Calling in C#</div>
+    </div>
+
+    <h2 class="section-title">4.1 LLM Fundamentals Every Modern Developer Must Know</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 4.1.1</span> Core Concepts: Tokens, Context Windows, and Temperature</div>
+      <ul>
+        <li><b>Tokens:</b> Basic atomic units of text processed by an LLM (~1 token ≈ 0.75 English words or 4 characters). Billing and model limits are strictly calculated in tokens.</li>
+        <li><b>Context Window:</b> The maximum number of combined input (prompt) and output (completion) tokens the model can process in a single request (e.g. 128k tokens in GPT-4o).</li>
+        <li><b>Temperature:</b> Controls randomness/creativity of generations:
+          <ul>
+            <li><code>Temperature = 0.0 - 0.2</code>: Highly deterministic, precise, and factual. <b>Mandatory for code generation, JSON parsing, and financial data</b>.</li>
+            <li><code>Temperature = 0.7 - 1.0</code>: Creative, diverse text generation.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <h2 class="section-title">4.2 Connecting C# .NET to AI Services: Semantic Kernel</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 4.2.1</span> Microsoft Semantic Kernel vs. Direct OpenAI SDK</div>
+      <p><b>Semantic Kernel (SK):</b> Microsoft's official open-source enterprise SDK that integrates LLMs (OpenAI, Azure OpenAI, Hugging Face) with conventional C# code. It provides built-in support for <b>Plugins (Native C# Functions), Memory (Vector Stores), and Planners/Agents</b>.</p>
+
+      <div class="code-box">// Integrating Semantic Kernel in ASP.NET Core
+using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.ChatCompletion;
+
+var builder = Kernel.CreateBuilder();
+builder.AddAzureOpenAIChatCompletion(
+    deploymentName: "gpt-4o",
+    endpoint: "https://my-openai-resource.openai.azure.com/",
+    apiKey: "my-azure-api-key"
+);
+
+Kernel kernel = builder.Build();
+var chatService = kernel.GetRequiredService&lt;IChatCompletionService&gt;();
+
+var chatHistory = new ChatHistory();
+chatHistory.AddSystemMessage("You are an expert enterprise .NET software architect.");
+chatHistory.AddUserMessage("Explain why ValueTask reduces allocations in hot paths.");
+
+// Streaming response token-by-token in C# using IAsyncEnumerable
+await foreach (var messagePart in chatService.GetStreamingChatMessageContentsAsync(chatHistory))
+{
+    Console.Write(messagePart.Content);
+}</div>
+    </div>
+
+    <h2 class="section-title">4.3 Retrieval-Augmented Generation (RAG) Architecture</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 4.3.1</span> What is RAG and Why is it Preferred Over Model Fine-Tuning?</div>
+      <p><b>Problem:</b> LLMs have knowledge cut-off dates and frequently <b>hallucinate</b> when asked about proprietary private enterprise databases, HR policies, or live inventory.</p>
+      
+      <p><b>Fine-Tuning vs. RAG:</b></p>
+      <ul>
+        <li><b>Fine-Tuning:</b> Retrains model weights. Extremely expensive, slow, prone to catastrophic forgetting, and cannot guarantee real-time access to changing database records.</li>
+        <li><b>RAG (Retrieval-Augmented Generation):</b> Dynamically searches and retrieves relevant factual excerpts from private company data and injects them directly into the prompt context window before calling the LLM. <b>Factual, up-to-date, cost-effective, and fully auditable with citations!</b></li>
+      </ul>
+
+      <p><b>The 4-Step RAG Pipeline:</b></p>
+      <ol>
+        <li><b>Data Ingestion & Chunking:</b> Split large PDFs or database tables into semantic chunks (e.g., 500 tokens with 50-token overlap).</li>
+        <li><b>Embedding Generation:</b> Pass chunks into an embedding model (e.g. <code>text-embedding-3-small</code>) to generate 1536-dimensional mathematical vector representations.</li>
+        <li><b>Vector Storage:</b> Store vectors and chunk text into a Vector Database (Qdrant, pgvector, Azure AI Search, Pinecone).</li>
+        <li><b>Retrieval & Augmented Prompting:</b> When user asks a question, convert their question to a vector, find the top 3 nearest chunks via <b>Cosine Similarity</b>, and pass them as context to the LLM:</li>
+      </ol>
+
+      <div class="code-box">Prompt to LLM:
+"Answer the user question using ONLY the provided context below. If not found, say 'I don't know'.
+CONTEXT: {Retrieved Vector Search Chunks}
+USER QUESTION: {User Question}"</div>
+    </div>
+
+    <h2 class="section-title">4.4 Function Calling / Tool Calling in .NET</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">Q 4.4.1</span> How LLMs Trigger Native C# Functions</div>
+      <p><b>Function Calling:</b> Allows an LLM to recognize that a user request requires external data or action (e.g., "Check order status for ID 1098"). The LLM does <i>not</i> execute the code itself; instead, it outputs structured JSON specifying the function name and extracted arguments. The .NET backend executes the real C# method and feeds the result back to the model.</p>
+
+      <div class="code-box">// Exposing a C# Method as an AI Tool using Semantic Kernel
+public class OrderPlugins
+{
+    [KernelFunction, Description("Fetches live delivery status of an order from SQL database")]
+    public async Task&lt;string&gt; GetOrderStatus(
+        [Description("The unique integer Order ID")] int orderId)
+    {
+        // Real C# database query executed securely on backend:
+        return $"Order #{orderId} is currently Out for Delivery via BlueDart.";
+    }
+}</div>
+    </div>
+    
+  
+    <div class="part-banner">
+      <div style="font-size: 13pt; text-transform: uppercase; letter-spacing: 2px; opacity: 0.85;">Part 5</div>
+      <h1 style="color: white; margin: 8px 0 4px 0; font-size: 24pt;">HR & Behavioral Interview Mastery (3 YOE Special)</h1>
+      <div style="font-size: 11pt; opacity: 0.9;">Custom Self-Introduction, Job Change Justification, STAR Method Stories, Salary Negotiation, and Killer Questions</div>
+    </div>
+
+    <h2 class="section-title">5.1 The 90-Second Winning Self-Introduction (Elevator Pitch)</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">HR 1</span> "Tell Me About Yourself" (Tailored for a 3 YOE .NET Full-Stack Developer)</div>
+      
+      <div class="callout-interview">
+        <div class="callout-interview-title">🎯 Structure of a Master-Class 90-Second Intro:</div>
+        <b>Present (Who you are today & Core Tech)</b> ➔ <b>Past (Foundation & Key Projects)</b> ➔ <b>Key Impact (Quantified Business Value)</b> ➔ <b>Future (Why you are here today)</b>.
+      </div>
+
+      <div class="code-box" style="background-color: #F8FAFC; border-left: 4px solid #1E3A8A; color: #1E293B;">
+"Good morning / afternoon! Thank you for this opportunity.
+
+My name is <b>Mahesh Gupta</b>. I am a <b>Full-Stack .NET Developer with over 3 years of hands-on industry experience</b> specializing in building secure, scalable web applications and RESTful microservices using <b>C#, ASP.NET Core, SQL Server, and Angular</b>.
+
+In my current role, I actively contribute across the entire Software Development Lifecycle (SDLC). On the backend, I design and develop high-throughput REST APIs, implement Clean Architecture and Repository patterns, and optimize complex database operations using Entity Framework Core and raw SQL Server queries. On the frontend, I build modular, responsive user interfaces using Angular with Reactive Forms, RxJS streams, and HTTP interceptors.
+
+One of the proudest highlights of my work was leading the optimization of our core reporting API. By analyzing SQL Server execution plans, creating targeted covering indexes, and converting synchronous blocking database calls into asynchronous async/await workflows with Redis caching, we <b>reduced API response latency by nearly 55%</b> and eliminated recurring database connection timeouts during peak business hours.
+
+I also continuously upskill in modern technologies, including integrating AI and LLM capabilities into backend workflows and containerizing microservices.
+
+Now, with 3 years of solid foundation, I am looking to transition to an organization like yours where I can take on greater technical ownership, contribute to high-impact distributed systems, and continue growing as a senior full-stack engineer. That's a brief summary of my journey!"</div>
+    </div>
+
+    <h2 class="section-title">5.2 "Why Do You Want to Change Your Company?"</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">HR 2</span> Why are You Looking for a Change? (The Diplomatic, High-Value Answer)</div>
+      
+      <div class="callout-warning">
+        <div class="callout-warning-title">⚠️ What NOT to Say:</div>
+        Never complain about low salary, poor management, heavy workload, or internal company politics. The interviewer evaluates your professionalism and attitude under pressure.
+      </div>
+
+      <div class="code-box" style="background-color: #F0FDF4; border-left: 4px solid #16A34A; color: #1E293B;">
+<b>The Winning Response:</b>
+
+"My journey with my current organization has been truly rewarding. Over the past 3 years, they gave me the platform to grow from a junior developer into a dependable full-stack engineer, and I've built strong relationships with my team and managers.
+
+However, I feel I have reached a learning plateau in terms of architectural scope on my current project. At this 3-year juncture in my career, I am eager to step out of my comfort zone and challenge myself in a more dynamic technical environment.
+
+I want to work on large-scale distributed architectures, deeper cloud-native solutions, and high-concurrency systems. When I reviewed this role and your engineering culture, I saw a direct alignment with my technical aspirations where I can make immediate meaningful contributions while continuing to elevate my craft."</div>
+    </div>
+
+    <h2 class="section-title">5.3 "What Are Your Strengths and Weaknesses?"</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">HR 3</span> Strengths and Strategic Weakness with Turnaround Story</div>
+
+      <p><b>Strengths (Always back with real evidence):</b></p>
+      <ul>
+        <li><b>Root-Cause Problem Solving:</b> "I don't just patch symptoms; I dig into SQL execution plans and memory profilers to resolve the fundamental bottleneck."</li>
+        <li><b>End-to-End Ownership:</b> "I comfortably bridge backend API logic with frontend Angular components, ensuring smooth API contracts and robust error handling."</li>
+      </ul>
+
+      <p><b>Strategic Weakness (Genuine, non-critical, with active improvement):</b></p>
+      <div class="code-box" style="background-color: #FFFBEB; border-left: 4px solid #D97706; color: #1E293B;">
+<b>The Honest & Professional Weakness Response:</b>
+
+"Earlier in my career, I had a tendency to spend too much time over-engineering solutions—trying to make every single utility class ultra-generic from day one, which sometimes extended delivery timelines.
+
+I recognized this and adopted a more pragmatic approach: <i>'Make it work, make it clean, make it fast'</i>. Now, I focus on delivering clean, working code that meets immediate business requirements first, and refactor for broader generality only when actual domain need arises. This has significantly accelerated my delivery velocity."</div>
+    </div>
+
+    <h2 class="section-title">5.4 Real-Life STAR Method Behavioral Scenarios</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">HR 4</span> "Describe a Critical Production Bug You Resolved Under Pressure" (STAR Story)</div>
+      
+      <ul>
+        <li><b>S - Situation:</b> "During a month-end financial closing, our order processing API started failing with HTTP 500 errors. Customers experienced frequent timeouts, and server CPU spiked to 95%."</li>
+        <li><b>T - Task:</b> "As the on-call .NET engineer, I was tasked with identifying the root cause, stopping the transaction failures immediately, and ensuring no customer orders were lost."</li>
+        <li><b>A - Action:</b>
+          <ol>
+            <li>I checked our application logs and SQL Server Profiler, where I spotted multiple <b>SQL Error 1205: Transaction was deadlocked on resources with another process</b>.</li>
+            <li>I analyzed the queries involved and discovered that two concurrent background jobs were updating the <code>Orders</code> and <code>Inventory</code> tables in reverse order (Job 1 locked Orders then Inventory; Job 2 locked Inventory then Orders).</li>
+            <li>Furthermore, the API was using synchronous <code>.Result</code> on an async database call, leading to thread pool starvation.</li>
+            <li>I hotfixed the access order to be strictly sequential across both jobs, enabled <code>READ_COMMITTED_SNAPSHOT</code> (RCSI) on the database, and refactored the blocking API call to proper <code>await</code> syntax with cancellation tokens.</li>
+          </ol>
+        </li>
+        <li><b>R - Result:</b> "The hotfix deployed in 45 minutes, deadlocks dropped to zero, CPU utilization normalized back to 28%, and all pending transactions processed successfully. I documented the post-mortem incident report and added automated concurrency tests."</li>
+      </ul>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">HR 5</span> "How Do You Handle Disagreements with QA or Product Managers?"</div>
+      <div class="code-box" style="background-color: #F8FAFC; border-left: 4px solid #0284C7; color: #1E293B;">
+"I view QA and Product Managers as partners working toward the same objective: customer satisfaction and product reliability. 
+
+When a QA engineer flags an edge case that I initially believe is out of scope or not a defect, I never argue over chat or status tickets. I set up a quick 5-minute sync, walk through their exact reproduction steps, and understand the user impact. If it's a genuine risk, I happily fix it. If it's an enhancement outside the sprint commitment, I document it with the Product Owner for prioritized sprint backlog grooming. Clear communication and empathy always resolve tension."</div>
+    </div>
+
+    <h2 class="section-title">5.5 Career Vision, Notice Period & CTC Negotiation</h2>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">HR 6</span> Notice Period & Expected CTC Scripts</div>
+      
+      <p><b>Handling Notice Period (e.g. 60 or 90 days):</b></p>
+      <div class="code-box">"My official notice period is [X] days as per company policy. However, I have already documented my project modules thoroughly. Once an official offer is finalized, I am confident I can initiate knowledge transfer (KT) immediately and request my management for an early release / buyout to join within [30/45 days]."</div>
+
+      <p><b>Handling Expected CTC:</b></p>
+      <div class="code-box">"My current compensation is [X] LPA. Based on my 3 years of full-stack experience in C#, .NET Core, SQL Server, and Angular, and considering the industry standard for this position and the responsibilities required, I am expecting around [Y] LPA (typically 30-40% hike or competitive market band). However, I am open to discussing a fair package that aligns with your company's compensation structure."</div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-title"><span class="q-badge">HR 7</span> Smart Questions YOU Must Ask the Interviewer at the End</div>
+      <ol>
+        <li><i>"What does the day-to-day architecture workflow look like for the engineering team on this project?"</i></li>
+        <li><i>"What is the biggest technical challenge your team is currently tackling this quarter?"</i></li>
+        <li><i>"How does your engineering team approach automated CI/CD pipelines, code reviews, and technical debt?"</i></li>
+        <li><i>"What qualities distinguish a good developer from an exceptional developer in this role within the first 6 months?"</i></li>
+      </ol>
+    </div>
+    
+
+  <!-- APPENDIX -->
+  <div class="part-banner">
+    <div style="font-size: 13pt; text-transform: uppercase; letter-spacing: 2px; opacity: 0.85;">Appendix</div>
+    <h1 style="color: white; margin: 8px 0 4px 0; font-size: 24pt;">Interview Quick-Reference Cheat Sheets</h1>
+  </div>
+
+  <h2 class="section-title">A.1 C# Collections Time & Space Complexity</h2>
+  <table class="custom-table">
+    <thead>
+      <tr>
+        <th>Collection</th>
+        <th>Lookup by Index</th>
+        <th>Lookup by Key / Value</th>
+        <th>Insert / Add</th>
+        <th>Memory Overhead</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Array (<code>T[]</code>)</b></td>
+        <td>O(1)</td>
+        <td>O(N)</td>
+        <td>N/A (Fixed size)</td>
+        <td>Lowest (contiguous memory)</td>
+      </tr>
+      <tr>
+        <td><b><code>List&lt;T&gt;</code></b></td>
+        <td>O(1)</td>
+        <td>O(N)</td>
+        <td>O(1) amortized</td>
+        <td>Low (doubles capacity on overflow)</td>
+      </tr>
+      <tr>
+        <td><b><code>Dictionary&lt;TKey, TVal&gt;</code></b></td>
+        <td>N/A</td>
+        <td>O(1) average (O(N) worst)</td>
+        <td>O(1) average</td>
+        <td>Moderate (buckets + entries array)</td>
+      </tr>
+      <tr>
+        <td><b><code>HashSet&lt;T&gt;</code></b></td>
+        <td>N/A</td>
+        <td>O(1) average</td>
+        <td>O(1) average</td>
+        <td>Moderate (hash table with no values)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 class="section-title">A.2 Final Interview Success Checklist for Mahesh Gupta</h2>
+  <div class="callout-reallife">
+    <div class="callout-reallife-title">🚀 24 Hours Before Interview Checklist:</div>
+    <ul>
+      <li>Practice delivering the <b>90-Second Self Introduction (Section 5.1)</b> aloud 3 times until completely natural.</li>
+      <li>Review the <b>Method Hiding vs Overriding (Section 1.1.3)</b> and <b>Captive Dependency (Section 1.7.2)</b> code snippets.</li>
+      <li>Be ready to sketch the <b>Clustered Index B-Tree vs Non-Clustered with INCLUDE (Section 2.1)</b>.</li>
+      <li>Remember the difference between <b>switchMap</b> (cancels) and <b>exhaustMap</b> (ignores) in Angular RxJS (Section 3.3.2).</li>
+      <li>Have your <b>STAR story on the production deadlock resolution (Section 5.4)</b> fresh in your mind.</li>
+      <li>Stay confident: With 3 years of hands-on full-stack experience, you bring immense practical value to any engineering team!</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<div class="form-page">
+
+    <!-- HEADER -->
+
+    <div class="form-header">
+
+        <div>
+
+            <h1 class="page-title">
+
+                {{
+                    isEditMode
+                        ? 'Edit Category'
+                        : 'Add Category'
+                }}
+
+            </h1>
+
+            <p class="page-subtitle">
+
+                {{
+                    isEditMode
+                        ? 'Update category information'
+                        : 'Create a new business category'
+                }}
+
+            </p>
+
+        </div>
+
+
+        <a
+            routerLink="/admin/categories"
+            class="btn-back"
+        >
+
+            <i class="bi bi-arrow-left"></i>
+
+            Back to Categories
+
+        </a>
+
+    </div>
+
+
+    <!-- FORM -->
+
+    <div class="form-card">
+
+        <!-- BASIC INFORMATION -->
+
+        <div class="form-section">
+
+            <div class="section-title">
+
+                <i class="bi bi-folder"></i>
+
+                Category Information
+
+            </div>
+
+
+            <!-- NAME -->
+
+            <div class="form-group">
+
+                <label>
+                    Category Name <span>*</span>
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="category.name"
+                    (input)="generateSlug()"
+                    placeholder="Enter category name"
+                />
+
+            </div>
+
+
+            <!-- SLUG -->
+
+            <div class="form-group">
+
+                <label>
+                    Slug <span>*</span>
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="category.slug"
+                    placeholder="category-name"
+                />
+
+            </div>
+
+
+            <!-- ICON -->
+
+            <div class="form-group">
+
+                <label>
+                    Bootstrap Icon Class <span>*</span>
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="category.icon"
+                    placeholder="bi bi-shop"
+                />
+
+                <small class="field-help">
+                    Example: bi bi-shop
+                </small>
+
+            </div>
+
+
+            <!-- STATUS -->
+
+            <div class="form-group">
+
+                <label>
+                    Status
+                </label>
+
+                <select
+                    [(ngModel)]="category.status"
+                >
+
+                    <option
+                        *ngFor="let status of statuses"
+                        [value]="status"
+                    >
+                        {{ status }}
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- DESCRIPTION -->
+
+            <div class="form-group full-width">
+
+                <label>
+                    Description <span>*</span>
+                </label>
+
+                <textarea
+                    [(ngModel)]="category.description"
+                    rows="5"
+                    placeholder="Enter category description"
+                ></textarea>
+
+            </div>
+
+
+            <!-- FEATURED -->
+
+            <div class="checkbox-group full-width">
+
+                <label class="checkbox-label">
+
+                    <input
+                        type="checkbox"
+                        [(ngModel)]="category.featured"
+                    />
+
+                    <span>
+                        Featured Category
+                    </span>
+
+                </label>
+
+                <small>
+                    Featured categories can be highlighted on the city portal.
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- SEO -->
+
+        <div class="form-section">
+
+            <div class="section-title">
+
+                <i class="bi bi-search"></i>
+
+                SEO Information
+
+            </div>
+
+
+            <!-- META TITLE -->
+
+            <div class="form-group full-width">
+
+                <label>
+                    Meta Title
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="category.metaTitle"
+                    placeholder="SEO title"
+                />
+
+            </div>
+
+
+            <!-- META DESCRIPTION -->
+
+            <div class="form-group full-width">
+
+                <label>
+                    Meta Description
+                </label>
+
+                <textarea
+                    [(ngModel)]="category.metaDescription"
+                    rows="4"
+                    placeholder="SEO description"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+
+        <div class="form-actions">
+
+            <button
+                type="button"
+                class="btn-cancel"
+                (click)="cancel()"
+            >
+                Cancel
+            </button>
+
+
+            <button
+                type="button"
+                class="btn-save"
+                (click)="saveCategory()"
+            >
+
+                <i
+                    class="bi"
+                    [ngClass]="
+                        isEditMode
+                            ? 'bi-check-lg'
+                            : 'bi-plus-lg'
+                    "
+                ></i>
+
+                {{
+                    isEditMode
+                        ? 'Update Category'
+                        : 'Add Category'
+                }}
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

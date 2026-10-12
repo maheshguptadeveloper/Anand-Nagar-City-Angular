@@ -1,0 +1,627 @@
+<div class="form-page">
+
+    <!-- ========================================= -->
+    <!-- HEADER -->
+    <!-- ========================================= -->
+
+    <div class="form-header">
+
+        <div>
+
+            <h1 class="page-title">
+                {{
+                    isEditMode
+                        ? 'Edit Business'
+                        : 'Add Business'
+                }}
+            </h1>
+
+            <p class="page-subtitle">
+                {{
+                    isEditMode
+                        ? 'Update business information'
+                        : 'Add a new business to the Anand Nagar directory'
+                }}
+            </p>
+
+        </div>
+
+
+        <a
+            routerLink="/admin/directory"
+            class="btn-back"
+        >
+            <i class="bi bi-arrow-left"></i>
+            Back to Directory
+        </a>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- FORM CARD -->
+    <!-- ========================================= -->
+
+    <div class="form-card">
+
+
+        <!-- ========================================= -->
+        <!-- BASIC INFORMATION -->
+        <!-- ========================================= -->
+
+        <div class="form-section">
+
+            <div class="section-title">
+
+                <i class="bi bi-shop"></i>
+
+                Basic Information
+
+            </div>
+
+
+            <!-- BUSINESS NAME -->
+
+            <div class="form-group">
+
+                <label>
+                    Business Name <span>*</span>
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="business.businessName"
+                    (input)="generateSlug()"
+                    placeholder="Enter business name"
+                />
+
+            </div>
+
+
+            <!-- SLUG -->
+
+            <div class="form-group">
+
+                <label>
+                    Slug <span>*</span>
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="business.slug"
+                    placeholder="business-name"
+                />
+
+            </div>
+
+
+            <!-- CATEGORY -->
+
+            <div class="form-group">
+
+                <label>
+                    Category <span>*</span>
+                </label>
+
+                <select
+                    [(ngModel)]="business.category"
+                >
+
+                    <option value="">
+                        Select Category
+                    </option>
+
+                    <option
+                        *ngFor="let category of categories"
+                        [value]="category"
+                    >
+                        {{ category }}
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- STATUS -->
+
+            <div class="form-group">
+
+                <label>
+                    Status
+                </label>
+
+                <select
+                    [(ngModel)]="business.status"
+                >
+
+                    <option
+                        *ngFor="let status of statuses"
+                        [value]="status"
+                    >
+                        {{ status }}
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- SHORT DESCRIPTION -->
+
+            <div class="form-group full-width">
+
+                <label>
+                    Short Description
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="business.shortDescription"
+                    placeholder="Short business description"
+                />
+
+            </div>
+
+
+            <!-- DESCRIPTION -->
+
+            <div class="form-group full-width">
+
+                <label>
+                    Description
+                </label>
+
+                <textarea
+                    [(ngModel)]="business.description"
+                    rows="5"
+                    placeholder="Enter complete business description"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================================= -->
+        <!-- CONTACT INFORMATION -->
+        <!-- ========================================= -->
+
+        <div class="form-section">
+
+            <div class="section-title">
+
+                <i class="bi bi-person-lines-fill"></i>
+
+                Contact Information
+
+            </div>
+
+
+            <!-- CONTACT PERSON -->
+
+            <div class="form-group">
+
+                <label>
+                    Contact Person <span>*</span>
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="business.contactPerson"
+                    placeholder="Enter contact person"
+                />
+
+            </div>
+
+
+            <!-- MOBILE -->
+
+            <div class="form-group">
+
+                <label>
+                    Mobile Number <span>*</span>
+                </label>
+
+                <input
+                    type="tel"
+                    [(ngModel)]="business.mobile"
+                    maxlength="10"
+                    placeholder="Enter 10 digit mobile number"
+                />
+
+            </div>
+
+
+            <!-- ALTERNATE MOBILE -->
+
+            <div class="form-group">
+
+                <label>
+                    Alternate Mobile
+                </label>
+
+                <input
+                    type="tel"
+                    [(ngModel)]="business.alternateMobile"
+                    maxlength="10"
+                    placeholder="Enter alternate mobile"
+                />
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label>
+                    Email <span>*</span>
+                </label>
+
+                <input
+                    type="email"
+                    [(ngModel)]="business.email"
+                    placeholder="business@example.com"
+                />
+
+            </div>
+
+
+            <!-- WEBSITE -->
+
+            <div class="form-group full-width">
+
+                <label>
+                    Website
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="business.website"
+                    placeholder="https://example.com"
+                />
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================================= -->
+        <!-- ADDRESS -->
+        <!-- ========================================= -->
+
+        <div class="form-section">
+
+            <div class="section-title">
+
+                <i class="bi bi-geo-alt"></i>
+
+                Address & Location
+
+            </div>
+
+
+            <!-- ADDRESS -->
+
+            <div class="form-group full-width">
+
+                <label>
+                    Address <span>*</span>
+                </label>
+
+                <textarea
+                    [(ngModel)]="business.address"
+                    rows="3"
+                    placeholder="Enter complete business address"
+                ></textarea>
+
+            </div>
+
+
+            <!-- LOCALITY -->
+
+            <div class="form-group">
+
+                <label>
+                    Locality / Area <span>*</span>
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="business.locality"
+                    placeholder="Enter locality or area"
+                />
+
+            </div>
+
+
+            <!-- CITY -->
+
+            <div class="form-group">
+
+                <label>
+                    City
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="business.city"
+                    placeholder="Enter city"
+                />
+
+            </div>
+
+
+            <!-- PIN -->
+
+            <div class="form-group">
+
+                <label>
+                    PIN Code <span>*</span>
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="business.pinCode"
+                    maxlength="6"
+                    placeholder="273155"
+                />
+
+            </div>
+
+
+            <!-- MAP -->
+
+            <div class="form-group">
+
+                <label>
+                    Google Maps URL
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="business.googleMapsUrl"
+                    placeholder="Paste Google Maps URL"
+                />
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================================= -->
+        <!-- BUSINESS HOURS -->
+        <!-- ========================================= -->
+
+        <div class="form-section">
+
+            <div class="section-title">
+
+                <i class="bi bi-clock"></i>
+
+                Business Hours
+
+            </div>
+
+
+            <!-- OPENING -->
+
+            <div class="form-group">
+
+                <label>
+                    Opening Time
+                </label>
+
+                <input
+                    type="time"
+                    [(ngModel)]="business.openingTime"
+                />
+
+            </div>
+
+
+            <!-- CLOSING -->
+
+            <div class="form-group">
+
+                <label>
+                    Closing Time
+                </label>
+
+                <input
+                    type="time"
+                    [(ngModel)]="business.closingTime"
+                />
+
+            </div>
+
+
+            <!-- WORKING DAYS -->
+
+            <div class="form-group full-width">
+
+                <label>
+                    Working Days
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="business.workingDays"
+                    placeholder="Monday - Sunday"
+                />
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================================= -->
+        <!-- MEDIA -->
+        <!-- ========================================= -->
+
+        <div class="form-section">
+
+            <div class="section-title">
+
+                <i class="bi bi-images"></i>
+
+                Media
+
+            </div>
+
+
+            <!-- LOGO -->
+
+            <div class="form-group">
+
+                <label>
+                    Logo URL
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="business.logo"
+                    placeholder="/images/business-logo.jpg"
+                />
+
+            </div>
+
+
+            <!-- COVER -->
+
+            <div class="form-group">
+
+                <label>
+                    Cover Image URL
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="business.coverImage"
+                    placeholder="/images/business-cover.jpg"
+                />
+
+            </div>
+
+
+            <!-- FEATURED -->
+
+            <div class="checkbox-group full-width">
+
+                <label class="checkbox-label">
+
+                    <input
+                        type="checkbox"
+                        [(ngModel)]="business.featured"
+                    />
+
+                    <span>
+                        Featured Business
+                    </span>
+
+                </label>
+
+                <small>
+                    Featured businesses can be highlighted on the city portal.
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================================= -->
+        <!-- SEO -->
+        <!-- ========================================= -->
+
+        <div class="form-section">
+
+            <div class="section-title">
+
+                <i class="bi bi-search"></i>
+
+                SEO Information
+
+            </div>
+
+
+            <!-- META TITLE -->
+
+            <div class="form-group full-width">
+
+                <label>
+                    Meta Title
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="business.metaTitle"
+                    placeholder="SEO title"
+                />
+
+            </div>
+
+
+            <!-- META DESCRIPTION -->
+
+            <div class="form-group full-width">
+
+                <label>
+                    Meta Description
+                </label>
+
+                <textarea
+                    [(ngModel)]="business.metaDescription"
+                    rows="4"
+                    placeholder="SEO description"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================================= -->
+        <!-- ACTIONS -->
+        <!-- ========================================= -->
+
+        <div class="form-actions">
+
+            <button
+                type="button"
+                class="btn-cancel"
+                (click)="cancel()"
+            >
+                Cancel
+            </button>
+
+
+            <button
+                type="button"
+                class="btn-save"
+                (click)="saveBusiness()"
+            >
+
+                <i
+                    class="bi"
+                    [ngClass]="
+                        isEditMode
+                            ? 'bi-check-lg'
+                            : 'bi-plus-lg'
+                    "
+                ></i>
+
+                {{
+                    isEditMode
+                        ? 'Update Business'
+                        : 'Add Business'
+                }}
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

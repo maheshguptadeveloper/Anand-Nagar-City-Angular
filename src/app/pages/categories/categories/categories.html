@@ -1,0 +1,369 @@
+<div class="page-container">
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-header">
+
+        <div>
+
+            <h1 class="page-title">
+                Categories
+            </h1>
+
+            <p class="page-subtitle">
+                Manage business categories for the Anand Nagar directory
+            </p>
+
+        </div>
+
+        <a
+            routerLink="/admin/categories/add"
+            class="btn-primary"
+        >
+            <i class="bi bi-plus-lg"></i>
+            Add Category
+        </a>
+
+    </div>
+
+
+    <!-- FILTERS -->
+
+    <div class="filter-card">
+
+        <div class="search-box">
+
+            <i class="bi bi-search"></i>
+
+            <input
+                type="text"
+                [(ngModel)]="searchText"
+                (input)="onSearch()"
+                placeholder="Search category..."
+            />
+
+        </div>
+
+
+        <select
+            [(ngModel)]="selectedStatus"
+            (change)="onFilterChange()"
+        >
+
+            <option value="">
+                All Status
+            </option>
+
+            <option
+                *ngFor="let status of statuses"
+                [value]="status"
+            >
+                {{ status }}
+            </option>
+
+        </select>
+
+
+        <select
+            [(ngModel)]="selectedFeatured"
+            (change)="onFilterChange()"
+        >
+
+            <option value="">
+                All Categories
+            </option>
+
+            <option
+                *ngFor="let option of featuredOptions"
+                [value]="option"
+            >
+                {{ option }}
+            </option>
+
+        </select>
+
+
+        <button
+            type="button"
+            class="btn-clear"
+            (click)="clearFilters()"
+        >
+            <i class="bi bi-arrow-clockwise"></i>
+            Clear
+        </button>
+
+    </div>
+
+
+    <!-- COUNT -->
+
+    <div class="category-toolbar">
+
+        <div class="category-count">
+
+            <strong>
+                {{ filteredCategories.length }}
+            </strong>
+
+            categories found
+
+        </div>
+
+    </div>
+
+
+    <!-- TABLE -->
+
+    <div class="table-card">
+
+        <div class="table-responsive">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Category</th>
+
+                        <th>Description</th>
+
+                        <th>Businesses</th>
+
+                        <th>Featured</th>
+
+                        <th>Status</th>
+
+                        <th>Created</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr
+                        *ngFor="
+                            let category of paginatedCategories;
+                            trackBy: trackById
+                        "
+                    >
+
+                        <!-- CATEGORY -->
+
+                        <td>
+
+                            <div class="category-info">
+
+                                <div class="category-icon">
+
+                                    <i
+                                        [class]="category.icon"
+                                    ></i>
+
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        {{ category.name }}
+                                    </strong>
+
+                                    <small>
+                                        /{{ category.slug }}
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- DESCRIPTION -->
+
+                        <td>
+
+                            <div class="description">
+                                {{ category.description }}
+                            </div>
+
+                        </td>
+
+
+                        <!-- BUSINESS COUNT -->
+
+                        <td>
+
+                            <span class="business-count">
+
+                                <i class="bi bi-shop"></i>
+
+                                {{ category.businessCount }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- FEATURED -->
+
+                        <td>
+
+                            <button
+                                type="button"
+                                class="featured-button"
+                                [class.active]="category.featured"
+                                (click)="toggleFeatured(category)"
+                                [title]="
+                                    category.featured
+                                        ? 'Remove Featured'
+                                        : 'Mark as Featured'
+                                "
+                            >
+
+                                <i
+                                    class="bi"
+                                    [ngClass]="
+                                        category.featured
+                                            ? 'bi-star-fill'
+                                            : 'bi-star'
+                                    "
+                                ></i>
+
+                            </button>
+
+                        </td>
+
+
+                        <!-- STATUS -->
+
+                        <td>
+
+                            <span
+                                class="status-badge"
+                                [ngClass]="
+                                    getStatusClass(
+                                        category.status
+                                    )
+                                "
+                            >
+                                {{ category.status }}
+                            </span>
+
+                        </td>
+
+
+                        <!-- CREATED -->
+
+                        <td>
+                            {{ category.createdDate }}
+                        </td>
+
+
+                        <!-- ACTIONS -->
+
+                        <td>
+
+                            <div class="table-actions">
+
+                                <button
+                                    type="button"
+                                    title="Edit"
+                                    (click)="editCategory(category.id)"
+                                >
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="delete"
+                                    title="Delete"
+                                    (click)="deleteCategory(category.id)"
+                                >
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- EMPTY -->
+
+                    <tr
+                        *ngIf="
+                            paginatedCategories.length === 0
+                        "
+                    >
+
+                        <td
+                            colspan="7"
+                            class="empty-row"
+                        >
+
+                            <i class="bi bi-folder2-open"></i>
+
+                            <strong>
+                                No categories found
+                            </strong>
+
+                            <span>
+                                Try changing your search or filters.
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- PAGINATION -->
+
+    <div
+        class="pagination"
+        *ngIf="totalPages > 1"
+    >
+
+        <button
+            type="button"
+            [disabled]="currentPage === 1"
+            (click)="goToPage(currentPage - 1)"
+        >
+            <i class="bi bi-chevron-left"></i>
+        </button>
+
+
+        <button
+            type="button"
+            *ngFor="let page of pageNumbers"
+            [class.active]="currentPage === page"
+            (click)="goToPage(page)"
+        >
+            {{ page }}
+        </button>
+
+
+        <button
+            type="button"
+            [disabled]="currentPage === totalPages"
+            (click)="goToPage(currentPage + 1)"
+        >
+            <i class="bi bi-chevron-right"></i>
+        </button>
+
+    </div>
+
+</div>

@@ -338,6 +338,134 @@ export const routes: Routes = [
 },
 
 
+// =====================================
+// DIRECTORY - LIST
+// =====================================
+
+{
+    path: 'directory',
+    loadComponent: () =>
+        import('./pages/directory/directory/directory')
+            .then(m => m.Directory)
+},
+
+
+// =====================================
+// DIRECTORY - ADD
+// =====================================
+
+{
+    path: 'directory/add',
+    loadComponent: () =>
+        import('./pages/directory-form/directory-form/directory-form')
+            .then(m => m.DirectoryForm)
+},
+
+
+// =====================================
+// DIRECTORY - EDIT
+// =====================================
+
+{
+    path: 'directory/edit/:id',
+    loadComponent: () =>
+        import('./pages/directory-form/directory-form/directory-form')
+            .then(m => m.DirectoryForm)
+},
+
+// =====================================
+// CATEGORIES - LIST
+// =====================================
+
+{
+    path: 'categories',
+    loadComponent: () =>
+        import('./pages/categories/categories/categories')
+            .then(m => m.Categories)
+},
+
+
+// =====================================
+// CATEGORIES - ADD
+// =====================================
+
+{
+    path: 'categories/add',
+    loadComponent: () =>
+        import('./pages/category-form/category-form/category-form')
+            .then(m => m.CategoryForm)
+},
+
+
+// =====================================
+// CATEGORIES - EDIT
+// =====================================
+
+{
+    path: 'categories/edit/:id',
+    loadComponent: () =>
+        import('./pages/category-form/category-form/category-form')
+            .then(m => m.CategoryForm)
+},
+
+// =====================================
+// PRODUCTS - LIST
+// =====================================
+
+{
+    path: 'products',
+    loadComponent: () =>
+        import('./pages/products/products/products')
+            .then(m => m.Products)
+},
+
+
+// =====================================
+// PRODUCTS - ADD
+// =====================================
+
+{
+    path: 'products/add',
+    loadComponent: () =>
+        import('./pages/product-form/product-form/product-form')
+            .then(m => m.ProductForm)
+},
+
+
+// =====================================
+// PRODUCTS - EDIT
+// =====================================
+
+{
+    path: 'products/edit/:id',
+    loadComponent: () =>
+        import('./pages/product-form/product-form/product-form')
+            .then(m => m.ProductForm)
+},
+
+// =====================================
+// ENQUIRIES - LIST
+// =====================================
+
+{
+    path: 'enquiries',
+    loadComponent: () =>
+        import('./pages/enquiries/enquiries/enquiries')
+            .then(m => m.Enquiries)
+},
+
+
+// =====================================
+// ENQUIRIES - VIEW
+// =====================================
+
+{
+    path: 'enquiries/view/:id',
+    loadComponent: () =>
+        import('./pages/enquiry-form/enquiry-form/enquiry-form')
+            .then(m => m.EnquiryForm)
+},
+
 
 
 

@@ -1,0 +1,487 @@
+.page-container {
+    padding: 28px;
+}
+
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.page-title {
+    margin: 0;
+    font-size: 25px;
+    font-weight: 700;
+    color: #202124;
+}
+
+.page-subtitle {
+    margin: 6px 0 0;
+    color: #737783;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   PRIMARY BUTTON
+========================================= */
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 18px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #6d4aff, #4f46e5);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(79, 70, 229, 0.25);
+}
+
+
+/* =========================================
+   FILTER CARD
+========================================= */
+
+.filter-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    background: #fff;
+    border: 1px solid #e8e9ef;
+    border-radius: 10px;
+}
+
+.search-box {
+    position: relative;
+    flex: 1;
+    min-width: 230px;
+}
+
+.search-box i {
+    position: absolute;
+    top: 50%;
+    left: 13px;
+    transform: translateY(-50%);
+    color: #8b8f9b;
+}
+
+.search-box input {
+    width: 100%;
+    height: 42px;
+    padding: 0 14px 0 38px;
+    border: 1px solid #dddfe7;
+    border-radius: 7px;
+    outline: none;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.search-box input:focus {
+    border-color: #6d4aff;
+}
+
+
+.filter-card select {
+    height: 42px;
+    min-width: 150px;
+    padding: 0 12px;
+    border: 1px solid #dddfe7;
+    border-radius: 7px;
+    background: #fff;
+    color: #42454d;
+    outline: none;
+    font-size: 14px;
+}
+
+
+.btn-clear {
+    height: 42px;
+    padding: 0 14px;
+    border: 1px solid #dddfe7;
+    border-radius: 7px;
+    background: #fff;
+    color: #5d6270;
+    cursor: pointer;
+}
+
+.btn-clear:hover {
+    border-color: #6d4aff;
+    color: #6d4aff;
+}
+
+
+/* =========================================
+   TOOLBAR
+========================================= */
+
+.directory-toolbar {
+    margin-bottom: 15px;
+}
+
+.business-count {
+    color: #737783;
+    font-size: 14px;
+}
+
+.business-count strong {
+    color: #252832;
+}
+
+
+/* =========================================
+   TABLE
+========================================= */
+
+.table-card {
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #e7e8ee;
+    border-radius: 10px;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    min-width: 1050px;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #f8f8fb;
+}
+
+th {
+    padding: 14px 16px;
+    text-align: left;
+    color: #5e626d;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+td {
+    padding: 14px 16px;
+    border-top: 1px solid #eeeeF2;
+    color: #555a66;
+    font-size: 13px;
+}
+
+tbody tr:hover {
+    background: #fafaff;
+}
+
+
+/* =========================================
+   BUSINESS INFO
+========================================= */
+
+.business-info {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.business-logo {
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #f0edff;
+    color: #6d4aff;
+}
+
+.business-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.business-logo i {
+    font-size: 21px;
+}
+
+.business-info strong {
+    display: block;
+    max-width: 190px;
+    overflow: hidden;
+    color: #292c35;
+    font-size: 13px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.business-info small {
+    display: block;
+    margin-top: 4px;
+    color: #9296a1;
+    font-size: 11px;
+}
+
+
+/* =========================================
+   CATEGORY
+========================================= */
+
+.category-badge {
+    display: inline-flex;
+    padding: 5px 9px;
+    border-radius: 20px;
+    background: #f0edff;
+    color: #5b43d6;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   CONTACT
+========================================= */
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.contact-info span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.contact-info i {
+    color: #6d4aff;
+}
+
+
+/* =========================================
+   LOCATION
+========================================= */
+
+.location-info strong {
+    display: block;
+    color: #454852;
+    font-size: 12px;
+}
+
+.location-info small {
+    display: block;
+    margin-top: 4px;
+    color: #9699a3;
+    font-size: 11px;
+}
+
+
+/* =========================================
+   FEATURED
+========================================= */
+
+.featured-button {
+    width: 34px;
+    height: 34px;
+    border: 1px solid #dedfe6;
+    border-radius: 7px;
+    background: #fff;
+    color: #9a9da7;
+    cursor: pointer;
+}
+
+.featured-button:hover {
+    border-color: #e4c85c;
+    color: #d5a900;
+}
+
+.featured-button.active {
+    border-color: #ead27b;
+    background: #fff9df;
+    color: #e0ad00;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.status-badge {
+    display: inline-flex;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.status-active {
+    background: #e8f8ef;
+    color: #16834b;
+}
+
+.status-inactive {
+    background: #fcebed;
+    color: #c52e3e;
+}
+
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.table-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.table-actions button {
+    width: 31px;
+    height: 31px;
+    border: 1px solid #e1e2e7;
+    border-radius: 6px;
+    background: #fff;
+    color: #666b77;
+    cursor: pointer;
+}
+
+.table-actions button:hover {
+    color: #6d4aff;
+    border-color: #cbc5ff;
+}
+
+.table-actions button.delete:hover {
+    color: #dc3545;
+    border-color: #efb7be;
+}
+
+
+/* =========================================
+   EMPTY
+========================================= */
+
+.empty-row {
+    height: 220px;
+    text-align: center;
+}
+
+.empty-row i {
+    display: block;
+    margin-bottom: 10px;
+    color: #aaaebb;
+    font-size: 40px;
+}
+
+.empty-row strong {
+    display: block;
+    color: #4e525d;
+}
+
+.empty-row span {
+    display: block;
+    margin-top: 5px;
+    color: #9498a3;
+}
+
+
+/* =========================================
+   PAGINATION
+========================================= */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 22px;
+}
+
+.pagination button {
+    min-width: 34px;
+    height: 34px;
+    padding: 0 8px;
+    border: 1px solid #dedfe6;
+    border-radius: 6px;
+    background: #fff;
+    color: #666b76;
+    cursor: pointer;
+}
+
+.pagination button:hover:not(:disabled) {
+    border-color: #6d4aff;
+    color: #6d4aff;
+}
+
+.pagination button.active {
+    border-color: #6d4aff;
+    background: #6d4aff;
+    color: #fff;
+}
+
+.pagination button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1200px) {
+
+    .filter-card {
+        flex-wrap: wrap;
+    }
+
+    .search-box {
+        flex-basis: 100%;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .page-container {
+        padding: 18px;
+    }
+
+    .page-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .filter-card {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .filter-card select,
+    .btn-clear {
+        width: 100%;
+    }
+}

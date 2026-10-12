@@ -1,0 +1,430 @@
+<div class="page-container">
+
+    <!-- ========================================= -->
+    <!-- PAGE HEADER -->
+    <!-- ========================================= -->
+
+    <div class="page-header">
+
+        <div>
+            <h1 class="page-title">
+                Business Directory
+            </h1>
+
+            <p class="page-subtitle">
+                Manage businesses and local services in Anand Nagar
+            </p>
+        </div>
+
+        <a
+            routerLink="/admin/directory/add"
+            class="btn-primary"
+        >
+            <i class="bi bi-plus-lg"></i>
+            Add Business
+        </a>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- FILTERS -->
+    <!-- ========================================= -->
+
+    <div class="filter-card">
+
+        <div class="search-box">
+
+            <i class="bi bi-search"></i>
+
+            <input
+                type="text"
+                [(ngModel)]="searchText"
+                (input)="onSearch()"
+                placeholder="Search business..."
+            />
+
+        </div>
+
+
+        <select
+            [(ngModel)]="selectedCategory"
+            (change)="onFilterChange()"
+        >
+
+            <option value="">
+                All Categories
+            </option>
+
+            <option
+                *ngFor="let category of categories"
+                [value]="category"
+            >
+                {{ category }}
+            </option>
+
+        </select>
+
+
+        <select
+            [(ngModel)]="selectedStatus"
+            (change)="onFilterChange()"
+        >
+
+            <option value="">
+                All Status
+            </option>
+
+            <option
+                *ngFor="let status of statuses"
+                [value]="status"
+            >
+                {{ status }}
+            </option>
+
+        </select>
+
+
+        <select
+            [(ngModel)]="selectedFeatured"
+            (change)="onFilterChange()"
+        >
+
+            <option value="">
+                All Businesses
+            </option>
+
+            <option
+                *ngFor="let option of featuredOptions"
+                [value]="option"
+            >
+                {{ option }}
+            </option>
+
+        </select>
+
+
+        <button
+            type="button"
+            class="btn-clear"
+            (click)="clearFilters()"
+        >
+            <i class="bi bi-arrow-clockwise"></i>
+            Clear
+        </button>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- TOOLBAR -->
+    <!-- ========================================= -->
+
+    <div class="directory-toolbar">
+
+        <div class="business-count">
+
+            <strong>
+                {{ filteredBusinesses.length }}
+            </strong>
+
+            businesses found
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- TABLE -->
+    <!-- ========================================= -->
+
+    <div class="table-card">
+
+        <div class="table-responsive">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Business</th>
+
+                        <th>Category</th>
+
+                        <th>Contact</th>
+
+                        <th>Location</th>
+
+                        <th>Featured</th>
+
+                        <th>Status</th>
+
+                        <th>Created</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr
+                        *ngFor="
+                            let business of paginatedBusinesses;
+                            trackBy: trackById
+                        "
+                    >
+
+                        <!-- BUSINESS -->
+
+                        <td>
+
+                            <div class="business-info">
+
+                                <div class="business-logo">
+
+                                    <img
+                                        *ngIf="business.logo"
+                                        [src]="business.logo"
+                                        [alt]="business.businessName"
+                                    />
+
+                                    <i
+                                        *ngIf="!business.logo"
+                                        class="bi bi-shop"
+                                    ></i>
+
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        {{ business.businessName }}
+                                    </strong>
+
+                                    <small>
+                                        {{ business.contactPerson }}
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- CATEGORY -->
+
+                        <td>
+
+                            <span class="category-badge">
+                                {{ business.category }}
+                            </span>
+
+                        </td>
+
+
+                        <!-- CONTACT -->
+
+                        <td>
+
+                            <div class="contact-info">
+
+                                <span>
+                                    <i class="bi bi-phone"></i>
+                                    {{ business.mobile }}
+                                </span>
+
+                                <span>
+                                    <i class="bi bi-envelope"></i>
+                                    {{ business.email }}
+                                </span>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- LOCATION -->
+
+                        <td>
+
+                            <div class="location-info">
+
+                                <strong>
+                                    {{ business.locality }}
+                                </strong>
+
+                                <small>
+                                    {{ business.city }}
+                                </small>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- FEATURED -->
+
+                        <td>
+
+                            <button
+                                type="button"
+                                class="featured-button"
+                                [class.active]="business.featured"
+                                (click)="toggleFeatured(business)"
+                                [title]="
+                                    business.featured
+                                        ? 'Remove Featured'
+                                        : 'Mark as Featured'
+                                "
+                            >
+
+                                <i
+                                    class="bi"
+                                    [ngClass]="
+                                        business.featured
+                                            ? 'bi-star-fill'
+                                            : 'bi-star'
+                                    "
+                                ></i>
+
+                            </button>
+
+                        </td>
+
+
+                        <!-- STATUS -->
+
+                        <td>
+
+                            <span
+                                class="status-badge"
+                                [ngClass]="
+                                    getStatusClass(
+                                        business.status
+                                    )
+                                "
+                            >
+                                {{ business.status }}
+                            </span>
+
+                        </td>
+
+
+                        <!-- CREATED -->
+
+                        <td>
+                            {{ business.createdDate }}
+                        </td>
+
+
+                        <!-- ACTIONS -->
+
+                        <td>
+
+                            <div class="table-actions">
+
+                                <button
+                                    type="button"
+                                    title="Edit"
+                                    (click)="editBusiness(business.id)"
+                                >
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="delete"
+                                    title="Delete"
+                                    (click)="deleteBusiness(business.id)"
+                                >
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- EMPTY -->
+
+                    <tr
+                        *ngIf="
+                            paginatedBusinesses.length === 0
+                        "
+                    >
+
+                        <td
+                            colspan="8"
+                            class="empty-row"
+                        >
+
+                            <i class="bi bi-shop"></i>
+
+                            <strong>
+                                No businesses found
+                            </strong>
+
+                            <span>
+                                Try changing your search or filters.
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- PAGINATION -->
+    <!-- ========================================= -->
+
+    <div
+        class="pagination"
+        *ngIf="totalPages > 1"
+    >
+
+        <button
+            type="button"
+            [disabled]="currentPage === 1"
+            (click)="goToPage(currentPage - 1)"
+        >
+            <i class="bi bi-chevron-left"></i>
+        </button>
+
+
+        <button
+            type="button"
+            *ngFor="let page of pageNumbers"
+            [class.active]="currentPage === page"
+            (click)="goToPage(page)"
+        >
+            {{ page }}
+        </button>
+
+
+        <button
+            type="button"
+            [disabled]="currentPage === totalPages"
+            (click)="goToPage(currentPage + 1)"
+        >
+            <i class="bi bi-chevron-right"></i>
+        </button>
+
+    </div>
+
+</div>

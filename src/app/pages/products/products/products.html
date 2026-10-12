@@ -1,0 +1,445 @@
+<div class="page-container">
+
+    <!-- ========================================= -->
+    <!-- PAGE HEADER -->
+    <!-- ========================================= -->
+
+    <div class="page-header">
+
+        <div>
+
+            <h1 class="page-title">
+                Products
+            </h1>
+
+            <p class="page-subtitle">
+                Manage products available on the Anand Nagar city portal
+            </p>
+
+        </div>
+
+        <a
+            routerLink="/admin/products/add"
+            class="btn-primary"
+        >
+            <i class="bi bi-plus-lg"></i>
+            Add Product
+        </a>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- FILTERS -->
+    <!-- ========================================= -->
+
+    <div class="filter-card">
+
+        <div class="search-box">
+
+            <i class="bi bi-search"></i>
+
+            <input
+                type="text"
+                [(ngModel)]="searchText"
+                (input)="onSearch()"
+                placeholder="Search product, SKU or brand..."
+            />
+
+        </div>
+
+
+        <select
+            [(ngModel)]="selectedCategory"
+            (change)="onFilterChange()"
+        >
+
+            <option value="">
+                All Categories
+            </option>
+
+            <option
+                *ngFor="let category of categories"
+                [value]="category"
+            >
+                {{ category }}
+            </option>
+
+        </select>
+
+
+        <select
+            [(ngModel)]="selectedStatus"
+            (change)="onFilterChange()"
+        >
+
+            <option value="">
+                All Status
+            </option>
+
+            <option
+                *ngFor="let status of statuses"
+                [value]="status"
+            >
+                {{ status }}
+            </option>
+
+        </select>
+
+
+        <select
+            [(ngModel)]="selectedStock"
+            (change)="onFilterChange()"
+        >
+
+            <option value="">
+                All Stock
+            </option>
+
+            <option
+                *ngFor="let stock of stockOptions"
+                [value]="stock"
+            >
+                {{ stock }}
+            </option>
+
+        </select>
+
+
+        <button
+            type="button"
+            class="btn-clear"
+            (click)="clearFilters()"
+        >
+            <i class="bi bi-arrow-clockwise"></i>
+            Clear
+        </button>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- COUNT -->
+    <!-- ========================================= -->
+
+    <div class="product-toolbar">
+
+        <div class="product-count">
+
+            <strong>
+                {{ filteredProducts.length }}
+            </strong>
+
+            products found
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- TABLE -->
+    <!-- ========================================= -->
+
+    <div class="table-card">
+
+        <div class="table-responsive">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Product</th>
+
+                        <th>Category</th>
+
+                        <th>Price</th>
+
+                        <th>Stock</th>
+
+                        <th>Featured</th>
+
+                        <th>Status</th>
+
+                        <th>Created</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr
+                        *ngFor="
+                            let product of paginatedProducts;
+                            trackBy: trackById
+                        "
+                    >
+
+                        <!-- PRODUCT -->
+
+                        <td>
+
+                            <div class="product-info">
+
+                                <div class="product-image">
+
+                                    <img
+                                        *ngIf="product.image"
+                                        [src]="product.image"
+                                        [alt]="product.name"
+                                    />
+
+                                    <i
+                                        *ngIf="!product.image"
+                                        class="bi bi-box-seam"
+                                    ></i>
+
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        {{ product.name }}
+                                    </strong>
+
+                                    <small>
+                                        SKU: {{ product.sku }}
+                                    </small>
+
+                                    <small>
+                                        {{ product.brand }}
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- CATEGORY -->
+
+                        <td>
+
+                            <span class="category-badge">
+                                {{ product.category }}
+                            </span>
+
+                        </td>
+
+
+                        <!-- PRICE -->
+
+                        <td>
+
+                            <div class="price-info">
+
+                                <strong>
+                                    ₹{{ product.salePrice | number:'1.2-2' }}
+                                </strong>
+
+                                <del
+                                    *ngIf="
+                                        product.price >
+                                        product.salePrice
+                                    "
+                                >
+                                    ₹{{ product.price | number:'1.2-2' }}
+                                </del>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- STOCK -->
+
+                        <td>
+
+                            <div class="stock-info">
+
+                                <strong
+                                    [ngClass]="
+                                        getStockClass(
+                                            product.stock
+                                        )
+                                    "
+                                >
+                                    {{ product.stock }}
+                                </strong>
+
+                                <small>
+                                    {{ getStockText(product.stock) }}
+                                </small>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- FEATURED -->
+
+                        <td>
+
+                            <button
+                                type="button"
+                                class="featured-button"
+                                [class.active]="product.featured"
+                                (click)="toggleFeatured(product)"
+                                [title]="
+                                    product.featured
+                                        ? 'Remove Featured'
+                                        : 'Mark as Featured'
+                                "
+                            >
+
+                                <i
+                                    class="bi"
+                                    [ngClass]="
+                                        product.featured
+                                            ? 'bi-star-fill'
+                                            : 'bi-star'
+                                    "
+                                ></i>
+
+                            </button>
+
+                        </td>
+
+
+                        <!-- STATUS -->
+
+                        <td>
+
+                            <span
+                                class="status-badge"
+                                [ngClass]="
+                                    getStatusClass(
+                                        product.status
+                                    )
+                                "
+                            >
+                                {{ product.status }}
+                            </span>
+
+                        </td>
+
+
+                        <!-- CREATED -->
+
+                        <td>
+                            {{ product.createdDate }}
+                        </td>
+
+
+                        <!-- ACTIONS -->
+
+                        <td>
+
+                            <div class="table-actions">
+
+                                <button
+                                    type="button"
+                                    title="Edit"
+                                    (click)="editProduct(product.id)"
+                                >
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="delete"
+                                    title="Delete"
+                                    (click)="deleteProduct(product.id)"
+                                >
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- EMPTY -->
+
+                    <tr
+                        *ngIf="
+                            paginatedProducts.length === 0
+                        "
+                    >
+
+                        <td
+                            colspan="8"
+                            class="empty-row"
+                        >
+
+                            <i class="bi bi-box-seam"></i>
+
+                            <strong>
+                                No products found
+                            </strong>
+
+                            <span>
+                                Try changing your search or filters.
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- PAGINATION -->
+    <!-- ========================================= -->
+
+    <div
+        class="pagination"
+        *ngIf="totalPages > 1"
+    >
+
+        <button
+            type="button"
+            [disabled]="currentPage === 1"
+            (click)="goToPage(currentPage - 1)"
+        >
+            <i class="bi bi-chevron-left"></i>
+        </button>
+
+
+        <button
+            type="button"
+            *ngFor="let page of pageNumbers"
+            [class.active]="currentPage === page"
+            (click)="goToPage(page)"
+        >
+            {{ page }}
+        </button>
+
+
+        <button
+            type="button"
+            [disabled]="currentPage === totalPages"
+            (click)="goToPage(currentPage + 1)"
+        >
+            <i class="bi bi-chevron-right"></i>
+        </button>
+
+    </div>
+
+</div>

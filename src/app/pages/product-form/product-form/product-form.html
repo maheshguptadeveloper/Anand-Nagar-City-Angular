@@ -1,0 +1,573 @@
+<div class="form-page">
+
+    <!-- ========================================= -->
+    <!-- HEADER -->
+    <!-- ========================================= -->
+
+    <div class="form-header">
+
+        <div>
+
+            <h1 class="page-title">
+
+                {{
+                    isEditMode
+                        ? 'Edit Product'
+                        : 'Add Product'
+                }}
+
+            </h1>
+
+            <p class="page-subtitle">
+
+                {{
+                    isEditMode
+                        ? 'Update product information'
+                        : 'Add a new product to the city portal'
+                }}
+
+            </p>
+
+        </div>
+
+
+        <a
+            routerLink="/admin/products"
+            class="btn-back"
+        >
+
+            <i class="bi bi-arrow-left"></i>
+
+            Back to Products
+
+        </a>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- FORM CARD -->
+    <!-- ========================================= -->
+
+    <div class="form-card">
+
+
+        <!-- ========================================= -->
+        <!-- BASIC INFORMATION -->
+        <!-- ========================================= -->
+
+        <div class="form-section">
+
+            <div class="section-title">
+
+                <i class="bi bi-box-seam"></i>
+
+                Product Information
+
+            </div>
+
+
+            <!-- PRODUCT NAME -->
+
+            <div class="form-group">
+
+                <label>
+                    Product Name <span>*</span>
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="product.name"
+                    (input)="generateSlug()"
+                    placeholder="Enter product name"
+                />
+
+            </div>
+
+
+            <!-- SKU -->
+
+            <div class="form-group">
+
+                <label>
+                    SKU <span>*</span>
+                </label>
+
+                <div class="input-with-button">
+
+                    <input
+                        type="text"
+                        [(ngModel)]="product.sku"
+                        placeholder="ANP-1001"
+                    />
+
+                    <button
+                        type="button"
+                        (click)="generateSku()"
+                        title="Generate SKU"
+                    >
+                        <i class="bi bi-magic"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- SLUG -->
+
+            <div class="form-group">
+
+                <label>
+                    Slug <span>*</span>
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="product.slug"
+                    placeholder="product-name"
+                />
+
+            </div>
+
+
+            <!-- CATEGORY -->
+
+            <div class="form-group">
+
+                <label>
+                    Category <span>*</span>
+                </label>
+
+                <select
+                    [(ngModel)]="product.category"
+                >
+
+                    <option value="">
+                        Select Category
+                    </option>
+
+                    <option
+                        *ngFor="let category of categories"
+                        [value]="category"
+                    >
+                        {{ category }}
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- BRAND -->
+
+            <div class="form-group">
+
+                <label>
+                    Brand
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="product.brand"
+                    placeholder="Enter brand name"
+                />
+
+            </div>
+
+
+            <!-- STATUS -->
+
+            <div class="form-group">
+
+                <label>
+                    Status
+                </label>
+
+                <select
+                    [(ngModel)]="product.status"
+                >
+
+                    <option
+                        *ngFor="let status of statuses"
+                        [value]="status"
+                    >
+                        {{ status }}
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- SHORT DESCRIPTION -->
+
+            <div class="form-group full-width">
+
+                <label>
+                    Short Description <span>*</span>
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="product.shortDescription"
+                    placeholder="Enter short product description"
+                />
+
+            </div>
+
+
+            <!-- DESCRIPTION -->
+
+            <div class="form-group full-width">
+
+                <label>
+                    Description <span>*</span>
+                </label>
+
+                <textarea
+                    [(ngModel)]="product.description"
+                    rows="6"
+                    placeholder="Enter complete product description"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================================= -->
+        <!-- PRICE & INVENTORY -->
+        <!-- ========================================= -->
+
+        <div class="form-section">
+
+            <div class="section-title">
+
+                <i class="bi bi-currency-rupee"></i>
+
+                Price & Inventory
+
+            </div>
+
+
+            <!-- REGULAR PRICE -->
+
+            <div class="form-group">
+
+                <label>
+                    Regular Price <span>*</span>
+                </label>
+
+                <div class="input-prefix">
+
+                    <span>₹</span>
+
+                    <input
+                        type="number"
+                        min="0"
+                        [(ngModel)]="product.price"
+                        placeholder="0.00"
+                    />
+
+                </div>
+
+            </div>
+
+
+            <!-- SALE PRICE -->
+
+            <div class="form-group">
+
+                <label>
+                    Sale Price <span>*</span>
+                </label>
+
+                <div class="input-prefix">
+
+                    <span>₹</span>
+
+                    <input
+                        type="number"
+                        min="0"
+                        [(ngModel)]="product.salePrice"
+                        placeholder="0.00"
+                    />
+
+                </div>
+
+            </div>
+
+
+            <!-- STOCK -->
+
+            <div class="form-group">
+
+                <label>
+                    Stock Quantity
+                </label>
+
+                <input
+                    type="number"
+                    min="0"
+                    [(ngModel)]="product.stock"
+                    placeholder="0"
+                />
+
+            </div>
+
+
+            <!-- UNIT -->
+
+            <div class="form-group">
+
+                <label>
+                    Unit
+                </label>
+
+                <select
+                    [(ngModel)]="product.unit"
+                >
+
+                    <option
+                        *ngFor="let unit of units"
+                        [value]="unit"
+                    >
+                        {{ unit }}
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================================= -->
+        <!-- MEDIA -->
+        <!-- ========================================= -->
+
+        <div class="form-section">
+
+            <div class="section-title">
+
+                <i class="bi bi-images"></i>
+
+                Product Media
+
+            </div>
+
+
+            <!-- MAIN IMAGE -->
+
+            <div class="form-group full-width">
+
+                <label>
+                    Product Image URL
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="product.image"
+                    placeholder="/images/products/product.jpg"
+                />
+
+                <small class="field-help">
+                    Image upload will be connected later with the Media Library.
+                </small>
+
+            </div>
+
+
+            <!-- GALLERY -->
+
+            <div class="form-group full-width">
+
+                <label>
+                    Gallery Image URLs
+                </label>
+
+                <textarea
+                    [(ngModel)]="product.gallery"
+                    rows="4"
+                    placeholder="Enter image URLs separated by commas"
+                ></textarea>
+
+                <small class="field-help">
+                    Multiple images can be added later through Media Library.
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================================= -->
+        <!-- PRODUCT DETAILS -->
+        <!-- ========================================= -->
+
+        <div class="form-section">
+
+            <div class="section-title">
+
+                <i class="bi bi-rulers"></i>
+
+                Product Details
+
+            </div>
+
+
+            <!-- WEIGHT -->
+
+            <div class="form-group">
+
+                <label>
+                    Weight
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="product.weight"
+                    placeholder="Example: 500 GM"
+                />
+
+            </div>
+
+
+            <!-- DIMENSIONS -->
+
+            <div class="form-group">
+
+                <label>
+                    Dimensions
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="product.dimensions"
+                    placeholder="Example: 20 x 10 x 5 CM"
+                />
+
+            </div>
+
+
+            <!-- FEATURED -->
+
+            <div class="checkbox-group full-width">
+
+                <label class="checkbox-label">
+
+                    <input
+                        type="checkbox"
+                        [(ngModel)]="product.featured"
+                    />
+
+                    <span>
+                        Featured Product
+                    </span>
+
+                </label>
+
+                <small>
+                    Featured products can be displayed prominently on the city portal.
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================================= -->
+        <!-- SEO -->
+        <!-- ========================================= -->
+
+        <div class="form-section">
+
+            <div class="section-title">
+
+                <i class="bi bi-search"></i>
+
+                SEO Information
+
+            </div>
+
+
+            <!-- META TITLE -->
+
+            <div class="form-group full-width">
+
+                <label>
+                    Meta Title
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="product.metaTitle"
+                    placeholder="SEO title"
+                />
+
+            </div>
+
+
+            <!-- META DESCRIPTION -->
+
+            <div class="form-group full-width">
+
+                <label>
+                    Meta Description
+                </label>
+
+                <textarea
+                    [(ngModel)]="product.metaDescription"
+                    rows="4"
+                    placeholder="SEO description"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================================= -->
+        <!-- ACTIONS -->
+        <!-- ========================================= -->
+
+        <div class="form-actions">
+
+            <button
+                type="button"
+                class="btn-cancel"
+                (click)="cancel()"
+            >
+                Cancel
+            </button>
+
+
+            <button
+                type="button"
+                class="btn-save"
+                (click)="saveProduct()"
+            >
+
+                <i
+                    class="bi"
+                    [ngClass]="
+                        isEditMode
+                            ? 'bi-check-lg'
+                            : 'bi-plus-lg'
+                    "
+                ></i>
+
+                {{
+                    isEditMode
+                        ? 'Update Product'
+                        : 'Add Product'
+                }}
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,407 @@
+<div class="page-container">
+
+    <!-- ========================================= -->
+    <!-- HEADER -->
+    <!-- ========================================= -->
+
+    <div class="page-header">
+
+        <div>
+
+            <h1 class="page-title">
+                Contact Enquiries
+            </h1>
+
+            <p class="page-subtitle">
+                Manage messages and enquiries received through the city portal
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- FILTERS -->
+    <!-- ========================================= -->
+
+    <div class="filter-card">
+
+        <div class="search-box">
+
+            <i class="bi bi-search"></i>
+
+            <input
+                type="text"
+                [(ngModel)]="searchText"
+                (input)="onSearch()"
+                placeholder="Search name, email, subject..."
+            />
+
+        </div>
+
+
+        <select
+            [(ngModel)]="selectedStatus"
+            (change)="onFilterChange()"
+        >
+
+            <option value="">
+                All Status
+            </option>
+
+            <option
+                *ngFor="let status of statuses"
+                [value]="status"
+            >
+                {{ status }}
+            </option>
+
+        </select>
+
+
+        <select
+            [(ngModel)]="selectedPriority"
+            (change)="onFilterChange()"
+        >
+
+            <option value="">
+                All Priority
+            </option>
+
+            <option
+                *ngFor="let priority of priorities"
+                [value]="priority"
+            >
+                {{ priority }}
+            </option>
+
+        </select>
+
+
+        <select
+            [(ngModel)]="selectedType"
+            (change)="onFilterChange()"
+        >
+
+            <option value="">
+                All Types
+            </option>
+
+            <option
+                *ngFor="let type of enquiryTypes"
+                [value]="type"
+            >
+                {{ type }}
+            </option>
+
+        </select>
+
+
+        <button
+            type="button"
+            class="btn-clear"
+            (click)="clearFilters()"
+        >
+
+            <i class="bi bi-arrow-clockwise"></i>
+
+            Clear
+
+        </button>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- COUNT -->
+    <!-- ========================================= -->
+
+    <div class="enquiry-toolbar">
+
+        <div class="enquiry-count">
+
+            <strong>
+                {{ filteredEnquiries.length }}
+            </strong>
+
+            enquiries found
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- TABLE -->
+    <!-- ========================================= -->
+
+    <div class="table-card">
+
+        <div class="table-responsive">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Contact</th>
+
+                        <th>Subject</th>
+
+                        <th>Type</th>
+
+                        <th>Priority</th>
+
+                        <th>Status</th>
+
+                        <th>Received</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr
+                        *ngFor="
+                            let enquiry of paginatedEnquiries;
+                            trackBy: trackById
+                        "
+                    >
+
+                        <!-- CONTACT -->
+
+                        <td>
+
+                            <div class="contact-info">
+
+                                <div class="contact-avatar">
+
+                                    {{ enquiry.name.charAt(0).toUpperCase() }}
+
+                                </div>
+
+
+                                <div>
+
+                                    <strong>
+                                        {{ enquiry.name }}
+                                    </strong>
+
+                                    <small>
+                                        {{ enquiry.email }}
+                                    </small>
+
+                                    <small>
+                                        {{ enquiry.phone }}
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- SUBJECT -->
+
+                        <td>
+
+                            <div class="subject-info">
+
+                                <strong>
+                                    {{ enquiry.subject }}
+                                </strong>
+
+                                <small>
+                                    {{ enquiry.message }}
+                                </small>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- TYPE -->
+
+                        <td>
+
+                            <span class="type-badge">
+
+                                {{ enquiry.enquiryType }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- PRIORITY -->
+
+                        <td>
+
+                            <span
+                                class="priority-badge"
+                                [ngClass]="
+                                    getPriorityClass(
+                                        enquiry.priority
+                                    )
+                                "
+                            >
+
+                                <i class="bi bi-flag-fill"></i>
+
+                                {{ enquiry.priority }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- STATUS -->
+
+                        <td>
+
+                            <span
+                                class="status-badge"
+                                [ngClass]="
+                                    getStatusClass(
+                                        enquiry.status
+                                    )
+                                "
+                            >
+
+                                {{ enquiry.status }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- DATE -->
+
+                        <td>
+                            {{ enquiry.createdDate }}
+                        </td>
+
+
+                        <!-- ACTIONS -->
+
+                        <td>
+
+                            <div class="table-actions">
+
+                                <button
+                                    type="button"
+                                    title="View Enquiry"
+                                    (click)="viewEnquiry(enquiry.id)"
+                                >
+
+                                    <i class="bi bi-eye"></i>
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="delete"
+                                    title="Delete"
+                                    (click)="deleteEnquiry(enquiry.id)"
+                                >
+
+                                    <i class="bi bi-trash"></i>
+
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- EMPTY -->
+
+                    <tr
+                        *ngIf="
+                            paginatedEnquiries.length === 0
+                        "
+                    >
+
+                        <td
+                            colspan="7"
+                            class="empty-row"
+                        >
+
+                            <i class="bi bi-envelope-open"></i>
+
+                            <strong>
+                                No enquiries found
+                            </strong>
+
+                            <span>
+                                Try changing your search or filters.
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- PAGINATION -->
+    <!-- ========================================= -->
+
+    <div
+        class="pagination"
+        *ngIf="totalPages > 1"
+    >
+
+        <button
+            type="button"
+            [disabled]="currentPage === 1"
+            (click)="goToPage(currentPage - 1)"
+        >
+
+            <i class="bi bi-chevron-left"></i>
+
+        </button>
+
+
+        <button
+            type="button"
+            *ngFor="let page of pageNumbers"
+            [class.active]="currentPage === page"
+            (click)="goToPage(page)"
+        >
+
+            {{ page }}
+
+        </button>
+
+
+        <button
+            type="button"
+            [disabled]="currentPage === totalPages"
+            (click)="goToPage(currentPage + 1)"
+        >
+
+            <i class="bi bi-chevron-right"></i>
+
+        </button>
+
+    </div>
+
+</div>
